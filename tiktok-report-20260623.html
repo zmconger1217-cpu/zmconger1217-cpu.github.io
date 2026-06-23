@@ -81,9 +81,46 @@ a{text-decoration:none;color:inherit}
 .tbl th{background:#1a1a1a;color:#fff;padding:8px 10px;text-align:left;font-weight:500;font-size:11px}
 .tbl td{padding:7px 10px;border-bottom:1px solid #eee}
 .tbl tr:hover td{background:#fafafa}
-.tbl .ra{
-@media(max-width:1024px){.t5r{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.t5r{grid-template-columns:repeat(2,1fr)}}
+/* ====== 平板 ====== */
+@media(max-width:1024px){
+.t5r{grid-template-columns:repeat(3,1fr)}
+.cg{grid-template-columns:1fr 1fr}
+.insight-grid{grid-template-columns:1fr 1fr}
+}
+/* ====== 手机 ====== */
+@media(max-width:640px){
+.wrap{padding:0 16px}
+.hero{padding:48px 0 36px}
+.hero h1{font-size:24px}
+.hero p{font-size:13px}
+.hero .meta{gap:16px}
+.hero .meta-item strong{font-size:16px}
+.hero .meta-item{font-size:11px;width:calc(50% - 8px)}
+.section{padding:36px 0}
+.sh{flex-direction:column;gap:4px;margin-bottom:20px}
+.sh h2{font-size:17px}
+.sh .sb{font-size:11px}
+.t5r{grid-template-columns:repeat(2,1fr);gap:8px}
+.t5-b{padding:8px}
+.t5-au{font-size:11px}
+.t5-st{font-size:10px}
+.cg{grid-template-columns:1fr;gap:12px}
+.cb{padding:12px}
+.cb h3{font-size:12px}
+.insight-grid{grid-template-columns:1fr;gap:12px}
+.insight-card{padding:16px}
+.insight-card .num{font-size:24px}
+.tbl{font-size:11px}
+.tbl th,.tbl td{padding:5px 6px}
+.sh h2,.cb h3{font-size:14px}
+.in{font-size:11px}
+.sug-item{font-size:9px;padding:2px 6px}
+.tag{font-size:9px;padding:1px 6px}
+}
+@media(max-width:420px){
+.t5r{grid-template-columns:repeat(1,1fr)}
+.hero .meta-item{width:100%}
+}
 </style>
 </head>
 <body>
