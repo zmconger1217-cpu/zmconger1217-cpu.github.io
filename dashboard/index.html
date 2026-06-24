@@ -3,36 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>数据仪表盘</title>
+<title>运营数据看板</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:#0d0d0d;color:#fff;padding:24px}
-body { font-family: 'Noto Sans SC', -apple-system, 'Segoe UI', sans-serif; }
-.header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;flex-wrap:wrap;gap:8px}
+body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:#0d0d0d;color:#fff;padding:24px;min-height:100vh}
+.header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;flex-wrap:wrap;gap:12px}
 .header h1{font-size:24px;font-weight:300;letter-spacing:1px}
-.header .date{font-size:13px;color:#666}
-.header .badge{font-size:11px;color:#ffc832;border:1px solid #ffc83233;padding:4px 12px;border-radius:20px}
-.grid{display:grid;gap:16px;margin-bottom:16px}
-.grid-4{grid-template-columns:repeat(4,1fr)}
-.grid-2{grid-template-columns:1fr 1fr}
-.grid-1{grid-template-columns:1fr}
-.card{background:#1a1a1a;border-radius:12px;padding:20px;border:1px solid #222}
-.card h3{font-size:13px;font-weight:400;color:#888;margin-bottom:4px}
-.card .num{font-size:32px;font-weight:200;color:#ffc832;font-family:Outfit}
-.card .sub{font-size:11px;color:#555;margin-top:2px}
+.header .meta{font-size:12px;color:#555}
+.header .badge{font-size:11px;color:#ffc832;border:1px solid #ffc83233;background:#ffc8320a;padding:4px 14px;border-radius:20px}
+.grid{display:grid;gap:14px;margin-bottom:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:1fr 1fr}
+.g1{grid-template-columns:1fr}
+.card{background:#141414;border-radius:12px;padding:20px;border:1px solid #222;transition:border-color .2s}
+.card:hover{border-color:#333}
+.card .lbl{font-size:12px;color:#666;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.card .num{font-size:30px;font-weight:200;color:#ffc832;font-family:Outfit,sans-serif;letter-spacing:-.5px}
+.card .num .unit{font-size:14px;color:#555;font-weight:400;margin-left:2px}
+.card .chg{font-size:11px;margin-left:8px;padding:1px 8px;border-radius:10px;display:inline-block}
+.card .chg.up{color:#4caf50;background:#4caf5015}
+.card .chg.down{color:#ef5350;background:#ef535015}
+.card .sub{font-size:11px;color:#444;margin-top:2px}
 .chart-box{width:100%;height:400px}
 .chart-box-sm{width:100%;height:280px}
-.footer{text-align:center;padding:24px 0;font-size:11px;color:#333}
-/* 响应式 */
-@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+.chart-box-md{width:100%;height:340px}
+.card h3{font-size:13px;font-weight:400;color:#666;margin-bottom:12px}
+
+/* 表格 */
+.tbl-wrap{overflow-x:auto;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:600px}
+thead th{background:#1a1a1a;color:#888;padding:10px 12px;text-align:left;font-weight:400;font-size:11px;white-space:nowrap;border-bottom:1px solid #222}
+tbody td{padding:9px 12px;border-bottom:1px solid #1a1a1a;color:#ccc;white-space:nowrap}
+tbody tr:hover td{background:#1a1a1a}
+.rank-num{display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;border-radius:4px;font-size:11px;font-weight:500}
+.rank-1{background:#ffc832;color:#1a1a1a}
+.rank-2{background:#ffa726;color:#1a1a1a}
+.rank-3{background:#ff8a65;color:#1a1a1a}
+.rank-other{background:#222;color:#666}
+.tag-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;background:#222;color:#888;margin:1px}
+.tag-pill.hot{background:#ffc83215;color:#ffc832}
+.highlight{color:#ffc832}
+.footer{text-align:center;padding:24px 0 8px;font-size:11px;color:#222}
+
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){
-  body{padding:16px}
-  .grid-4,.grid-2{grid-template-columns:1fr}
+  body{padding:14px}
+  .g4,.g3,.g2{grid-template-columns:1fr}
   .header h1{font-size:18px}
-  .card .num{font-size:24px}
-  .chart-box{height:260px}
-  .chart-box-sm{height:220px}
+  .card{padding:14px}
+  .card .num{font-size:22px}
+  .chart-box,.chart-box-md{height:240px}
+  .chart-box-sm{height:200px}
 }
 </style>
 </head>
@@ -40,131 +63,193 @@ body { font-family: 'Noto Sans SC', -apple-system, 'Segoe UI', sans-serif; }
 
 <div class="header">
   <div>
-    <h1>📊 数据仪表盘</h1>
-    <div class="date" id="updateTime">加载中...</div>
+    <h1>📊 低粉爆款运营看板</h1>
+    <div class="meta">数据更新: <span id="updateTime">--</span></div>
   </div>
-  <span class="badge">● 自动更新</span>
+  <span class="badge">● 近7天</span>
 </div>
 
 <!-- KPI 卡片 -->
-<div class="grid grid-4" id="kpiCards"></div>
+<div class="grid g4" id="kpiCards"></div>
 
-<!-- 图表 -->
-<div class="grid grid-2">
+<!-- 趋势 + 品类 -->
+<div class="grid g2">
   <div class="card">
-    <h3>📈 趋势</h3>
+    <h3>📈 播放趋势</h3>
     <div class="chart-box" id="chartTrend"></div>
   </div>
   <div class="card">
-    <h3>📊 分布</h3>
+    <h3>🥧 爆款品类分布</h3>
     <div class="chart-box" id="chartPie"></div>
   </div>
 </div>
 
-<div class="grid grid-1">
+<!-- 粉丝vs播放散点 + 排行 -->
+<div class="grid g2">
   <div class="card">
-    <h3>🏆 排行榜</h3>
-    <div class="chart-box-sm" id="chartBar"></div>
+    <h3>🎯 粉丝 vs 播放（低粉高爆）</h3>
+    <div class="chart-box" id="chartScatter"></div>
+  </div>
+  <div class="card">
+    <h3>🏆 爆款策略排行</h3>
+    <div class="chart-box-sm" id="chartRank"></div>
   </div>
 </div>
 
-<div class="footer">
-  数据来源: 自定义 · GitHub Pages · ECharts
+<!-- 爆款详情表 -->
+<div class="card">
+  <h3>📋 爆款视频明细</h3>
+  <div class="tbl-wrap" id="detailTable"></div>
 </div>
 
+<div class="footer">数据来源: TikTok · 自动采集 · GitHub Pages</div>
+
 <script>
-// 加载数据
 fetch('data.json')
   .then(r => r.json())
-  .then(data => {
-    document.getElementById('updateTime').textContent = '更新于 ' + (data.updatedAt || '—')
+  .then(d => {
+    document.getElementById('updateTime').textContent = d.updatedAt || '--'
 
-    // KPI 卡片
+    // KPI
     const kpi = document.getElementById('kpiCards')
-    if (data.kpi) {
-      data.kpi.forEach(item => {
-        kpi.innerHTML += `
-          <div class="card">
-            <h3>${item.label}</h3>
-            <div class="num">${item.value}</div>
-            <div class="sub">${item.sub || ''}</div>
+    ;(d.kpi||[]).forEach(i => {
+      kpi.innerHTML += `
+        <div class="card">
+          <div class="lbl">${i.label}</div>
+          <div class="num">${i.value}${i.unit?' <span class=unit>'+i.unit+'</span>':''}
+            ${i.chg?'<span class="chg '+(i.chg[0]=='+'?'up':'down')+'">'+i.chg+'</span>':''}
           </div>
-        `
-      })
-    }
+          <div class="sub">${i.sub||''}</div>
+        </div>`
+    })
 
-    // 渲染图表
-    if (data.trend) renderTrend(data.trend)
-    if (data.pie)   renderPie(data.pie)
-    if (data.rank)  renderRank(data.rank)
+    if (d.trend)    renderTrend(d.trend)
+    if (d.pie)      renderPie(d.pie)
+    if (d.scatter)  renderScatter(d.scatter)
+    if (d.rank)     renderRank(d.rank)
+    if (d.details)  renderTable(d.details)
   })
   .catch(() => {
-    document.getElementById('updateTime').textContent = '⚠️ 数据加载失败'
-    // 显示示例数据
-    renderDemo()
+    document.getElementById('updateTime').textContent = '⚠️ 加载失败'
+    loadDemo()
   })
 
-function renderTrend(d) {
+function renderTrend(t) {
   const c = echarts.init(document.getElementById('chartTrend'))
   c.setOption({
-    tooltip: { trigger: 'axis' },
-    grid: { left: 50, right: 16, top: 20, bottom: 24 },
-    xAxis: { type: 'category', data: d.labels, axisLabel: { color: '#666', fontSize: 11 } },
-    yAxis: { type: 'value', splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#666' } },
+    tooltip: { trigger:'axis', valueFormatter:v=>v.toLocaleString() },
+    grid: { left:48, right:16, top:16, bottom:24 },
+    xAxis: { type:'category', data:t.labels, axisLabel:{color:'#555',fontSize:10} },
+    yAxis: { type:'value', splitLine:{lineStyle:{color:'#1a1a1a'}}, axisLabel:{color:'#555'} },
     series: [{
-      type: 'line', data: d.values, smooth: true,
-      lineStyle: { color: '#ffc832', width: 2 },
-      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
-        colorStops: [{ offset: 0, color: '#ffc83244' }, { offset: 1, color: '#ffc83200' }] } },
-      symbol: 'circle', symbolSize: 4,
-      itemStyle: { color: '#ffc832' }
+      type:'line', data:t.values, smooth:true, symbol:'circle', symbolSize:5,
+      lineStyle:{color:'#ffc832',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,
+        colorStops:[{offset:0,color:'#ffc83233'},{offset:1,color:'#ffc83200'}]}},
+      itemStyle:{color:'#ffc832'},
+      markLine:{data:[{type:'average',name:'均值'}],lineStyle:{color:'#555',type:'dashed'},label:{color:'#555'}}
     }]
   })
-  window.addEventListener('resize', () => c.resize())
+  addResize(c)
 }
 
-function renderPie(d) {
+function renderPie(p) {
   const c = echarts.init(document.getElementById('chartPie'))
   c.setOption({
-    tooltip: { trigger: 'item' },
-    series: [{
-      type: 'pie', radius: ['36%', '64%'], center: ['50%', '50%'],
-      data: d.data || d.labels.map((n,i) => ({ name: n, value: d.values[i] })),
-      label: { color: '#aaa', fontSize: 11 },
-      itemStyle: { borderRadius: 4 },
-      color: ['#ffc832','#ff8a65','#4fc3f7','#81c784','#ba68c8','#e57373']
+    tooltip:{trigger:'item'},
+    series:[{
+      type:'pie', radius:['30%','65%'], center:['50%','50%'],
+      data:p.data || p.labels.map((n,i)=>({name:n,value:(p.values||[])[i]||0})),
+      label:{color:'#888',fontSize:10},
+      labelLine:{lineStyle:{color:'#222'}},
+      color:['#ffc832','#ff8a65','#4fc3f7','#81c784','#ba68c8','#e57373','#90a4ae']
     }]
   })
-  window.addEventListener('resize', () => c.resize())
+  addResize(c)
 }
 
-function renderRank(d) {
-  const c = echarts.init(document.getElementById('chartBar'))
+function renderScatter(s) {
+  const c = echarts.init(document.getElementById('chartScatter'))
+  const data = s.data || []
   c.setOption({
-    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-    grid: { left: 100, right: 24, top: 8, bottom: 20 },
-    xAxis: { type: 'value', splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#666' } },
-    yAxis: { type: 'category', data: d.labels.slice().reverse(), axisLabel: { color: '#aaa', fontSize: 11 } },
-    series: [{
-      type: 'bar', data: d.values.slice().reverse(),
-      barWidth: 14, borderRadius: [0,4,4,0],
-      itemStyle: { color: { type: 'linear', x: 0, y: 0, x2: 1, y2: 0,
-        colorStops: [{ offset: 0, color: '#ffc832' }, { offset: 1, color: '#ffa000' }] } }
+    tooltip:{
+      formatter: p => `<b>${p.data[2]||'--'}</b><br/>粉丝: ${p.data[0]}<br/>播放: ${(p.data[1]/10000).toFixed(1)}万`
+    },
+    grid:{left:60,right:16,top:16,bottom:40},
+    xAxis:{
+      type:'value', name:'粉丝数', nameTextStyle:{color:'#555',fontSize:10},
+      splitLine:{lineStyle:{color:'#1a1a1a'}},axisLabel:{color:'#555',fontSize:10}
+    },
+    yAxis:{
+      type:'value', name:'播放量(万)', nameTextStyle:{color:'#555',fontSize:10},
+      splitLine:{lineStyle:{color:'#1a1a1a'}},axisLabel:{
+        color:'#555',fontSize:10,
+        formatter: v => (v/10000).toFixed(0)
+      }
+    },
+    series:[{
+      type:'scatter', symbolSize:10,
+      data: data.map(d => [d.fans||0, d.views||0, d.title||'']),
+      itemStyle:{color:'#ffc832',opacity:.7}
     }]
   })
-  window.addEventListener('resize', () => c.resize())
+  addResize(c)
 }
 
-function renderDemo() {
-  renderTrend({ labels: ['周一','周二','周三','周四','周五','周六','周日'], values: [180,245,210,380,290,520,410] })
-  renderPie({ labels: ['品类A','品类B','品类C','品类D'], values: [42,28,18,12] })
-  renderRank({ labels: ['商品A','商品B','商品C','商品D','商品E'], values: [95,78,62,45,30] })
-  document.querySelector('#kpiCards').innerHTML = `
-    <div class="card"><h3>总播放</h3><div class="num">7.8M</div><div class="sub">+12.3% ↑</div></div>
-    <div class="card"><h3>总粉丝</h3><div class="num">35.2K</div><div class="sub">10个账号</div></div>
-    <div class="card"><h3>爆款率</h3><div class="num">18%</div><div class="sub">高于均值6%</div></div>
-    <div class="card"><h3>更新</h3><div class="num">实时</div><div class="sub">GitHub Actions</div></div>
-  `
+function renderRank(r) {
+  const c = echarts.init(document.getElementById('chartRank'))
+  c.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    grid:{left:90,right:24,top:8,bottom:20},
+    xAxis:{type:'value',splitLine:{lineStyle:{color:'#1a1a1a'}},axisLabel:{color:'#555'}},
+    yAxis:{type:'category',data:(r.labels||[]).slice().reverse(),axisLabel:{color:'#888',fontSize:10}},
+    series:[{
+      type:'bar', data:(r.values||[]).slice().reverse(),
+      barWidth:12, borderRadius:[0,4,4,0],
+      itemStyle:{
+        color:{type:'linear',x:0,y:0,x2:1,y2:0,
+          colorStops:[{offset:0,color:'#ffc832'},{offset:1,color:'#ffa000'}]}
+      },
+      label:{show:true,position:'right',color:'#888',fontSize:10,formatter:'{c}分'}
+    }]
+  })
+  addResize(c)
+}
+
+function renderTable(d) {
+  const el = document.getElementById('detailTable')
+  if (!d || !d.length) { el.innerHTML = '<div style="padding:20px;color:#555;text-align:center">暂无数据</div>'; return }
+  let h = `<table><thead><tr><th>#</th><th>标题</th><th>粉丝</th><th>播放</th><th>点赞</th><th>标签</th><th>爆款因子</th></tr></thead><tbody>`
+  d.forEach((v,i) => {
+    const rn = i<3 ? `rank-${i+1}` : 'rank-other'
+    const tags = (v.tags||[]).map(t => `<span class="tag-pill${t.hot?' hot':''}">${t.name||t}</span>`).join('')
+    h += `<tr>
+      <td><span class="rank-num ${rn}">${i+1}</span></td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis">${v.title||'--'}</td>
+      <td>${v.fans||'--'}</td>
+      <td class="highlight">${(v.views||0).toLocaleString()}</td>
+      <td>${(v.likes||0).toLocaleString()}</td>
+      <td>${tags||'--'}</td>
+      <td style="color:#888;font-size:11px">${v.factor||'--'}</td>
+    </tr>`
+  })
+  h += '</tbody></table>'
+  el.innerHTML = h
+}
+
+function addResize(c) { window.addEventListener('resize', ()=>c.resize()) }
+
+function loadDemo() {
+  renderTrend({labels:['6/17','6/18','6/19','6/20','6/21','6/22','6/23'],values:[674,1355,2100,980,1650,810,2200]})
+  renderPie({labels:['新奇特','情感共鸣','解压治愈','手工过程','痛点喜剧','升级改造'],values:[28,22,18,15,10,7]})
+  renderRank({labels:['新奇特品类','情感共鸣','解压治愈','手工过程','痛点喜剧','升级改造'],values:[95,82,68,55,38,25]})
+  renderScatter({data:[{fans:350,views:520000,title:'神奇开箱'},{fans:180,views:380000,title:'手工制作'},{fans:800,views:290000,title:'情感故事'},{fans:120,views:410000,title:'解压视频'},{fans:2000,views:210000,title:'教程分享'},{fans:50,views:670000,title:'新奇发现'}]})
+  document.getElementById('kpiCards').innerHTML = `
+    <div class=card><div class=lbl>总播放</div><div class=num>7.79M</div><div class=sub>10条爆款</div></div>
+    <div class=card><div class=lbl>总粉丝</div><div class=num>35.2K</div><div class=sub>10个账号</div></div>
+    <div class=card><div class=lbl>爆款率</div><div class=num>18%<span class="chg up">+6%</span></div><div class=sub>高于行业均值</div></div>
+    <div class=card><div class=lbl>平均播放</div><div class=num>779K</div><div class=sub>单条最高 520K</div></div>`
+  document.getElementById('updateTime').textContent = '2026-06-23 (示例数据)'
 }
 </script>
 </body>
