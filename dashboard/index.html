@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据仪表盘</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:#0d0d0d;color:#fff;padding:24px}
+body { font-family: 'Noto Sans SC', -apple-system, 'Segoe UI', sans-serif; }
+.header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:24px;font-weight:300;letter-spacing:1px}
+.header .date{font-size:13px;color:#666}
+.header .badge{font-size:11px;color:#ffc832;border:1px solid #ffc83233;padding:4px 12px;border-radius:20px}
+.grid{display:grid;gap:16px;margin-bottom:16px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-1{grid-template-columns:1fr}
+.card{background:#1a1a1a;border-radius:12px;padding:20px;border:1px solid #222}
+.card h3{font-size:13px;font-weight:400;color:#888;margin-bottom:4px}
+.card .num{font-size:32px;font-weight:200;color:#ffc832;font-family:Outfit}
+.card .sub{font-size:11px;color:#555;margin-top:2px}
+.chart-box{width:100%;height:400px}
+.chart-box-sm{width:100%;height:280px}
+.footer{text-align:center;padding:24px 0;font-size:11px;color:#333}
+/* 响应式 */
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  body{padding:16px}
+  .grid-4,.grid-2{grid-template-columns:1fr}
+  .header h1{font-size:18px}
+  .card .num{font-size:24px}
+  .chart-box{height:260px}
+  .chart-box-sm{height:220px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>📊 数据仪表盘</h1>
+    <div class="date" id="updateTime">加载中...</div>
+  </div>
+  <span class="badge">● 自动更新</span>
+</div>
+
+<!-- KPI 卡片 -->
+<div class="grid grid-4" id="kpiCards"></div>
+
+<!-- 图表 -->
+<div class="grid grid-2">
+  <div class="card">
+    <h3>📈 趋势</h3>
+    <div class="chart-box" id="chartTrend"></div>
+  </div>
+  <div class="card">
+    <h3>📊 分布</h3>
+    <div class="chart-box" id="chartPie"></div>
+  </div>
+</div>
+
+<div class="grid grid-1">
+  <div class="card">
+    <h3>🏆 排行榜</h3>
+    <div class="chart-box-sm" id="chartBar"></div>
+  </div>
+</div>
+
+<div class="footer">
+  数据来源: 自定义 · GitHub Pages · ECharts
+</div>
+
+<script>
+// 加载数据
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('updateTime').textContent = '更新于 ' + (data.updatedAt || '—')
+
+    // KPI 卡片
+    const kpi = document.getElementById('kpiCards')
+    if (data.kpi) {
+      data.kpi.forEach(item => {
+        kpi.innerHTML += `
+          <div class="card">
+            <h3>${item.label}</h3>
+            <div class="num">${item.value}</div>
+            <div class="sub">${item.sub || ''}</div>
+          </div>
+        `
+      })
+    }
+
+    // 渲染图表
+    if (data.trend) renderTrend(data.trend)
+    if (data.pie)   renderPie(data.pie)
+    if (data.rank)  renderRank(data.rank)
+  })
+  .catch(() => {
+    document.getElementById('updateTime').textContent = '⚠️ 数据加载失败'
+    // 显示示例数据
+    renderDemo()
+  })
+
+function renderTrend(d) {
+  const c = echarts.init(document.getElementById('chartTrend'))
+  c.setOption({
+    tooltip: { trigger: 'axis' },
+    grid: { left: 50, right: 16, top: 20, bottom: 24 },
+    xAxis: { type: 'category', data: d.labels, axisLabel: { color: '#666', fontSize: 11 } },
+    yAxis: { type: 'value', splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#666' } },
+    series: [{
+      type: 'line', data: d.values, smooth: true,
+      lineStyle: { color: '#ffc832', width: 2 },
+      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [{ offset: 0, color: '#ffc83244' }, { offset: 1, color: '#ffc83200' }] } },
+      symbol: 'circle', symbolSize: 4,
+      itemStyle: { color: '#ffc832' }
+    }]
+  })
+  window.addEventListener('resize', () => c.resize())
+}
+
+function renderPie(d) {
+  const c = echarts.init(document.getElementById('chartPie'))
+  c.setOption({
+    tooltip: { trigger: 'item' },
+    series: [{
+      type: 'pie', radius: ['36%', '64%'], center: ['50%', '50%'],
+      data: d.data || d.labels.map((n,i) => ({ name: n, value: d.values[i] })),
+      label: { color: '#aaa', fontSize: 11 },
+      itemStyle: { borderRadius: 4 },
+      color: ['#ffc832','#ff8a65','#4fc3f7','#81c784','#ba68c8','#e57373']
+    }]
+  })
+  window.addEventListener('resize', () => c.resize())
+}
+
+function renderRank(d) {
+  const c = echarts.init(document.getElementById('chartBar'))
+  c.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: 100, right: 24, top: 8, bottom: 20 },
+    xAxis: { type: 'value', splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#666' } },
+    yAxis: { type: 'category', data: d.labels.slice().reverse(), axisLabel: { color: '#aaa', fontSize: 11 } },
+    series: [{
+      type: 'bar', data: d.values.slice().reverse(),
+      barWidth: 14, borderRadius: [0,4,4,0],
+      itemStyle: { color: { type: 'linear', x: 0, y: 0, x2: 1, y2: 0,
+        colorStops: [{ offset: 0, color: '#ffc832' }, { offset: 1, color: '#ffa000' }] } }
+    }]
+  })
+  window.addEventListener('resize', () => c.resize())
+}
+
+function renderDemo() {
+  renderTrend({ labels: ['周一','周二','周三','周四','周五','周六','周日'], values: [180,245,210,380,290,520,410] })
+  renderPie({ labels: ['品类A','品类B','品类C','品类D'], values: [42,28,18,12] })
+  renderRank({ labels: ['商品A','商品B','商品C','商品D','商品E'], values: [95,78,62,45,30] })
+  document.querySelector('#kpiCards').innerHTML = `
+    <div class="card"><h3>总播放</h3><div class="num">7.8M</div><div class="sub">+12.3% ↑</div></div>
+    <div class="card"><h3>总粉丝</h3><div class="num">35.2K</div><div class="sub">10个账号</div></div>
+    <div class="card"><h3>爆款率</h3><div class="num">18%</div><div class="sub">高于均值6%</div></div>
+    <div class="card"><h3>更新</h3><div class="num">实时</div><div class="sub">GitHub Actions</div></div>
+  `
+}
+</script>
+</body>
+</html>
