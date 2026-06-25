@@ -16,12 +16,12 @@
   },
   "scatter": {
     "data": [
-      { "fans": 350,  "views": 520000, "title": "神奇开箱·新奇特首饰" },
-      { "fans": 180,  "views": 380000, "title": "手工制作全过程治愈" },
-      { "fans": 800,  "views": 290000, "title": "情感故事·礼物背后的含义" },
-      { "fans": 120,  "views": 410000, "title": "解压视频·首饰清洁过程" },
-      { "fans": 2000, "views": 210000, "title": "教程分享·穿搭搭配技巧" },
-      { "fans": 50,   "views": 670000, "title": "新奇发现·独一无二的设计" }
+      { "fans": 350,  "views": 520000, "title": "神奇开箱·新奇特首饰", "url": "https://www.tiktok.com/@example/video/123456789" },
+      { "fans": 180,  "views": 380000, "title": "手工制作全过程治愈", "url": "https://www.tiktok.com/@example/video/123456790" },
+      { "fans": 800,  "views": 290000, "title": "情感故事·礼物背后的含义", "url": "https://www.tiktok.com/@example/video/123456791" },
+      { "fans": 120,  "views": 410000, "title": "解压视频·首饰清洁过程", "url": "https://www.tiktok.com/@example/video/123456792" },
+      { "fans": 2000, "views": 210000, "title": "教程分享·穿搭搭配技巧", "url": "https://www.tiktok.com/@example/video/123456793" },
+      { "fans": 50,   "views": 670000, "title": "新奇发现·独一无二的设计", "url": "https://www.tiktok.com/@example/video/123456794" }
     ]
   },
   "rank": {
@@ -29,11 +29,11 @@
     "values": [95, 82, 68, 55, 38, 25, 18, 12]
   },
   "details": [
-    { "title": "这个神奇开箱让所有人都惊呆了", "fans": 350,  "views": 520000, "likes": 48500, "tags": [{ "name": "开箱", "hot": true }, { "name": "新奇特" }, { "name": "珠宝" }], "factor": "新奇特品类+强视觉冲击" },
-    { "title": "手工制作全过程太治愈了", "fans": 180,  "views": 380000, "likes": 32000, "tags": [{ "name": "手工", "hot": true }, { "name": "治愈" }, { "name": "过程" }], "factor": "手工过程>成果+解压BGM" },
-    { "title": "送这个礼物她一定会感动哭", "fans": 800,  "views": 290000, "likes": 28000, "tags": [{ "name": "情感" }, { "name": "礼物" }, { "name": "故事" }], "factor": "强情感共鸣+送礼场景" },
-    { "title": "5分钟清洁首饰焕然一新", "fans": 120,  "views": 410000, "likes": 35000, "tags": [{ "name": "解压" }, { "name": "清洁" }, { "name": "教程" }], "factor": "解压治愈+实用技巧" },
-    { "title": "小众穿搭技巧大公开", "fans": 2000, "views": 210000, "likes": 18000, "tags": [{ "name": "穿搭" }, { "name": "技巧" }, { "name": "小众" }], "factor": "实用干货+人设反差" },
-    { "title": "独一无二的手工定制首饰", "fans": 50,   "views": 670000, "likes": 55000, "tags": [{ "name": "定制" }, { "name": "手工" }, { "name": "独家" }], "factor": "稀缺性+新奇特品类" }
+    { "title": "这个神奇开箱让所有人都惊呆了", "fans": 350,  "views": 520000, "likes": 48500, "url": "https://www.tiktok.com/@example/video/123456789", "tags": [{ "name": "开箱", "hot": true }, { "name": "新奇特" }, { "name": "珠宝" }], "factor": "新奇特品类+强视觉冲击" },
+    { "title": "手工制作全过程太治愈了", "fans": 180,  "views": 380000, "likes": 32000, "url": "https://www.tiktok.com/@example/video/123456790", "tags": [{ "name": "手工", "hot": true }, { "name": "治愈" }, { "name": "过程" }], "factor": "手工过程>成果+解压BGM" },
+    { "title": "送这个礼物她一定会感动哭", "fans": 800,  "views": 290000, "likes": 28000, "url": "https://www.tiktok.com/@example/video/123456791", "tags": [{ "name": "情感" }, { "name": "礼物" }, { "name": "故事" }], "factor": "强情感共鸣+送礼场景" },
+    { "title": "5分钟清洁首饰焕然一新", "fans": 120,  "views": 410000, "likes": 35000, "url": "https://www.tiktok.com/@example/video/123456792", "tags": [{ "name": "解压" }, { "name": "清洁" }, { "name": "教程" }], "factor": "解压治愈+实用技巧" },
+    { "title": "小众穿搭技巧大公开", "fans": 2000, "views": 210000, "likes": 18000, "url": "https://www.tiktok.com/@example/video/123456793", "tags": [{ "name": "穿搭" }, { "name": "技巧" }, { "name": "小众" }], "factor": "实用干货+人设反差" },
+    { "title": "独一无二的手工定制首饰", "fans": 50,   "views": 670000, "likes": 55000, "url": "https://www.tiktok.com/@example/video/123456794", "tags": [{ "name": "定制" }, { "name": "手工" }, { "name": "独家" }], "factor": "稀缺性+新奇特品类" }
   ]
 }

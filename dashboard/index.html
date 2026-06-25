@@ -173,7 +173,7 @@ function renderScatter(s) {
   const data = s.data || []
   c.setOption({
     tooltip:{
-      formatter: p => `<b>${p.data[2]||'--'}</b><br/>粉丝: ${p.data[0]}<br/>播放: ${(p.data[1]/10000).toFixed(1)}万`
+      formatter: p => `<b>${p.data[2]||'--'}</b><br/>粉丝: ${p.data[0]}<br/>播放: ${(p.data[1]/10000).toFixed(1)}万${p.data[3]?'<br/><a href="'+p.data[3]+'" target="_blank" style="color:#ffc832">🔗 查看视频</a>':''}`
     },
     grid:{left:60,right:16,top:16,bottom:40},
     xAxis:{
@@ -189,7 +189,7 @@ function renderScatter(s) {
     },
     series:[{
       type:'scatter', symbolSize:10,
-      data: data.map(d => [d.fans||0, d.views||0, d.title||'']),
+      data: data.map(d => [d.fans||0, d.views||0, d.title||'', d.url||'']),
       itemStyle:{color:'#ffc832',opacity:.7}
     }]
   })
@@ -223,9 +223,13 @@ function renderTable(d) {
   d.forEach((v,i) => {
     const rn = i<3 ? `rank-${i+1}` : 'rank-other'
     const tags = (v.tags||[]).map(t => `<span class="tag-pill${t.hot?' hot':''}">${t.name||t}</span>`).join('')
+    const link = v.url ? `href="${v.url}" target="_blank" rel="noopener"` : ''
+    const titleHtml = link
+      ? `<a ${link} style="color:#ffc832;text-decoration:none;display:inline-block;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${v.title||''}">${v.title||'--'} ↗</a>`
+      : `<span style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block">${v.title||'--'}</span>`
     h += `<tr>
       <td><span class="rank-num ${rn}">${i+1}</span></td>
-      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis">${v.title||'--'}</td>
+      <td>${titleHtml}</td>
       <td>${v.fans||'--'}</td>
       <td class="highlight">${(v.views||0).toLocaleString()}</td>
       <td>${(v.likes||0).toLocaleString()}</td>
