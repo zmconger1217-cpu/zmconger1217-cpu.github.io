@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-25 12:57",
+  "updatedAt": "2026-06-25 14:04",
   "version": "2.1",
   "kpi": [
     {
       "label": "总播放",
-      "value": "8.62M",
+      "value": "8.47M",
       "sub": "40条爆款",
       "chg": ""
     },
@@ -16,14 +16,14 @@
     },
     {
       "label": "平均互动率",
-      "value": "9.7%",
+      "value": "9.6%",
       "sub": "点赞+评论+分享 / 播放",
       "chg": "+4.8%"
     },
     {
       "label": "总点赞",
-      "value": "802.9K",
-      "sub": "均 20.1K",
+      "value": "797.9K",
+      "sub": "均 19.9K",
       "chg": ""
     }
   ],
@@ -59,12 +59,12 @@
     ],
     "values": [
       156300,
-      156300,
       138304,
       8616,
       8616,
       8616,
-      8616
+      8616,
+      8465
     ]
   },
   "pie": {
@@ -98,22 +98,22 @@
       "Other",
       "Review/Unboxing",
       "Showcase/Display",
-      "Storytime/Emotional",
-      "Tutorial/DIY"
+      "Tutorial/DIY",
+      "Storytime/Emotional"
     ],
     "er": [
-      9.15,
+      8.87,
       11.05,
       11.7,
-      8.09,
-      8.96
+      8.96,
+      10.5
     ],
     "avg_plays": [
-      282704,
+      271794,
       172328,
       90700,
-      64866,
-      34099
+      34099,
+      16650
     ]
   },
   "scatter": {
@@ -204,8 +204,8 @@
       },
       {
         "fans": 0,
-        "views": 161300,
-        "title": "which ones your fav🤭 @EvryJewels | use c",
+        "views": 143800,
+        "title": "all the fairy necklaces 😫 @miomijewelryj",
         "url": ""
       }
     ]
@@ -221,7 +221,7 @@
       100.0,
       100.0,
       100.0,
-      97.0
+      95.2
     ]
   },
   "details": [
@@ -437,21 +437,6 @@
     },
     {
       "rank": 15,
-      "title": "which ones your fav🤭 @EvryJewels | use code IZZIE5373 for $$ off! #evryjewels #e",
-      "fans": 0,
-      "views": 161300,
-      "likes": 5169,
-      "url": "https://www.tiktok.com/@isabelle.yii/video/7652599236189637908",
-      "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/o0Gm5o5JQCeZXQIPoejfIgID9vgyvA72GHAWLU~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=uuCuTV9tJzSb1zWuX4F02CUDUgI%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-      "tags": [],
-      "region": "US/CA",
-      "product_type": "Necklace",
-      "content_format": "Storytime/Emotional",
-      "engagement_rate": "3.3%",
-      "buzz_score": 100
-    },
-    {
-      "rank": 16,
       "title": "all the fairy necklaces 😫 @miomijewelryjar #jewelrytiktok #fyp #mysteryjewelryja",
       "fans": 0,
       "views": 143800,
@@ -466,7 +451,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 17,
+      "rank": 16,
       "title": "More than a ring ✨🌸🎀#peachblossom #promisering #jewelry #engagementring #ring",
       "fans": 0,
       "views": 113300,
@@ -481,7 +466,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 18,
+      "rank": 17,
       "title": "The craziest #opals I have ever seen #jewelrybusiness #jewelry #gems #gold ",
       "fans": 0,
       "views": 107500,
@@ -496,7 +481,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 19,
+      "rank": 18,
       "title": "You loved the 14k breakdown, so today we are mapping out the exact rules for 18 ",
       "fans": 0,
       "views": 70300,
@@ -511,7 +496,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 20,
+      "rank": 19,
       "title": "#redbracelets #gönntfy #fouryou #⭐️ ",
       "fans": 0,
       "views": 68100,
@@ -526,7 +511,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 21,
+      "rank": 20,
       "title": "I literally made bracelets all day 😂 #braceletmaking #beadedbracelet #braceletst",
       "fans": 0,
       "views": 65900,
@@ -541,7 +526,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 22,
+      "rank": 21,
       "title": "probably my smallest cartier haul yet #cartier #luxury #luxuryjewelry #jewelry #",
       "fans": 0,
       "views": 61900,
@@ -556,7 +541,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 23,
+      "rank": 22,
       "title": "I wish someone would’ve made a beaded necklace tutorial like this when I first s",
       "fans": 0,
       "views": 58200,
@@ -571,7 +556,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 24,
+      "rank": 23,
       "title": "Replying to @Meredith sorry it’s long!!! So many good jewelry brands!!! @marlaaa",
       "fans": 0,
       "views": 47900,
@@ -586,7 +571,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 25,
+      "rank": 24,
       "title": "THIS IS ONE OF MY FAV LOOKS!!! What do you think? 🤭#mysteryjewlerygirl #jewelryt",
       "fans": 0,
       "views": 40500,
@@ -601,7 +586,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 26,
+      "rank": 25,
       "title": "Loveeeee a chunky necklace 👏👏All are linked in my bio 🩵🩵 #outfitinspo #ootd #sty",
       "fans": 0,
       "views": 32400,
@@ -616,7 +601,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 27,
+      "rank": 26,
       "title": "STAY STACKED #staystacked #jewelrytour #jewelryoftheday #bracelet #necklace ",
       "fans": 0,
       "views": 32100,
@@ -631,7 +616,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 28,
+      "rank": 27,
       "title": "every piece is perfect !! @miomijewelryjar #mermaid #y2k #fyp #mysteryjewelryjar",
       "fans": 0,
       "views": 31400,
@@ -646,7 +631,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 29,
+      "rank": 28,
       "title": "shop online Link in bio free shipping🌍#accessories #jewelry #bellejewelryshop ",
       "fans": 0,
       "views": 30100,
@@ -661,7 +646,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 30,
+      "rank": 29,
       "title": "I went to the pool  #jewelrystack #jewelrytiktok #jewelrytok #sula #jewelryinspo",
       "fans": 0,
       "views": 23000,
@@ -674,12 +659,27 @@
       "content_format": "Other",
       "engagement_rate": "14.5%",
       "buzz_score": 100
+    },
+    {
+      "rank": 30,
+      "title": "STAY STACKED #staystacked #jewelrytour #jewelryoftheday #necklace #bracelet ",
+      "fans": 0,
+      "views": 22500,
+      "likes": 2655,
+      "url": "https://www.tiktok.com/@livelovelilyachty/video/7654666634036137247",
+      "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oMisL1ICIiAftIA6D1rA3iKbqAiq71HBWjnSRw~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=A3zqv0zmTL26NCQaKXKwiNThkTw%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+      "tags": [],
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Showcase/Display",
+      "engagement_rate": "12.1%",
+      "buzz_score": 100
     }
   ],
   "insights": [
     {
       "type": "insight",
-      "text": "🌍 最热市场: US/CA 占 95% 的爆款"
+      "text": "🌍 最热市场: US/CA 占 95%"
     },
     {
       "type": "insight",
@@ -687,11 +687,11 @@
     },
     {
       "type": "insight",
-      "text": "🎬 最高互动: Showcase/Display (互动率 11.7%)"
+      "text": "🎬 最佳形式: Showcase/Display 互动率 11.7%"
     },
     {
       "type": "metric",
-      "text": "📊 平均互动率 9.7% | 平均播放 215.4K"
+      "text": "📊 均播放 211.6K | 互动率 9.6% | 40条视频"
     }
   ]
 }
