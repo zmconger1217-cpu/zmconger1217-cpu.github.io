@@ -143,8 +143,12 @@ a{color:#222;text-decoration:none}
   </div>
 
   <div class="video-section">
-    <h3>🎬 热门视频 TOP 10</h3>
+    <h3>🎬 我的视频 TOP 10</h3>
     <div class="video-grid" id="videoGrid"></div>
+    <div id="videoLoginTip" style="display:none;text-align:center;padding:24px;background:#fff;border:1px solid #eee;border-radius:10px;margin-top:10px;font-size:12px;color:#bbb;line-height:1.8">
+      要查看 MindJewel 自己的视频数据 👉 登录 TikTok 后告诉我"采视频"<br>
+      或者手动输入视频链接
+    </div>
   </div>
 
 </div>
@@ -234,7 +238,11 @@ function renderBenchmark(followers){
 
 function renderVideos(videos){
   const el=document.getElementById('videoGrid')
-  if(!videos||!videos.length){el.innerHTML='<div style="grid-column:1/-1;padding:32px;text-align:center;color:#ccc;background:#fff;border-radius:10px;border:1px solid #eee">暂无视频数据</div>';return}
+  if(!videos||!videos.length){
+    el.innerHTML='<div style="grid-column:1/-1;padding:32px;text-align:center;color:#ccc;background:#fff;border-radius:10px;border:1px solid #eee">暂无视频数据</div>'
+    document.getElementById('videoLoginTip').style.display='block'
+    return
+  }
   el.innerHTML=videos.map(v=>{
     let coverHtml='📹'
     if(v.cover){
