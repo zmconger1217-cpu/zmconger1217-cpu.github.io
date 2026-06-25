@@ -166,11 +166,14 @@ function imgUrl(url){
   return url
 }
 
-fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
-  document.getElementById('updateTime').textContent='更新 '+d.updatedAt
-  if(d.brand) renderBrand(d.brand)
-  if(d.kpi) renderKPI(d.kpi)
-  if(d.details) renderVideos(d.details.slice(0,10))
+Promise.all([
+  fetch('data.json?'+Date.now()).then(r=>r.json()).catch(()=>null),
+  fetch('mindjewel_videos.json?'+Date.now()).then(r=>r.json()).catch(()=>[])
+]).then(([d, vids])=>{
+  document.getElementById('updateTime').textContent='更新 '+(d?.updatedAt||'--')
+  if(d?.brand) renderBrand(d.brand)
+  if(d?.kpi) renderKPI(d.kpi)
+  renderVideos(vids||[])
 }).catch(()=>{
   document.getElementById('updateTime').textContent='示例数据'
   loadDemo()
@@ -238,21 +241,20 @@ function renderBenchmark(followers){
 
 function renderVideos(videos){
   const el=document.getElementById('videoGrid')
+  document.getElementById('videoLoginTip').style.display='none'
   if(!videos||!videos.length){
-    el.innerHTML='<div style="grid-column:1/-1;padding:32px;text-align:center;color:#ccc;background:#fff;border-radius:10px;border:1px solid #eee">暂无视频数据</div>'
+    el.innerHTML='<div style="grid-column:1/-1;padding:32px;text-align:center;color:#ccc;background:#fff;border-radius:10px;border:1px solid #eee">暂无视频</div>'
     document.getElementById('videoLoginTip').style.display='block'
     return
   }
   el.innerHTML=videos.map(v=>{
-    let coverHtml='📹'
-    if(v.cover){
-      coverHtml=`<img src="${v.cover}" alt="" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.parentElement.innerHTML='📹'">`
-    }
+    let cover='📹'
+    if(v.cover) cover=`<img src="${v.cover}" alt="" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.parentElement.innerHTML='📹'">`
     return `<a href="${v.url||'#'}" target="_blank" class="video-card">
-      <div class="video-cover">${coverHtml}${v.views?`<span class="play-badge">${F(v.views)}</span>`:''}</div>
+      <div class="video-cover">${cover}<span class="play-badge">${v.views||'0'}</span></div>
       <div class="video-info">
         <div class="vtitle">${v.title||'无标题'}</div>
-        <div class="vstats"><span>❤️ ${F(v.likes||0)}</span><span>📊 ${v.engagement_rate||'--'}</span></div>
+        <div class="vstats"><span>🔗 ${v.url?.includes('video/')?v.url.split('video/')[1]?.slice(0,8)||'--':'--'}</span></div>
       </div>
     </a>`
   }).join('')
