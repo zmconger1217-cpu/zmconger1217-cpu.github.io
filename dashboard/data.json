@@ -1,29 +1,29 @@
 {
-  "updatedAt": "2026-06-25 09:55",
-  "version": "2.0",
+  "updatedAt": "2026-06-25 10:12",
+  "version": "2.1",
   "kpi": [
     {
       "label": "总播放",
       "value": "156.30M",
-      "sub": "40条视频合计",
-      "chg": "+1906.4%"
+      "sub": "40条爆款",
+      "chg": ""
     },
     {
       "label": "总粉丝",
       "value": "0",
-      "sub": "平均 0",
+      "sub": "均 0/号",
       "chg": ""
     },
     {
-      "label": "爆款率",
-      "value": "100%",
-      "sub": "播放>50K占比",
-      "chg": ""
+      "label": "平均互动率",
+      "value": "8.4%",
+      "sub": "点赞+评论+分享 / 播放",
+      "chg": "+4.2%"
     },
     {
-      "label": "平均播放",
-      "value": "3.91M",
-      "sub": "总点赞 10.39M",
+      "label": "总点赞",
+      "value": "10.39M",
+      "sub": "均 259.7K",
       "chg": ""
     }
   ],
@@ -38,27 +38,67 @@
       "06/25"
     ],
     "values": [
-      1355,
       2100,
       980,
       1650,
       810,
       2200,
+      156300,
       156300
     ]
   },
   "pie": {
     "labels": [
-      "其他",
-      "强情感共鸣",
-      "手工过程",
-      "新奇特品类"
+      "Other",
+      "Necklace",
+      "Ring",
+      "Bracelet",
+      "Set"
     ],
     "values": [
-      65.0,
-      25.0,
-      5.0,
-      5.0
+      42.5,
+      32.5,
+      12.5,
+      10.0,
+      2.5
+    ]
+  },
+  "geo": {
+    "labels": [
+      "US/CA",
+      "LATAM",
+      "SEA"
+    ],
+    "values": [
+      95.0,
+      2.5,
+      2.5
+    ]
+  },
+  "content_formats": {
+    "labels": [
+      "Other",
+      "Storytime/Emotional",
+      "Tutorial/DIY",
+      "Showcase/Display",
+      "ASMR/Satisfying",
+      "Review/Unboxing"
+    ],
+    "er": [
+      9.28,
+      3.59,
+      7.37,
+      10.91,
+      1.54,
+      14.68
+    ],
+    "avg_plays": [
+      3751851,
+      7400000,
+      2575000,
+      2600000,
+      5500000,
+      3000000
     ]
   },
   "scatter": {
@@ -152,36 +192,6 @@
         "views": 3100000,
         "title": "E35/Whether paired with a T-shirt, sweat",
         "url": "https://www.tiktok.com/@wishing.you.good.f/video/7634465151155981581"
-      },
-      {
-        "fans": 0,
-        "views": 3000000,
-        "title": "ABSOLUTELY GAGGED i will never get anoth",
-        "url": "https://www.tiktok.com/@raquellnelsonn/video/7642090233613323533"
-      },
-      {
-        "fans": 0,
-        "views": 2900000,
-        "title": "Like why is that necklace SO popular #gi",
-        "url": "https://www.tiktok.com/@cgeebs9/video/7636405693590850830"
-      },
-      {
-        "fans": 0,
-        "views": 2700000,
-        "title": "Akhirnya bisa ikutan trend sound ini 🥰 #",
-        "url": "https://www.tiktok.com/@pipitt.kuma/video/7650135250529422599"
-      },
-      {
-        "fans": 0,
-        "views": 2700000,
-        "title": "Este collar para parejas te dejará marav",
-        "url": "https://www.tiktok.com/@user61401552483986/video/7645248930388757768"
-      },
-      {
-        "fans": 0,
-        "views": 2700000,
-        "title": "badly want to give this to my mowm #neck",
-        "url": "https://www.tiktok.com/@haerinthinker_/video/7636654990391528722"
       }
     ]
   },
@@ -189,19 +199,20 @@
     "labels": [
       "手工过程",
       "其他",
-      "新奇特品类",
-      "强情感共鸣"
+      "新奇特",
+      "情感共鸣"
     ],
     "values": [
       100.0,
-      91.7,
+      92.0,
       85.4,
-      83.8
+      82.0
     ]
   },
   "details": [
     {
-      "title": "Soooo beautiful 🥹#loveyou #love #girldream #cross #crossneck",
+      "rank": 1,
+      "title": "Soooo beautiful 🥹#loveyou #love #girldream #cross #crossnecklaces #necklace #his",
       "fans": 0,
       "views": 13700000,
       "likes": 332600,
@@ -224,10 +235,15 @@
           "hot": false
         }
       ],
-      "factor": "强情感共鸣+平均互动率2.4%"
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Other",
+      "engagement_rate": "2.5%",
+      "buzz_score": 91.0
     },
     {
-      "title": "Relieve anxiety 🥹🥹💍💍#anxietyrelief #rotation #anxietyring #f",
+      "rank": 2,
+      "title": "Relieve anxiety 🥹🥹💍💍#anxietyrelief #rotation #anxietyring #foryoupage #jewelry d",
       "fans": 0,
       "views": 12600000,
       "likes": 61700,
@@ -250,10 +266,15 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率0.5%"
+      "region": "US/CA",
+      "product_type": "Ring",
+      "content_format": "Other",
+      "engagement_rate": "0.6%",
+      "buzz_score": 51.1
     },
     {
-      "title": "I made this handmade hair jewelry set with natural emerald &",
+      "rank": 3,
+      "title": "I made this handmade hair jewelry set with natural emerald & jade 💎 Taurus zodia",
       "fans": 0,
       "views": 10900000,
       "likes": 1000000,
@@ -276,10 +297,15 @@
           "hot": false
         }
       ],
-      "factor": "手工过程+平均互动率9.2%"
+      "region": "US/CA",
+      "product_type": "Set",
+      "content_format": "Storytime/Emotional",
+      "engagement_rate": "9.7%",
+      "buzz_score": 100
     },
     {
-      "title": "Start your personal design journey #usa #bracelet #crystal #",
+      "rank": 4,
+      "title": "Start your personal design journey #usa #bracelet #crystal #fyp #jewellery ",
       "fans": 0,
       "views": 9100000,
       "likes": 218100,
@@ -295,17 +321,22 @@
         },
         {
           "name": "crystal",
-          "hot": true
+          "hot": false
         },
         {
           "name": "fyp",
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率2.4%"
+      "region": "US/CA",
+      "product_type": "Bracelet",
+      "content_format": "Storytime/Emotional",
+      "engagement_rate": "2.5%",
+      "buzz_score": 90.0
     },
     {
-      "title": "ရင်နဲ့လွယ်မမွေးရပေမယ့် ဘဝနဲ့ရင်းပြီး သားသမီးတို့အတွက် ပေးဆပ်",
+      "rank": 5,
+      "title": "ရင်နဲ့လွယ်မမွေးရပေမယ့် ဘဝနဲ့ရင်းပြီး သားသမီးတို့အတွက် ပေးဆပ်ရဲတဲ့ သူရဲကောင်းဖေဖေ",
       "fans": 0,
       "views": 8100000,
       "likes": 525300,
@@ -320,10 +351,15 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率6.6%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "6.7%",
+      "buzz_score": 100
     },
     {
-      "title": "Looks like it’s time to propose🤷‍♀️🤗  #winksjewelry #sendthi",
+      "rank": 6,
+      "title": "Looks like it’s time to propose🤷‍♀️🤗  #winksjewelry #sendthistohim #propose #jew",
       "fans": 0,
       "views": 7500000,
       "likes": 982000,
@@ -346,10 +382,15 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率13.3%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "18.1%",
+      "buzz_score": 100
     },
     {
-      "title": "For the girls who want options, not healing time 😭✨ #fauxjew",
+      "rank": 7,
+      "title": "For the girls who want options, not healing time 😭✨ #fauxjewelry #piercings #bod",
       "fans": 0,
       "views": 6900000,
       "likes": 236700,
@@ -372,9 +413,14 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率3.5%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "6.0%",
+      "buzz_score": 100
     },
     {
+      "rank": 8,
       "title": "#inspire #bracelet #foru #jewelrygift #nevergiveup ",
       "fans": 0,
       "views": 6500000,
@@ -398,10 +444,15 @@
           "hot": false
         }
       ],
-      "factor": "强情感共鸣+平均互动率1.3%"
+      "region": "US/CA",
+      "product_type": "Bracelet",
+      "content_format": "Storytime/Emotional",
+      "engagement_rate": "1.3%",
+      "buzz_score": 65.8
     },
     {
-      "title": "SOMEONE SAVE ME 😭😭 from @Mystical Mayhem !!! #jewelrytiktok ",
+      "rank": 9,
+      "title": "SOMEONE SAVE ME 😭😭 from @Mystical Mayhem !!! #jewelrytiktok #mysteryjewelryjar #",
       "fans": 0,
       "views": 6200000,
       "likes": 528200,
@@ -424,10 +475,15 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率8.5%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "8.7%",
+      "buzz_score": 100
     },
     {
-      "title": "ASMR Packaging for Orfea✨ Luxury Gold Plated Jewellery #asmr",
+      "rank": 10,
+      "title": "ASMR Packaging for Orfea✨ Luxury Gold Plated Jewellery #asmrvideo #asmrsounds #p",
       "fans": 0,
       "views": 5500000,
       "likes": 82700,
@@ -450,10 +506,15 @@
           "hot": false
         }
       ],
-      "factor": "新奇特品类+平均互动率1.5%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "ASMR/Satisfying",
+      "engagement_rate": "1.5%",
+      "buzz_score": 70.8
     },
     {
-      "title": "casually having the best jewelry cabinet ever 💅🏼 #jewelrytik",
+      "rank": 11,
+      "title": "casually having the best jewelry cabinet ever 💅🏼 #jewelrytiktok #jewelrylover #f",
       "fans": 0,
       "views": 4600000,
       "likes": 839100,
@@ -476,10 +537,15 @@
           "hot": false
         }
       ],
-      "factor": "强情感共鸣+平均互动率18.3%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "19.3%",
+      "buzz_score": 100
     },
     {
-      "title": "#necklace #design #tewiky #daintyjewelry #couple #sun #moon ",
+      "rank": 12,
+      "title": "#necklace #design #tewiky #daintyjewelry #couple #sun #moon #fyp ",
       "fans": 0,
       "views": 4400000,
       "likes": 171200,
@@ -487,7 +553,7 @@
       "tags": [
         {
           "name": "necklace",
-          "hot": false
+          "hot": true
         },
         {
           "name": "design",
@@ -502,10 +568,15 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率3.9%"
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Other",
+      "engagement_rate": "4.4%",
+      "buzz_score": 100
     },
     {
-      "title": "10/10 jewelry day 🌟 Matching charm bracelet & Necklace from ",
+      "rank": 13,
+      "title": "10/10 jewelry day 🌟 Matching charm bracelet & Necklace from my @Bella Christie J",
       "fans": 0,
       "views": 3400000,
       "likes": 598700,
@@ -524,10 +595,15 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率17.7%"
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Showcase/Display",
+      "engagement_rate": "18.6%",
+      "buzz_score": 100
     },
     {
-      "title": "Latto almost had this question in the bag 😂😂 #latto #jewelry",
+      "rank": 14,
+      "title": "Latto almost had this question in the bag 😂😂 #latto #jewelryunlimited #foryou #f",
       "fans": 0,
       "views": 3200000,
       "likes": 264500,
@@ -550,10 +626,15 @@
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率8.3%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "8.7%",
+      "buzz_score": 100
     },
     {
-      "title": "E35/Whether paired with a T-shirt, sweatshirt, or suit, it f",
+      "rank": 15,
+      "title": "E35/Whether paired with a T-shirt, sweatshirt, or suit, it fits perfectly, and i",
       "fans": 0,
       "views": 3100000,
       "likes": 25900,
@@ -576,10 +657,15 @@
           "hot": false
         }
       ],
-      "factor": "强情感共鸣+平均互动率0.8%"
+      "region": "US/CA",
+      "product_type": "Ring",
+      "content_format": "Storytime/Emotional",
+      "engagement_rate": "0.9%",
+      "buzz_score": 58.2
     },
     {
-      "title": "ABSOLUTELY GAGGED i will never get another jar like this. sh",
+      "rank": 16,
+      "title": "ABSOLUTELY GAGGED i will never get another jar like this. she’s just to perfect!",
       "fans": 0,
       "views": 3000000,
       "likes": 418100,
@@ -602,10 +688,15 @@
           "hot": false
         }
       ],
-      "factor": "新奇特品类+平均互动率14.0%"
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Review/Unboxing",
+      "engagement_rate": "14.7%",
+      "buzz_score": 100
     },
     {
-      "title": "Like why is that necklace SO popular #girls #jewelry #neckla",
+      "rank": 17,
+      "title": "Like why is that necklace SO popular #girls #jewelry #necklace #fashion #goldnec",
       "fans": 0,
       "views": 2900000,
       "likes": 65100,
@@ -621,17 +712,22 @@
         },
         {
           "name": "necklace",
-          "hot": false
+          "hot": true
         },
         {
           "name": "fashion",
           "hot": false
         }
       ],
-      "factor": "其他+平均互动率2.3%"
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Other",
+      "engagement_rate": "2.3%",
+      "buzz_score": 86.7
     },
     {
-      "title": "Akhirnya bisa ikutan trend sound ini 🥰 #cartier #lovebracele",
+      "rank": 18,
+      "title": "Akhirnya bisa ikutan trend sound ini 🥰 #cartier #lovebracelet #cartierlovebracel",
       "fans": 0,
       "views": 2700000,
       "likes": 162100,
@@ -654,10 +750,15 @@
           "hot": false
         }
       ],
-      "factor": "强情感共鸣+平均互动率6.1%"
+      "region": "SEA",
+      "product_type": "Bracelet",
+      "content_format": "Other",
+      "engagement_rate": "6.4%",
+      "buzz_score": 100
     },
     {
-      "title": "Este collar para parejas te dejará maravillosamente enamorad",
+      "rank": 19,
+      "title": "Este collar para parejas te dejará maravillosamente enamorado  Viene en un estuc",
       "fans": 0,
       "views": 2700000,
       "likes": 75800,
@@ -680,10 +781,15 @@
           "hot": false
         }
       ],
-      "factor": "强情感共鸣+平均互动率2.9%"
+      "region": "LATAM",
+      "product_type": "Necklace",
+      "content_format": "Tutorial/DIY",
+      "engagement_rate": "3.2%",
+      "buzz_score": 100
     },
     {
-      "title": "badly want to give this to my mowm #necklace #necklacegift #",
+      "rank": 20,
+      "title": "badly want to give this to my mowm #necklace #necklacegift #necklaceforwomen #mo",
       "fans": 0,
       "views": 2700000,
       "likes": 29900,
@@ -691,7 +797,7 @@
       "tags": [
         {
           "name": "necklace",
-          "hot": false
+          "hot": true
         },
         {
           "name": "necklacegift",
@@ -706,19 +812,280 @@
           "hot": false
         }
       ],
-      "factor": "强情感共鸣+平均互动率1.1%"
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Tutorial/DIY",
+      "engagement_rate": "1.2%",
+      "buzz_score": 63.4
+    },
+    {
+      "rank": 21,
+      "title": "I’m so obsessed with this Pandora necklace, I need ideas on what to engrave on i",
+      "fans": 0,
+      "views": 2700000,
+      "likes": 419500,
+      "url": "https://www.tiktok.com/@3.159.aaa/video/7614987368633994519",
+      "tags": [
+        {
+          "name": "pandora",
+          "hot": false
+        },
+        {
+          "name": "pandoranecklace",
+          "hot": false
+        },
+        {
+          "name": "pandoracharms",
+          "hot": false
+        },
+        {
+          "name": "fypシ゚v",
+          "hot": false
+        }
+      ],
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Tutorial/DIY",
+      "engagement_rate": "16.6%",
+      "buzz_score": 100
+    },
+    {
+      "rank": 22,
+      "title": "a dream cabinet fr ✨ #jewelryjar #jewelrygirl #fyp #jewelrytiktok #jewelrylover ",
+      "fans": 0,
+      "views": 2500000,
+      "likes": 697600,
+      "url": "https://www.tiktok.com/@raquellnelsonn/video/7641705592448453902",
+      "tags": [
+        {
+          "name": "jewelryjar",
+          "hot": false
+        },
+        {
+          "name": "jewelrygirl",
+          "hot": false
+        },
+        {
+          "name": "fyp",
+          "hot": false
+        },
+        {
+          "name": "jewelrytiktok",
+          "hot": false
+        }
+      ],
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "29.6%",
+      "buzz_score": 100
+    },
+    {
+      "rank": 23,
+      "title": "Bestellung per Insta Dm und Pn🎀 #fyp #jewelry #fy #stack #hermes ",
+      "fans": 0,
+      "views": 2500000,
+      "likes": 428000,
+      "url": "https://www.tiktok.com/@goldluxe_/video/7634566712335093025",
+      "tags": [
+        {
+          "name": "fyp",
+          "hot": false
+        },
+        {
+          "name": "jewelry",
+          "hot": true
+        },
+        {
+          "name": "fy",
+          "hot": false
+        },
+        {
+          "name": "stack",
+          "hot": false
+        }
+      ],
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "18.1%",
+      "buzz_score": 100
+    },
+    {
+      "rank": 24,
+      "title": "This Brand is Worth HUNDREDS 😳 Not One… Not Two… But THREE!!! These thrifted Jam",
+      "fans": 0,
+      "views": 2200000,
+      "likes": 56600,
+      "url": "https://www.tiktok.com/@retrotoyenvy/video/7649147915428039967",
+      "tags": [],
+      "region": "US/CA",
+      "product_type": "Ring",
+      "content_format": "Other",
+      "engagement_rate": "2.6%",
+      "buzz_score": 92.8
+    },
+    {
+      "rank": 25,
+      "title": "PSA OF THE DAY #loosediamond #jewelrytiktok #jewelrytok #diyjewelry #finejewelry",
+      "fans": 0,
+      "views": 2200000,
+      "likes": 176000,
+      "url": "https://www.tiktok.com/@taylorhagenwears/video/7607986920416726285",
+      "tags": [
+        {
+          "name": "loosediamond",
+          "hot": false
+        },
+        {
+          "name": "jewelrytiktok",
+          "hot": false
+        },
+        {
+          "name": "jewelrytok",
+          "hot": false
+        },
+        {
+          "name": "diyjewelry",
+          "hot": false
+        }
+      ],
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Tutorial/DIY",
+      "engagement_rate": "8.6%",
+      "buzz_score": 100
+    },
+    {
+      "rank": 26,
+      "title": "Well, specifically Mejuri jewelry 💎👑",
+      "fans": 0,
+      "views": 2100000,
+      "likes": 4289,
+      "url": "https://www.tiktok.com/@mejuri/video/7467312546169621765",
+      "tags": [],
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "0.2%",
+      "buzz_score": 44.3
+    },
+    {
+      "rank": 27,
+      "title": "#fyp #jewelry #necklace #forever #girlythings ",
+      "fans": 0,
+      "views": 2000000,
+      "likes": 226100,
+      "url": "https://www.tiktok.com/@aur0_ra00/video/7637884048529968391",
+      "tags": [
+        {
+          "name": "fyp",
+          "hot": false
+        },
+        {
+          "name": "jewelry",
+          "hot": true
+        },
+        {
+          "name": "necklace",
+          "hot": true
+        },
+        {
+          "name": "forever",
+          "hot": false
+        }
+      ],
+      "region": "US/CA",
+      "product_type": "Necklace",
+      "content_format": "Other",
+      "engagement_rate": "12.0%",
+      "buzz_score": 100
+    },
+    {
+      "rank": 28,
+      "title": "all the jewelry I remove at the end of the day everyday ! #jewelrytiktok #getunr",
+      "fans": 0,
+      "views": 1900000,
+      "likes": 138300,
+      "url": "https://www.tiktok.com/@doughnutwithsprinkles/video/7642827765397359886",
+      "tags": [
+        {
+          "name": "jewelrytiktok",
+          "hot": false
+        },
+        {
+          "name": "getunreadywithme",
+          "hot": false
+        },
+        {
+          "name": "ungrwm",
+          "hot": false
+        },
+        {
+          "name": "jewelry",
+          "hot": true
+        }
+      ],
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "7.5%",
+      "buzz_score": 100
+    },
+    {
+      "rank": 29,
+      "title": "pls recommend good places to get silver jewellery and belts 🥹🥹 #jewellery #summe",
+      "fans": 0,
+      "views": 1800000,
+      "likes": 294600,
+      "url": "https://www.tiktok.com/@stvqrlight/video/7640219090367352086",
+      "tags": [
+        {
+          "name": "jewellery",
+          "hot": false
+        },
+        {
+          "name": "Summer",
+          "hot": false
+        }
+      ],
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Other",
+      "engagement_rate": "16.6%",
+      "buzz_score": 100
+    },
+    {
+      "rank": 30,
+      "title": "the way i can say my jewellery is everything from the jordan & leila x @Bohomoon",
+      "fans": 0,
+      "views": 1800000,
+      "likes": 57400,
+      "url": "https://www.tiktok.com/@jordanlipscombe/video/7640917407585881366",
+      "tags": [],
+      "region": "US/CA",
+      "product_type": "Other",
+      "content_format": "Showcase/Display",
+      "engagement_rate": "3.3%",
+      "buzz_score": 100
     }
   ],
   "insights": [
     {
-      "level": "info",
-      "type": "trend_up",
-      "text": "手工过程品类播放量占比最高，平均互动率9.2%"
+      "type": "insight",
+      "text": "🌍 最热市场: US/CA 占 95% 的爆款"
     },
     {
-      "level": "warning",
-      "type": "alert",
-      "text": "粉丝字段暂缺，需修复数据源映射"
+      "type": "insight",
+      "text": "💍 最热品类: Other 占 42%"
+    },
+    {
+      "type": "insight",
+      "text": "🎬 最高互动: Review/Unboxing (互动率 14.7%)"
+    },
+    {
+      "type": "metric",
+      "text": "📊 平均互动率 8.4% | 平均播放 3.91M"
     }
   ]
 }
