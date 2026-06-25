@@ -33,6 +33,19 @@ a{color:#ffc832;text-decoration:none}
 .insight i{font-style:normal;color:#ffc832}
 
 /* Cards */
+.brand-hero{background:linear-gradient(135deg,#141414,#0d0d0d);border:1px solid #1e1e1e;border-radius:10px;padding:18px 22px;margin-bottom:16px;display:none}
+.brand-hero.show{display:block}
+.brand-info{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.brand-name{display:flex;align-items:center;gap:12px}
+.brand-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ffc832,#f5b342);color:#111;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600}
+.brand-stats{display:flex;gap:20px}
+.brand-stat{text-align:center;min-width:70px}
+.brand-num{display:block;font-size:22px;font-weight:300;color:#ffc832;line-height:1.2}
+.brand-lbl{font-size:9px;color:#444;text-transform:uppercase;letter-spacing:.3px}
+.brand-chg{font-size:9px;display:inline-block;padding:1px 5px;border-radius:4px;margin-top:2px}
+.brand-chg.up{color:#4caf50;background:#4caf500a}
+.brand-chg.down{color:#ef5350;background:#ef53500a}
+@media(max-width:640px){.brand-info{flex-direction:column;align-items:flex-start}.brand-stats{width:100%;justify-content:space-around}}
 .card{background:#111;border-radius:8px;padding:16px;border:1px solid #181818}
 .card:hover{background:#141414}
 .card .lbl{font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
@@ -49,14 +62,21 @@ a{color:#ffc832;text-decoration:none}
 .cb-sm{width:100%;height:260px}
 
 /* Table */
-.tw{overflow-x:auto;border-radius:6px;background:#111;border:1px solid #181818}
-table{width:100%;border-collapse:collapse;font-size:11px;min-width:760px}
-th{color:#444;padding:9px 11px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #181818;white-space:nowrap}
-td{padding:8px 11px;border-bottom:1px solid #111;color:#999;white-space:nowrap}
+.tw{overflow-x:auto;border-radius:6px;background:#111;border:1px solid #181818;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
+th{color:#444;padding:9px 10px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #181818}
+td{padding:8px 10px;border-bottom:1px solid #111;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:#141414}
-.tbl-t{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;color:#ccc}
-.tbl-t:hover{color:#ffc832}
+.col-rank{width:28px;text-align:center}
+.col-title{width:auto;min-width:0}
+.col-title a{color:#ffc832;text-decoration:none;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.col-title a:hover{opacity:.8}
+.col-num{width:80px;text-align:right;font-variant-numeric:tabular-nums}
+.col-region{width:60px;text-align:center}
+.col-prod{width:70px;text-align:center}
+.col-fmt{width:80px;text-align:center}
+.col-score{width:40px;text-align:center}
 .rn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:3px;font-size:9px;font-weight:500}
 .r1{background:#ffc83212;color:#ffc832}.r2{background:#ffa72612;color:#ffa726}.r3{background:#ff8a6512;color:#ff8a65}
 .ro{background:#151515;color:#444}
@@ -93,6 +113,35 @@ tr:hover td{background:#141414}
 
 <div class="wrap">
 
+  <!-- 品牌账号 -->
+  <div class="brand-hero" id="brandHero" style="display:none">
+    <div class="brand-info">
+      <div class="brand-name">
+        <span class="brand-avatar">M</span>
+        <div>
+          <div style="font-size:15px;font-weight:500;color:#eee">MindJewel</div>
+          <div style="font-size:11px;color:#555">@mindjewel.co</div>
+        </div>
+      </div>
+      <div class="brand-stats">
+        <div class="brand-stat">
+          <span class="brand-num" id="brandFollowers">--</span>
+          <span class="brand-lbl">粉丝</span>
+          <span class="brand-chg" id="brandFollowersChg"></span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-num" id="brandLikes">--</span>
+          <span class="brand-lbl">点赞</span>
+          <span class="brand-chg" id="brandLikesChg"></span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-num" id="brandFollowing">--</span>
+          <span class="brand-lbl">关注</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="insight" id="insightBar">
     <div id="insightText" style="display:flex;flex-wrap:wrap;gap:2px 16px"></div>
   </div>
@@ -127,6 +176,7 @@ function F(n){return (n||0).toLocaleString()}
 
 fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
   document.getElementById('updateTime').textContent='更新 '+d.updatedAt
+  renderBrand(d.brand)
   renderKPI(d.kpi)
   renderInsight(d.insights)
   if(d.geo)         renderGeo(d.geo)
@@ -140,6 +190,26 @@ fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
   document.getElementById('updateTime').textContent='⚠️ 加载失败'
   loadDemo()
 })
+
+function renderBrand(b){
+  if(!b||!b.followers)return
+  const hero=document.getElementById('brandHero');hero.classList.add('show')
+  document.getElementById('brandFollowers').textContent=b.followers.toLocaleString()
+  document.getElementById('brandLikes').textContent=b.likes.toLocaleString()
+  document.getElementById('brandFollowing').textContent=(b.following||0).toLocaleString()
+  const fChg=document.getElementById('brandFollowersChg')
+  const lChg=document.getElementById('brandLikesChg')
+  if(b.followers_growth){
+    const cls=b.followers_growth>=0?'up':'down'
+    fChg.textContent=(b.followers_growth>=0?'+':'')+b.followers_growth
+    fChg.className='brand-chg '+cls
+  }
+  if(b.likes_growth){
+    const cls=b.likes_growth>=0?'up':'down'
+    lChg.textContent=(b.likes_growth>=0?'+':'')+b.likes_growth
+    lChg.className='brand-chg '+cls
+  }
+}
 
 function renderKPI(arr){
   const el=document.getElementById('kpiCards');el.innerHTML=''
@@ -254,20 +324,20 @@ function renderRank(r){
 
 function renderTable(d){
   const el=document.getElementById('detailTable')
-  if(!d||!d.length){el.innerHTML='<div style="padding:20px;color:#333;text-align:center">暂无数据</div>';return}
-  let h='<table><thead><tr><th style="width:26px">#</th><th>标题</th><th class="nc">播放</th><th class="nc">互动率</th><th>国家</th><th>品类</th><th>内容形式</th><th>评分</th></tr></thead><tbody>'
+  if(!d||!d.length){el.innerHTML='<div style="padding:24px;color:#333;text-align:center">暂无数据</div>';return}
+  let h='<table><colgroup><col class="col-rank"><col class="col-title"><col class="col-num"><col class="col-num"><col class="col-region"><col class="col-prod"><col class="col-fmt"><col class="col-score"></colgroup><thead><tr><th>#</th><th>标题</th><th class="col-num">播放</th><th class="col-num">互动率</th><th class="col-region">国家</th><th class="col-prod">品类</th><th class="col-fmt">形式</th><th class="col-score">评分</th></tr></thead><tbody>'
   d.forEach((v,i)=>{
     const r=i<3?'r'+(i+1):'ro'
     const link=v.url?`href="${v.url}" target="_blank"`:''
-    const t=link?`<a ${link} title="${v.title||''}"><span class="tbl-t">${v.title||'--'}</span> ↗</a>`:`<span class="tbl-t">${v.title||'--'}</span>`
-    h+=`<tr><td><span class="rn ${r}">${i+1}</span></td>
-      <td>${t}</td>
-      <td class="nc hl">${F(v.views)}</td>
-      <td class="nc">${v.engagement_rate||'--'}</td>
-      <td>${v.region||'--'}</td>
-      <td>${v.product_type||'--'}</td>
-      <td>${v.content_format||'--'}</td>
-      <td class="nc">${v.buzz_score||'--'}</td></tr>`
+    const title=link?`<a href="${v.url}" target="_blank" title="${(v.title||'').replace(/"/g,'&quot;')}">${v.title||'--'} ↗</a>`:`<span>${v.title||'--'}</span>`
+    h+=`<tr><td class="col-rank"><span class="rn ${r}">${i+1}</span></td>
+      <td class="col-title">${title}</td>
+      <td class="col-num hl">${F(v.views)}</td>
+      <td class="col-num">${v.engagement_rate||'--'}</td>
+      <td class="col-region">${v.region||'--'}</td>
+      <td class="col-prod">${v.product_type||'--'}</td>
+      <td class="col-fmt">${v.content_format||'--'}</td>
+      <td class="col-score">${v.buzz_score||'--'}</td></tr>`
   })
   h+='</tbody></table>'
   el.innerHTML=h

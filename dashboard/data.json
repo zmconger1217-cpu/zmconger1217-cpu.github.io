@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-25 10:12",
+  "updatedAt": "2026-06-25 10:26",
   "version": "2.1",
   "kpi": [
     {
@@ -27,6 +27,24 @@
       "chg": ""
     }
   ],
+  "brand": {
+    "username": "mindjewel.co",
+    "display_name": "MindJewel",
+    "bio": "Mind is the finest jewel. Mindjewel.",
+    "followers": 1068,
+    "likes": 1915,
+    "following": 2,
+    "followers_growth": 21,
+    "likes_growth": 73,
+    "trend_labels": [
+      "06-23",
+      "06-25"
+    ],
+    "followers_trend": [
+      1047,
+      1068
+    ]
+  },
   "trend": {
     "labels": [
       "06/19",
@@ -38,11 +56,11 @@
       "06/25"
     ],
     "values": [
-      2100,
-      980,
       1650,
       810,
       2200,
+      156300,
+      156300,
       156300,
       156300
     ]
