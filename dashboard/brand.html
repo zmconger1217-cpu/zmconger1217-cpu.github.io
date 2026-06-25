@@ -7,92 +7,77 @@
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:#f8f6f2;color:#2c2c2c;min-height:100vh}
-a{color:#c49a2b;text-decoration:none}
-a:hover{opacity:.8}
-
-/* Nav */
-.nav{display:flex;align-items:center;gap:0;background:#fff;border-bottom:1px solid #ece8e0;padding:0 24px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+body{font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:#f8f8f8;color:#222;min-height:100vh}
+a{color:#222;text-decoration:none}
+.nav{display:flex;align-items:center;gap:0;background:#fff;border-bottom:1px solid #eee;padding:0 24px}
 .nav a{display:flex;align-items:center;gap:6px;padding:14px 18px;font-size:12px;color:#999;border-bottom:2px solid transparent;transition:all .2s}
-.nav a:hover{color:#666}
-.nav a.active{color:#c49a2b;border-bottom-color:#c49a2b;background:linear-gradient(0deg,#c49a2b06,transparent)}
+.nav a:hover{color:#555}
+.nav a.active{color:#000;border-bottom-color:#000;background:linear-gradient(0deg,#00000006,transparent)}
 .nav a span{font-size:14px}
 @media(max-width:640px){.nav{padding:0 14px;overflow-x:auto}}
 
-/* Header */
 .header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 12px}
 .h-left{display:flex;align-items:center;gap:12px}
-.h-left h1{font-size:18px;font-weight:600;color:#2c2c2c}
-.h-left h1 span{color:#c49a2b}
+.h-left h1{font-size:18px;font-weight:600;color:#222}
+.h-left h1 span{color:#000}
 .meta{font-size:11px;color:#bbb}
 
-/* Wrap */
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px 24px}
 .grid{display:grid;gap:12px;margin-bottom:16px}
 .g4{grid-template-columns:repeat(4,1fr)}
 .g2{grid-template-columns:1fr 1fr}
 
-/* Brand Hero */
-.brand-hero{background:#fff;border:1px solid #ece8e0;border-radius:14px;padding:28px 32px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.brand-hero{background:#fff;border:1px solid #eee;border-radius:14px;padding:28px 32px;margin-bottom:16px}
 .brand-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .brand-identity{display:flex;align-items:center;gap:16px}
-.brand-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#c49a2b,#e6be5e);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600}
-.brand-name{font-size:20px;font-weight:600;color:#2c2c2c}
+.brand-avatar{width:56px;height:56px;border-radius:50%;background:#222;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600}
+.brand-name{font-size:20px;font-weight:600;color:#222}
 .brand-handle{font-size:13px;color:#bbb;margin-top:2px}
 .brand-bio{font-size:12px;color:#999;margin-top:4px}
 .brand-link{font-size:11px;color:#bbb;margin-top:6px;display:inline-flex;align-items:center;gap:4px}
-.brand-link:hover{color:#c49a2b}
+.brand-link:hover{color:#000}
 .brand-metrics{display:flex;gap:28px}
 .brand-metric{text-align:center}
-.brand-metric .val{display:block;font-size:28px;font-weight:400;color:#c49a2b;line-height:1.2;font-family:Outfit,sans-serif}
+.brand-metric .val{display:block;font-size:28px;font-weight:400;color:#000;line-height:1.2}
 .brand-metric .lbl{font-size:10px;color:#bbb;text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
 .brand-metric .chg{font-size:10px;display:inline-block;padding:1px 6px;border-radius:4px;margin-top:2px}
 .brand-metric .chg.up{color:#4caf50;background:#4caf5008}
 .brand-metric .chg.down{color:#ef5350;background:#ef535008}
 
-/* Status */
-.status-bar{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding:12px 16px;background:#fff;border-radius:8px;border:1px solid #ece8e0;font-size:11px;color:#bbb}
+.status-bar{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding:12px 16px;background:#fff;border-radius:8px;border:1px solid #eee;font-size:11px;color:#bbb}
 .status-bar span{display:flex;align-items:center;gap:4px}
 .status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#4caf50}
 
-/* Cards */
-.card{background:#fff;border-radius:10px;padding:16px;border:1px solid #ece8e0;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.card{background:#fff;border-radius:10px;padding:16px;border:1px solid #eee}
 .card .lbl{font-size:10px;color:#bbb;text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
-.card .val{font-size:22px;font-weight:500;color:#2c2c2c;line-height:1.2}
+.card .val{font-size:22px;font-weight:500;color:#222;line-height:1.2}
 .card .sub{font-size:10px;color:#ccc;margin-top:1px}
 
-/* Chart */
-.cc{background:#fff;border-radius:10px;padding:16px;border:1px solid #ece8e0;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.cc{background:#fff;border-radius:10px;padding:16px;border:1px solid #eee}
 .cc h3{font-size:11px;font-weight:500;color:#666;margin-bottom:10px;display:flex;align-items:center;gap:5px}
 .cb{width:100%;height:300px}
 
-/* Video Grid */
 .video-section{margin-top:16px}
 .video-section h3{font-size:13px;font-weight:500;color:#666;margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-.video-card{background:#fff;border-radius:10px;border:1px solid #ece8e0;overflow:hidden;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,.03)}
-.video-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px)}
-.video-cover{width:100%;aspect-ratio:9/16;background:#f5f3ee;display:flex;align-items:center;justify-content:center;color:#ddd;font-size:12px;overflow:hidden;position:relative}
+.video-card{background:#fff;border-radius:10px;border:1px solid #eee;overflow:hidden;transition:all .2s}
+.video-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-2px)}
+.video-cover{width:100%;aspect-ratio:9/16;background:#f5f5f5;display:flex;align-items:center;justify-content:center;color:#ddd;font-size:12px;overflow:hidden;position:relative}
 .video-cover img{width:100%;height:100%;object-fit:cover}
-.video-cover .play-badge{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px}
-.video-info{padding:10px 12px}
-.video-info .vtitle{font-size:11px;color:#444;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:4px}
-.video-info .vstats{display:flex;gap:10px;font-size:10px;color:#bbb}
-.video-info .vstats span{display:flex;align-items:center;gap:3px}
-
-/* Footer */
-.ft{text-align:center;padding:20px 0 6px;font-size:10px;color:#e8e4dc}
+.video-cover .play-badge{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.55);color:#fff;font-size:9px;padding:2px 7px;border-radius:4px}
+.video-info{padding:8px 10px}
+.video-info .vtitle{font-size:10px;color:#555;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:3px}
+.video-info .vstats{display:flex;gap:8px;font-size:9px;color:#bbb}
+.ft{text-align:center;padding:20px 0 6px;font-size:10px;color:#eee}
 
 @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){
-  .wrap{padding:0 14px}
-  .nav{padding:0 14px;overflow-x:auto}
+  .wrap{padding:0 14px}.nav{padding:0 14px;overflow-x:auto}
   .brand-hero{padding:18px 16px}
   .brand-top{flex-direction:column;align-items:flex-start}
   .brand-metrics{gap:16px;width:100%;justify-content:space-around}
   .brand-metric .val{font-size:22px}
-  .g4,.g2{grid-template-columns:1fr}
-  .cb{height:220px}
+  .g4,.g2{grid-template-columns:1fr}.cb{height:220px}
   .video-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
@@ -100,14 +85,12 @@ a:hover{opacity:.8}
 <body>
 
 <div class="nav">
-  <a href="brand.html" class="active"><span>🏪</span> 品牌</a>
-  <a href="market.html"><span>📊</span> 市场</a>
+  <a href="brand.html" class="active"><span>◈</span> 品牌</a>
+  <a href="market.html"><span>◈</span> 市场</a>
 </div>
 
 <div class="header">
-  <div class="h-left">
-    <h1>🏪 <span>MindJewel</span></h1>
-  </div>
+  <div class="h-left"><h1><span>◆</span> MindJewel</h1></div>
   <div class="meta"><b id="updateTime">加载中...</b></div>
 </div>
 
@@ -120,7 +103,7 @@ a:hover{opacity:.8}
         <div>
           <div class="brand-name">MindJewel</div>
           <div class="brand-handle">@mindjewel.co</div>
-          <div class="brand-bio" id="brandBio">Mind is the finest jewel.</div>
+          <div class="brand-bio" id="brandBio"></div>
           <a class="brand-link" href="https://www.tiktok.com/@mindjewel.co" target="_blank">TikTok ↗</a>
         </div>
       </div>
@@ -141,14 +124,14 @@ a:hover{opacity:.8}
         </div>
         <div class="brand-metric">
           <span class="val" id="mGrowth">--</span>
-          <span class="lbl">粉丝增长</span>
+          <span class="lbl">增长</span>
         </div>
       </div>
     </div>
   </div>
 
   <div class="status-bar">
-    <span><span class="status-dot"></span> TikTok 国际版</span>
+    <span><span class="status-dot"></span> TikTok</span>
     <span>💎 珠宝品牌</span>
   </div>
 
@@ -156,10 +139,9 @@ a:hover{opacity:.8}
 
   <div class="grid g2">
     <div class="cc"><h3>📈 粉丝增长</h3><div class="cb" id="chartFollowers"></div></div>
-    <div class="cc"><h3>⚡ 品牌 vs 市场</h3><div class="cb" id="chartBenchmark"></div></div>
+    <div class="cc"><h3>📊 品牌 vs 市场</h3><div class="cb" id="chartBenchmark"></div></div>
   </div>
 
-  <!-- 热门视频 -->
   <div class="video-section">
     <h3>🎬 热门视频 TOP 10</h3>
     <div class="video-grid" id="videoGrid"></div>
@@ -167,12 +149,18 @@ a:hover{opacity:.8}
 
 </div>
 
-<div class="ft">MindJewel 品牌监测 · 每日更新</div>
+<div class="ft">MindJewel 品牌监测</div>
 
 <script>
 function E(id){return echarts.init(document.getElementById(id))}
 function R(c){window.addEventListener('resize',()=>c.resize())}
 function F(n){return (n||0).toLocaleString()}
+// 图片代理: 如果直连失败则通过 proxy 加载
+function imgUrl(url){
+  if(!url) return ''
+  // TikTok CDN 可能需要走代理
+  return url
+}
 
 fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
   document.getElementById('updateTime').textContent='更新 '+d.updatedAt
@@ -199,8 +187,7 @@ function renderBrand(b){
     lc.textContent=(b.likes_growth>=0?'+':'')+b.likes_growth
     lc.className='chg'+(b.likes_growth>=0?' up':' down')
   }
-  const gc=document.getElementById('mGrowth')
-  if(b.growth_rate) gc.textContent=(b.growth_rate>=0?'+':'')+b.growth_rate+'%'
+  if(b.growth_rate) document.getElementById('mGrowth').textContent=(b.growth_rate>=0?'+':'')+b.growth_rate+'%'
   if(b.trend_labels&&b.followers_trend) renderFollowers(b.trend_labels,b.followers_trend)
   renderBenchmark(b.followers)
 }
@@ -218,49 +205,46 @@ function renderFollowers(labels,data){
     tooltip:{trigger:'axis',valueFormatter:v=>v.toLocaleString()},
     grid:{left:44,right:10,top:12,bottom:16},
     xAxis:{type:'category',data:labels,axisLabel:{color:'#bbb',fontSize:9}},
-    yAxis:{type:'value',splitLine:{lineStyle:{color:'#ece8e0'}},axisLabel:{color:'#bbb'}},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#bbb'}},
     series:[{
       type:'line',data,smooth:true,symbol:'circle',symbolSize:6,
-      lineStyle:{color:'#c49a2b',width:2},
-      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#c49a2b12'},{offset:1,color:'#c49a2b00'}]}},
-      itemStyle:{color:'#c49a2b'},
-      markLine:{data:[{type:'average'}],lineStyle:{color:'#e0dcd4',type:'dashed'},label:{color:'#bbb',fontSize:9,formatter:'均 {c}'}}
+      lineStyle:{color:'#555',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#00000008'},{offset:1,color:'#00000000'}]}},
+      itemStyle:{color:'#333'},
+      markLine:{data:[{type:'average'}],lineStyle:{color:'#ddd',type:'dashed'},label:{color:'#bbb',fontSize:9,formatter:'均 {c}'}}
     }]
   });R(c)
 }
 
 function renderBenchmark(followers){
   const c=E('chartBenchmark')
-  const brand=[followers||1068,1915,8.4]
-  const avg=[5000,80000,5.2]
-  const top=[50000,500000,12.5]
   c.setOption({
     tooltip:{trigger:'axis'},
-    legend:{data:['MindJewel','市场平均','头部账号'],textStyle:{color:'#bbb',fontSize:9},top:-2,right:0},
+    legend:{data:['品牌','市场均','头部'],textStyle:{color:'#bbb',fontSize:9},top:-2,right:0},
     grid:{left:50,right:10,top:28,bottom:16},
-    xAxis:{type:'category',data:['粉丝数','点赞数','互动率'],axisLabel:{color:'#bbb',fontSize:9}},
-    yAxis:{type:'value',splitLine:{lineStyle:{color:'#ece8e0'}},axisLabel:{color:'#bbb',fontSize:8}},
+    xAxis:{type:'category',data:['粉丝','点赞','互动率'],axisLabel:{color:'#bbb',fontSize:9}},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#bbb',fontSize:8}},
     series:[
-      {type:'bar',data:brand,barWidth:10,itemStyle:{color:'#c49a2b',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#c49a2b',fontSize:8}},
-      {type:'bar',data:avg,barWidth:10,itemStyle:{color:'#e0dcd4',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#bbb',fontSize:8}},
-      {type:'bar',data:top,barWidth:10,itemStyle:{color:'#81c784',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#bbb',fontSize:8}}
+      {type:'bar',data:[followers||1068,1915,8.4],barWidth:10,itemStyle:{color:'#333',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#333',fontSize:8}},
+      {type:'bar',data:[5000,80000,5.2],barWidth:10,itemStyle:{color:'#ccc',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#bbb',fontSize:8}},
+      {type:'bar',data:[50000,500000,12.5],barWidth:10,itemStyle:{color:'#999',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#bbb',fontSize:8}}
     ]
   });R(c)
 }
 
 function renderVideos(videos){
   const el=document.getElementById('videoGrid')
-  if(!videos||!videos.length){el.innerHTML='<div style="grid-column:1/-1;padding:32px;text-align:center;color:#ccc;background:#fff;border-radius:10px;border:1px solid #ece8e0">暂无视频数据</div>';return}
+  if(!videos||!videos.length){el.innerHTML='<div style="grid-column:1/-1;padding:32px;text-align:center;color:#ccc;background:#fff;border-radius:10px;border:1px solid #eee">暂无视频数据</div>';return}
   el.innerHTML=videos.map(v=>{
-    const cover=v.cover?`<img src="${v.cover}" alt="" loading="lazy" onerror="this.parentElement.innerHTML+='📹'" />`:'📹'
+    let coverHtml='📹'
+    if(v.cover){
+      coverHtml=`<img src="${v.cover}" alt="" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.parentElement.innerHTML='📹'">`
+    }
     return `<a href="${v.url||'#'}" target="_blank" class="video-card">
-      <div class="video-cover">${cover}${v.views?`<span class="play-badge">${F(v.views)}</span>`:''}</div>
+      <div class="video-cover">${coverHtml}${v.views?`<span class="play-badge">${F(v.views)}</span>`:''}</div>
       <div class="video-info">
         <div class="vtitle">${v.title||'无标题'}</div>
-        <div class="vstats">
-          <span>❤️ ${F(v.likes||0)}</span>
-          <span>📊 ${v.engagement_rate||'--'}</span>
-        </div>
+        <div class="vstats"><span>❤️ ${F(v.likes||0)}</span><span>📊 ${v.engagement_rate||'--'}</span></div>
       </div>
     </a>`
   }).join('')
@@ -268,12 +252,7 @@ function renderVideos(videos){
 
 function loadDemo(){
   renderBrand({followers:1068,likes:1915,following:2,bio:'Mind is the finest jewel.',followers_growth:21,likes_growth:73,growth_rate:2.0,trend_labels:['06-23','06-24','06-25'],followers_trend:[1047,1055,1068]})
-  renderKPI([{label:'TikTok 粉丝',value:'1,068'},{label:'总点赞',value:'1,915'},{label:'关注',value:'2'},{label:'近3日增长',value:'+21'}])
-  renderVideos([
-    {title:'MindJewel 珠宝展示',views:520000,likes:48500,engagement_rate:'9.3%'},
-    {title:'手工制作全过程',views:380000,likes:32000,engagement_rate:'8.4%'},
-    {title:'送礼指南',views:290000,likes:28000,engagement_rate:'9.7%'},
-  ])
+  renderKPI([{label:'粉丝',value:'1,068'},{label:'点赞',value:'1,915'},{label:'关注',value:'2'},{label:'增长',value:'+21'}])
 }
 </script>
 </body>
