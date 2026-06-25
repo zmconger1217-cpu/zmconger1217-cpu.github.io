@@ -6,334 +6,247 @@
 <title>数据看板</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
-/* ===== Reset ===== */
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --border: #e8e8ed;
+  --text: #1d1d1f;
+  --text2: #86868b;
+  --text3: #aeaeb2;
+  --accent: #0071e3;
+  --accent-bg: #0071e308;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.03);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:#f8f8f8;color:#222}
-a{color:#222;text-decoration:none}
-a:hover{opacity:.7}
+body{font-family:Inter,-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
 
-/* ===== Header ===== */
-.header{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid #eee;background:#fff}
-.header h1{font-size:16px;font-weight:600}
-.header h1 span{font-weight:300;color:#999}
-.header-time{font-size:11px;color:#bbb}
+/* Sidebar */
+.sidebar{width:200px;background:var(--surface);border-right:1px solid var(--border);padding:20px 0;flex-shrink:0;display:flex;flex-direction:column;height:100vh;position:sticky;top:0}
+.sidebar-logo{padding:0 20px 16px;font-size:14px;font-weight:600;letter-spacing:-.3px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.sidebar-logo span{color:var(--accent)}
+.sidebar-nav{flex:1}
+.sidebar a{display:flex;align-items:center;gap:8px;padding:8px 20px;font-size:12px;color:var(--text2);text-decoration:none;transition:all .15s;border-right:2px solid transparent}
+.sidebar a:hover{color:var(--text);background:var(--accent-bg)}
+.sidebar a.active{color:var(--accent);background:var(--accent-bg);border-right-color:var(--accent);font-weight:500}
+.sidebar-footer{padding:12px 20px 0;border-top:1px solid var(--border);font-size:10px;color:var(--text3);margin-top:8px;padding-top:12px}
+.sidebar-footer .status{display:flex;align-items:center;gap:4px;margin-bottom:4px}
+.sidebar-footer .dot{width:5px;height:5px;border-radius:50%;background:#30d158;display:inline-block}
 
-/* ===== Layout ===== */
-.wrap{max-width:1320px;margin:0 auto;padding:16px 24px}
-.grid{display:grid;gap:12px;margin-bottom:12px}
+/* Main */
+.main{flex:1;min-width:0;padding:24px 28px;max-width:1200px}
+
+/* Section header */
+.section{margin-bottom:28px}
+.section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.section-header h2{font-size:16px;font-weight:600;letter-spacing:-.2px}
+.section-header .meta{font-size:11px;color:var(--text3)}
+
+/* Grid */
+.grid{display:grid;gap:12px}
 .g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:1fr 1fr}
 
-/* ===== Section divider ===== */
-.divider{display:flex;align-items:center;gap:8px;margin:18px 0 12px}
-.divider h2{font-size:13px;font-weight:500;color:#555;white-space:nowrap}
-.divider .line{flex:1;height:1px;background:#eee}
+/* Card */
+.card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px;box-shadow:var(--shadow);transition:box-shadow .2s}
+.card:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
+.card-value{font-size:24px;font-weight:600;color:var(--text);letter-spacing:-.3px;line-height:1.2}
+.card-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.card-change{font-size:10px;display:inline-block;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:middle;font-weight:500}
+.card-change.up{color:#30d158;background:#30d1580d}
+.card-change.down{color:#ff453a;background:#ff453a0d}
 
-/* ===== KPI Card ===== */
-.kpi{background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #eee}
-.kpi .lbl{font-size:9px;color:#bbb;text-transform:uppercase;letter-spacing:.3px;margin-bottom:2px}
-.kpi .val{font-size:22px;font-weight:500;color:#222;line-height:1.2}
-.kpi .sub{font-size:10px;color:#ccc;margin-top:1px}
-.kpi .chg{font-size:9px;display:inline-block;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle;font-weight:400}
-.kpi .chg.up{color:#4caf50;background:#4caf5008}
-.kpi .chg.down{color:#ef5350;background:#ef535008}
-
-/* ===== Brand Video Table ===== */
-.brand-table{background:#fff;border-radius:8px;border:1px solid #eee;overflow:hidden}
-.brand-table table{width:100%;border-collapse:collapse;font-size:11px}
-.brand-table th{color:#bbb;padding:9px 12px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee;background:#fafafa}
-.brand-table td{padding:8px 12px;border-bottom:1px solid #f5f5f5;color:#888}
-.brand-table tr:last-child td{border-bottom:none}
-.brand-table tr:hover td{background:#fafafa}
-.bt-num{text-align:right;font-variant-numeric:tabular-nums}
-.bt-id{color:#ccc;font-size:10px;text-align:right}
-
-/* ===== Chart Card ===== */
-.chart{background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #eee}
-.chart h3{font-size:11px;font-weight:500;color:#666;margin-bottom:8px}
-.chart-body{width:100%;height:300px}
+/* Chart card */
+.chart-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px;box-shadow:var(--shadow)}
+.chart-card h3{font-size:11px;font-weight:500;color:var(--text2);margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.chart-box{width:100%;height:320px}
 .chart-sm{width:100%;height:240px}
 
-/* ===== Market Hot List ===== */
-.hot-list{background:#fff;border-radius:8px;border:1px solid #eee;overflow:hidden}
-.hot-list table{width:100%;border-collapse:collapse;font-size:11px}
-.hot-list th{color:#bbb;padding:9px 11px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee;background:#fafafa}
-.hot-list td{padding:8px 11px;border-bottom:1px solid #f5f5f5;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hot-list tr:last-child td{border-bottom:none}
-.hot-list tr:hover td{background:#fafafa}
-.hot-list .rn{display:inline-flex;width:18px;height:18px;border-radius:3px;align-items:center;justify-content:center;font-size:9px;font-weight:500}
-.hl-r1{background:#0000000a;color:#000}.hl-r2{background:#5555550a;color:#555}.hl-r3{background:#9999990a;color:#777}
-.hl-ro{color:#bbb}
-.hl-num{text-align:right;font-variant-numeric:tabular-nums}
-.hl-bold{color:#000;font-weight:500}
-.hl-center{text-align:center}
+/* Table */
+.tbl{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
+.tbl table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
+.tbl th{color:var(--text3);padding:10px 14px;text-align:left;font-weight:500;font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);background:#fafafc}
+.tbl td{padding:9px 14px;border-bottom:1px solid #f0f0f3;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#fafafc}
 
-/* ===== Detail Table ===== */
-.detail-wrap{overflow-x:auto;background:#fff;border-radius:8px;border:1px solid #eee}
-.detail-wrap table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
-.detail-wrap th{color:#bbb;padding:9px 11px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee;background:#fafafa}
-.detail-wrap td{padding:8px 11px;border-bottom:1px solid #f5f5f5;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.detail-wrap tr:last-child td{border-bottom:none}
-.detail-wrap tr:hover td{background:#fafafa}
-.dc-r{width:26px;text-align:center}.dc-t{width:auto}
-.dc-t a{color:#000;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dc-n{width:72px;text-align:right}.dc-rg{width:50px;text-align:center}.dc-p{width:58px;text-align:center}.dc-s{width:30px;text-align:center}
+/* Brand table */
+.btable{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
+.btable table{width:100%;border-collapse:collapse;font-size:12px}
+.btable th{color:var(--text3);padding:9px 14px;text-align:left;font-weight:500;font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);background:#fafafc}
+.btable td{padding:8px 14px;border-bottom:1px solid #f0f0f3;color:var(--text2)}
+.btable tr:last-child td{border-bottom:none}
+.btable tr:hover td{background:#fafafc}
+.btable a{color:var(--accent);text-decoration:none}
+.btable a:hover{text-decoration:underline}
+.bt-num{text-align:right;font-variant-numeric:tabular-nums}
+.bt-id{color:var(--text3);font-size:10px;text-align:right}
+.bt-rank{display:inline-flex;width:20px;height:20px;border-radius:4px;align-items:center;justify-content:center;font-size:10px;font-weight:600}
+.bt-r1{background:var(--accent-bg);color:var(--accent)}.bt-r2{color:#555;background:#5555550a}.bt-r3{color:#777;background:#7777770a}
+.bt-ro{color:var(--text3);background:transparent}
 
-/* ===== Insight ===== */
-.insight{background:#fff;border:1px solid #eee;border-radius:8px;padding:10px 14px;margin-bottom:12px;display:none;font-size:11px;color:#999;gap:14px;flex-wrap:wrap}
+/* Detail table */
+.dt th{font-size:9px;padding:8px 11px}
+.dt td{padding:7px 11px;font-size:11px}
+.dt a{color:var(--text);text-decoration:none;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dt a:hover{color:var(--accent)}
+.dc-r{width:28px;text-align:center}.dc-t{width:auto}.dc-n{width:70px;text-align:right}
+.dc-rg{width:48px;text-align:center}.dc-p{width:56px;text-align:center}.dc-s{width:28px;text-align:center}
+.hl-bold{font-weight:500;color:var(--text)}
+
+/* Insight bar */
+.insight{display:none;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text2);margin-bottom:14px;padding:10px 14px;background:var(--accent-bg);border-radius:8px;border:1px solid var(--accent)}
 .insight.show{display:flex}
+.insight span{display:flex;align-items:center;gap:4px}
 
-/* ===== Empty ===== */
-.empty{padding:24px;text-align:center;color:#ccc;font-size:12px}
+/* Empty state */
+.empty{padding:28px;text-align:center;color:var(--text3);font-size:13px}
 
-/* ===== Footer ===== */
-.footer{text-align:center;padding:16px 0 6px;font-size:10px;color:#eee}
+/* Footer */
+.footer{text-align:center;padding:24px 0 8px;font-size:10px;color:var(--text3)}
 
-/* ===== Responsive ===== */
-@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
+/* Resposive */
+@media(max-width:900px){
+  .sidebar{width:48px;overflow:hidden}
+  .sidebar a span:not(.nav-icon){display:none}
+  .sidebar-logo{font-size:0}
+  .sidebar-logo::after{content:'◈';font-size:16px}
+  .sidebar-footer{display:none}
+  .g4{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:640px){
-  .wrap{padding:0 14px}
-  .g4,.g2{grid-template-columns:1fr}
-  .chart-body,.chart-sm{height:220px}
+  body{flex-direction:column}
+  .sidebar{width:100%;height:auto;flex-direction:row;padding:0;border-right:none;border-bottom:1px solid var(--border);overflow-x:auto;position:static}
+  .sidebar-logo{display:none}
+  .sidebar a{padding:10px 14px;border-right:none;border-bottom:2px solid transparent;white-space:nowrap;font-size:11px}
+  .sidebar a.active{border-bottom-color:var(--accent);border-right-color:transparent}
+  .sidebar-footer{display:none}
+  .main{padding:14px}
+  .g4,.g3,.g2{grid-template-columns:1fr}
+  .chart-box,.chart-sm{height:220px}
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>◆ <span>数据看板</span></h1>
-  <span style="display:flex;align-items:center;gap:8px">
-    <span class="header-time" id="dataCount" style="color:#ddd;font-size:10px"></span>
-    <span class="header-time" id="updateTime">--</span>
-  </span>
+<div class="sidebar">
+  <div class="sidebar-logo"><span>◈</span> 看板</div>
+  <nav class="sidebar-nav">
+    <a href="#" class="active"><span class="nav-icon">◆</span> <span>总览</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="status"><span class="dot"></span> 运行中</div>
+    <div id="sidebarTime">--</div>
+  </div>
 </div>
 
-<div class="wrap">
+<div class="main">
 
-  <!-- ==================== 品牌区 ==================== -->
-  <div class="divider"><h2>🏪 MindJewel</h2><span class="line"></span></div>
-
-  <div class="grid g4" id="brandKpi"></div>
-
-  <div class="brand-table" id="brandVideos"></div>
-
-  <!-- ==================== 市场区 ==================== -->
-  <div class="divider"><h2>📊 珠宝市场</h2><span class="line"></span></div>
-
-  <div class="insight" id="insightBar">
-    <div id="insightText"></div>
+  <!-- Brand -->
+  <div class="section" id="brandSection">
+    <div class="section-header">
+      <h2>🏪 MindJewel</h2>
+      <span class="meta">@mindjewel.co</span>
+    </div>
+    <div class="grid g4" style="margin-bottom:10px" id="brandKpi"></div>
+    <div class="btable" id="brandTable"></div>
   </div>
 
-  <div class="grid g4" id="marketKpi"></div>
+  <!-- Market -->
+  <div class="section" id="marketSection">
+    <div class="section-header">
+      <h2>📊 珠宝市场</h2>
+      <span class="meta" id="updateTime">--</span>
+    </div>
 
-  <div class="grid g2">
-    <div class="chart"><h3>🌍 国家分布</h3><div class="chart-body" id="geoChart"></div></div>
-    <div class="chart"><h3>💍 品类分布</h3><div class="chart-body" id="productChart"></div></div>
+    <div class="insight" id="insightBar"><div id="insightText"></div></div>
+
+    <div class="grid g4" style="margin-bottom:12px" id="marketKpi"></div>
+
+    <div class="grid g2" style="margin-bottom:12px">
+      <div class="chart-card"><h3>🌍 国家分布</h3><div class="chart-box" id="geoChart"></div></div>
+      <div class="chart-card"><h3>💍 品类分布</h3><div class="chart-box" id="productChart"></div></div>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:12px">
+      <div class="chart-card"><h3>📈 播放趋势</h3><div class="chart-box" id="trendChart"></div></div>
+      <div class="chart-card"><h3>🏆 策略评分</h3><div class="chart-sm" id="rankChart"></div></div>
+    </div>
+
+    <div class="section-header" style="margin-top:4px">
+      <h2>🔥 7天爆款 TOP 15</h2>
+    </div>
+    <div class="tbl" id="hotList"></div>
+
+    <div class="section-header" style="margin-top:16px">
+      <h2>📋 完整详情</h2>
+    </div>
+    <div class="tbl" id="detailTable"></div>
   </div>
 
-  <div class="grid g2">
-    <div class="chart"><h3>📈 播放趋势</h3><div class="chart-body" id="trendChart"></div></div>
-    <div class="chart"><h3>🏆 策略评分</h3><div class="chart-sm" id="rankChart"></div></div>
-  </div>
-
-  <div class="divider"><h2>🔥 7天爆款 TOP 15</h2><span class="line"></span></div>
-
-  <div class="hot-list" id="hotList"></div>
-
-  <div class="divider"><h2>📋 完整详情</h2><span class="line"></span></div>
-
-  <div class="detail-wrap" id="detailTable"></div>
-
+  <div class="footer">TikTok 珠宝数据分析 · 每日更新</div>
 </div>
-
-<div class="footer">自动采集 · TikTok 珠宝数据</div>
 
 <script>
-// ===== Utils =====
-const $ = id => document.getElementById(id)
-const E = id => echarts.init(document.getElementById(id))
-const R = c => window.addEventListener('resize', () => c.resize())
-const F = n => (n || 0).toLocaleString()
-const slice = (t, n) => t ? t.slice(0, n) : ''
-
-// ===== Data =====
+const $=id=>document.getElementById(id),E=id=>echarts.init(document.getElementById(id)),R=c=>window.addEventListener('resize',()=>c.resize()),F=n=>(n||0).toLocaleString(),slice=(t,n)=>t?t.slice(0,n):''
 Promise.all([
-  fetch('data.json?' + Date.now()).then(r => r.json()).catch(() => null),
-  fetch('mindjewel_videos.json?' + Date.now()).then(r => r.json()).catch(() => [])
-]).then(([mkt, brandVids]) => {
-  if (!mkt) { $('updateTime').textContent = '⚠️'; return }
-
-  $('updateTime').textContent = '更新 ' + (mkt.updatedAt || '')
-  $('dataCount').textContent = '📦 ' + (mkt.details?.length || 0) + ' 条视频'
-
-  // Brand
-  renderBrandKpi(mkt.brand)
-  renderBrandVideos(brandVids)
-
-  // Market
-  renderInsight(mkt.insights)
-  renderMarketKpi(mkt.kpi)
-  if (mkt.geo)    initGeo(mkt.geo)
-  if (mkt.pie)    initProduct(mkt.pie)
-  if (mkt.trend)  initTrend(mkt.trend)
-  if (mkt.rank)   initRank(mkt.rank)
-  if (mkt.details) {
-    renderHotList(mkt.details.slice(0, 15))
-    renderDetail(mkt.details)
-  }
+  fetch('data.json?'+Date.now()).then(r=>r.json()).catch(()=>null),
+  fetch('mindjewel_videos.json?'+Date.now()).then(r=>r.json()).catch(()=>[])
+]).then(([m,v])=>{if(!m)return;$('updateTime').textContent='更新 '+(m.updatedAt||'');$('sidebarTime').textContent=m.updatedAt?m.updatedAt.slice(5,16):''
+  renderBrand(m.brand,v);renderMarket(m)
 })
-
-// ==================== 品牌 ====================
-function renderBrandKpi(b) {
-  const el = $('brandKpi')
-  if (!b || !b.followers) { el.innerHTML = ''; return }
-  el.innerHTML = `
-    <div class="kpi"><div class="lbl">粉丝</div><div class="val">${F(b.followers)}${b.followers_growth ? `<span class="chg up">+${b.followers_growth}</span>` : ''}</div><div class="sub">@mindjewel.co</div></div>
-    <div class="kpi"><div class="lbl">点赞</div><div class="val">${F(b.likes)}${b.likes_growth ? `<span class="chg up">+${b.likes_growth}</span>` : ''}</div><div class="sub">总获赞</div></div>
-    <div class="kpi"><div class="lbl">关注</div><div class="val">${F(b.following || 0)}</div><div class="sub">正在关注</div></div>
-    <div class="kpi"><div class="lbl">视频</div><div class="val" id="brandVideoCount">${F((document.querySelector('#brandVideos tbody') || {}).rows?.length || 0)}</div><div class="sub">已发布</div></div>`
+function renderBrand(b,v){const el=$('brandKpi')
+  if(!b||!b.followers){$('brandSection').style.display='none';return}
+  el.innerHTML=`<div class="card"><div class="card-label">粉丝</div><div class="card-value">${F(b.followers)}${b.followers_growth?`<span class="card-change up">+${b.followers_growth}</span>`:''}</div><div class="card-sub">@mindjewel.co</div></div>
+<div class="card"><div class="card-label">点赞</div><div class="card-value">${F(b.likes)}${b.likes_growth?`<span class="card-change up">+${b.likes_growth}</span>`:''}</div><div class="card-sub">总获赞</div></div>
+<div class="card"><div class="card-label">关注</div><div class="card-value">${F(b.following||0)}</div><div class="card-sub">正在关注</div></div>
+<div class="card"><div class="card-label">视频</div><div class="card-value">${F(v?.length||0)}</div><div class="card-sub">已发布</div></div>`
+  renderBrandTable(v)
 }
-
-function renderBrandVideos(vids) {
-  const el = $('brandVideos')
-  if (!vids || !vids.length) {
-    el.innerHTML = `<div class="empty">暂无视频数据 — 登录后告诉我"采视频"</div>`
-    return
-  }
-  let h = `<table><thead><tr><th style="width:24px">#</th><th>标题</th><th class="bt-num">播放</th><th class="bt-num">点赞</th><th class="bt-id">视频ID</th></tr></thead><tbody>`
-  vids.forEach((v, i) => {
-    const id = (v.url || '').match(/video\/(\d+)/)?.[1] || ''
-    h += `<tr>
-      <td style="color:#bbb">${i + 1}</td>
-      <td><a href="${v.url}" target="_blank" title="${(v.title || '').replace(/"/g,'&quot;')}">${slice(v.title, 40) || '无标题'} ↗</a></td>
-      <td class="bt-num">${v.views || '--'}</td>
-      <td class="bt-num">${v.likes || '--'}</td>
-      <td class="bt-id">${slice(id, 6)}</td>
-    </tr>`
-  })
-  h += '</tbody></table>'
-  el.innerHTML = h
-  const count = $('brandVideoCount')
-  if (count) count.textContent = F(vids.length)
+function renderBrandTable(v){const el=$('brandTable')
+  if(!v||!v.length){el.innerHTML=`<div class="empty">暂无视频数据</div>`;return}
+  let h=`<table><thead><tr><th style="width:24px">#</th><th>标题</th><th class="bt-num">播放</th><th class="bt-num">点赞</th><th class="bt-id">ID</th></tr></thead><tbody>`
+  v.forEach((vv,i)=>{const id=(vv.url||'').match(/video\/(\d+)/)?.[1]||''
+    h+=`<tr><td><span class="bt-rank ${i<3?'bt-r'+(i+1):'bt-ro'}">${i+1}</span></td>
+<td><a href="${vv.url}" target="_blank" title="${(vv.title||'').replace(/"/g,'&quot;')}">${slice(vv.title,40)||'无标题'} ↗</a></td>
+<td class="bt-num">${vv.views||'--'}</td><td class="bt-num">${vv.likes||'--'}</td><td class="bt-id">${slice(id,6)}</td></tr>`})
+  h+='</tbody></table>';el.innerHTML=h
 }
-
-// ==================== 市场 ====================
-function renderInsight(arr) {
-  if (!arr || !arr.length) return
-  const bar = $('insightBar')
-  bar.classList.add('show')
-  bar.innerHTML = arr.map(i => `<span>${i.text}</span>`).join('')
-}
-
-function renderMarketKpi(arr) {
-  const el = $('marketKpi')
-  if (!arr) { el.innerHTML = ''; return }
-  el.innerHTML = arr.map(i => {
-    const c = i.chg ? (i.chg[0] === '+' ? 'up' : 'down') : ''
-    return `<div class="kpi"><div class="lbl">${i.label}</div><div class="val">${i.value}${i.chg ? `<span class="chg ${c}">${i.chg}</span>` : ''}</div><div class="sub">${i.sub || ''}</div></div>`
-  }).join('')
-}
-
-function initGeo(d) {
-  const c = E('geoChart')
-  c.setOption({
-    tooltip: { trigger: 'item', formatter: '{b}: {c}%' },
-    grid: { left: 80, right: 20, top: 6, bottom: 16 },
-    xAxis: { type: 'value', splitLine: { lineStyle: { color: '#eee' } }, axisLabel: { color: '#bbb', fontSize: 9, formatter: '{value}%' } },
-    yAxis: { type: 'category', data: (d.labels || []).slice().reverse(), axisLabel: { color: '#888', fontSize: 10 } },
-    series: [{ type: 'bar', data: (d.values || []).slice().reverse(), barWidth: 14, borderRadius: [0, 4, 4, 0], itemStyle: { color: '#555' }, label: { show: true, position: 'right', color: '#888', fontSize: 9, formatter: '{c}%' } }]
-  })
-  R(c)
-}
-
-function initProduct(d) {
-  const c = E('productChart')
-  c.setOption({
-    tooltip: { trigger: 'item', formatter: '{b}: {c}%' },
-    series: [{
-      type: 'pie', radius: ['28%', '58%'], center: ['50%', '48%'],
-      data: d.data || (d.labels || []).map((n, i) => ({ name: n, value: (d.values || [])[i] || 0 })),
-      label: { color: '#888', fontSize: 9 }, labelLine: { lineStyle: { color: '#eee' } },
-      color: ['#333', '#666', '#999', '#bbb', '#ddd'], emphasis: { scale: false }
-    }]
-  })
-  R(c)
-}
-
-function initTrend(t) {
-  const c = E('trendChart')
-  c.setOption({
-    tooltip: { trigger: 'axis', valueFormatter: v => F(v) },
-    grid: { left: 44, right: 10, top: 12, bottom: 16 },
-    xAxis: { type: 'category', data: t.labels, axisLabel: { color: '#bbb', fontSize: 9 } },
-    yAxis: { type: 'value', splitLine: { lineStyle: { color: '#eee' } }, axisLabel: { color: '#bbb' } },
-    series: [{
-      type: 'line', data: t.values, smooth: true, symbol: 'circle', symbolSize: 4,
-      lineStyle: { color: '#444', width: 2 },
-      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: '#00000006' }, { offset: 1, color: '#00000000' }] } },
-      itemStyle: { color: '#333' },
-      markLine: { data: [{ type: 'average' }], lineStyle: { color: '#ddd', type: 'dashed' }, label: { color: '#bbb', fontSize: 9, formatter: '均 {c}' } }
-    }]
-  })
-  R(c)
-}
-
-function initRank(r) {
-  const c = E('rankChart')
-  c.setOption({
-    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-    grid: { left: 70, right: 16, top: 4, bottom: 12 },
-    xAxis: { type: 'value', splitLine: { lineStyle: { color: '#eee' } }, axisLabel: { color: '#bbb' } },
-    yAxis: { type: 'category', data: (r.labels || []).slice().reverse(), axisLabel: { color: '#888', fontSize: 9 } },
-    series: [{
-      type: 'bar', data: (r.values || []).slice().reverse(), barWidth: 10, borderRadius: [0, 3, 3, 0],
-      itemStyle: { color: '#555' }, label: { show: true, position: 'right', color: '#888', fontSize: 8, formatter: '{c}' }
-    }]
-  })
-  R(c)
-}
-
-function renderHotList(d) {
-  const el = $('hotList')
-  if (!d || !d.length) { el.innerHTML = `<div class="empty">暂无数据</div>`; return }
-  let h = `<table><thead><tr><th style="width:24px">#</th><th>标题</th><th class="hl-num">播放</th><th class="hl-num">互动率</th><th class="hl-center">国家</th><th class="hl-center">品类</th><th class="hl-center">形式</th><th class="hl-num">评分</th></tr></thead><tbody>`
-  d.forEach((v, i) => {
-    const r = i < 3 ? `hl-r${i + 1}` : 'hl-ro'
-    h += `<tr>
-      <td><span class="rn ${r}">${i + 1}</span></td>
-      <td style="overflow:hidden;text-overflow:ellipsis"><a href="${v.url}" target="_blank" title="${(v.title || '').replace(/"/g,'&quot;')}">${slice(v.title, 50) || '--'} ↗</a></td>
-      <td class="hl-num hl-bold">${F(v.views)}</td>
-      <td class="hl-num">${v.engagement_rate || '--'}</td>
-      <td class="hl-center">${v.region || '--'}</td>
-      <td class="hl-center">${v.product_type || '--'}</td>
-      <td class="hl-center" style="font-size:10px">${slice(v.content_format, 8) || '--'}</td>
-      <td class="hl-num">${v.buzz_score || '--'}</td>
-    </tr>`
-  })
-  h += '</tbody></table>'
-  el.innerHTML = h
-}
-
-function renderDetail(d) {
-  const el = $('detailTable')
-  if (!d || !d.length) { el.innerHTML = `<div class="empty">暂无数据</div>`; return }
-  let h = `<table><colgroup><col class="dc-r"><col class="dc-t"><col class="dc-n"><col class="dc-n"><col class="dc-rg"><col class="dc-p"><col class="dc-p"><col class="dc-s"></colgroup><thead><tr><th>#</th><th>标题</th><th class="dc-n">播放</th><th class="dc-n">互动率</th><th class="dc-rg">国家</th><th class="dc-p">品类</th><th class="dc-p">形式</th><th class="dc-s">评分</th></tr></thead><tbody>`
-  d.slice(0, 30).forEach((v, i) => {
-    const r = i < 3 ? `hl-r${i + 1}` : 'hl-ro'
-    h += `<tr>
-      <td class="dc-r"><span class="rn ${r}">${i + 1}</span></td>
-      <td class="dc-t"><a href="${v.url}" target="_blank">${slice(v.title, 40) || '--'} ↗</a></td>
-      <td class="dc-n hl-bold">${F(v.views)}</td>
-      <td class="dc-n">${v.engagement_rate || '--'}</td>
-      <td class="dc-rg">${v.region || '--'}</td>
-      <td class="dc-p">${v.product_type || '--'}</td>
-      <td class="dc-p" style="font-size:10px">${slice(v.content_format, 8) || '--'}</td>
-      <td class="dc-s">${v.buzz_score || '--'}</td>
-    </tr>`
-  })
-  h += '</tbody></table>'
-  el.innerHTML = h
-}
+function renderMarket(m){if(!m)return
+  renderInsight(m.insights);renderKpi(m.kpi)
+  if(m.geo)initGeo(m.geo);if(m.pie)initProduct(m.pie);if(m.trend)initTrend(m.trend);if(m.rank)initRank(m.rank)
+  if(m.details){renderHot(m.details.slice(0,15));renderDetail(m.details)}}
+function renderInsight(a){if(!a||!a.length)return;$('insightBar').classList.add('show');$('insightText').innerHTML=a.map(i=>`<span>${i.text}</span>`).join('')}
+function renderKpi(a){const el=$('marketKpi');if(!a){el.innerHTML='';return}
+  el.innerHTML=a.map(i=>{const c=i.chg?(i.chg[0]=='+'?'up':'down'):'';return`<div class="card"><div class="card-label">${i.label}</div><div class="card-value">${i.value}${i.chg?`<span class="card-change ${c}">${i.chg}</span>`:''}</div><div class="card-sub">${i.sub||''}</div></div>`}).join('')}
+function initGeo(d){const c=E('geoChart')
+  c.setOption({tooltip:{trigger:'item',formatter:'{b}: {c}%'},grid:{left:80,right:20,top:6,bottom:16},xAxis:{type:'value',splitLine:{lineStyle:{color:'var(--border)'}},axisLabel:{color:'#86868b',fontSize:9,formatter:'{value}%'}},yAxis:{type:'category',data:(d.labels||[]).slice().reverse(),axisLabel:{color:'#86868b',fontSize:10}},series:[{type:'bar',data:(d.values||[]).slice().reverse(),barWidth:14,borderRadius:[0,4,4,0],itemStyle:{color:'#0071e3'},label:{show:true,position:'right',color:'#86868b',fontSize:9,formatter:'{c}%'}}]});R(c)}
+function initProduct(d){const c=E('productChart')
+  c.setOption({tooltip:{trigger:'item',formatter:'{b}: {c}%'},series:[{type:'pie',radius:['28%','58%'],center:['50%','48%'],data:d.data||(d.labels||[]).map((n,i)=>({name:n,value:(d.values||[])[i]||0})),label:{color:'#86868b',fontSize:9},labelLine:{lineStyle:{color:'#eee'}},color:['#0071e3','#555','#999','#bbb','#ddd'],emphasis:{scale:false}}]});R(c)}
+function initTrend(t){const c=E('trendChart')
+  c.setOption({tooltip:{trigger:'axis',valueFormatter:v=>F(v)},grid:{left:42,right:10,top:12,bottom:16},xAxis:{type:'category',data:t.labels,axisLabel:{color:'#86868b',fontSize:9}},yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#86868b'}},series:[{type:'line',data:t.values,smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'#0071e3',width:2},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#0071e306'},{offset:1,color:'#0071e300'}]}},itemStyle:{color:'#0071e3'},markLine:{data:[{type:'average'}],lineStyle:{color:'#ddd',type:'dashed'},label:{color:'#86868b',fontSize:9,formatter:'均 {c}'}}}]});R(c)}
+function initRank(r){const c=E('rankChart')
+  c.setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:70,right:16,top:4,bottom:12},xAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#86868b'}},yAxis:{type:'category',data:(r.labels||[]).slice().reverse(),axisLabel:{color:'#86868b',fontSize:9}},series:[{type:'bar',data:(r.values||[]).slice().reverse(),barWidth:10,borderRadius:[0,3,3,0],itemStyle:{color:'#0071e3'},label:{show:true,position:'right',color:'#86868b',fontSize:8,formatter:'{c}'}}]});R(c)}
+function renderHot(d){const el=$('hotList')
+  if(!d||!d.length){el.innerHTML=`<div class="empty">暂无数据</div>`;return}
+  let h=`<table class="dt"><thead><tr><th class="dc-r">#</th><th class="dc-t">标题</th><th class="dc-n">播放</th><th class="dc-n">互动率</th><th class="dc-rg">国家</th><th class="dc-p">品类</th><th class="dc-p">形式</th><th class="dc-s">评分</th></tr></thead><tbody>`
+  d.forEach((v,i)=>{h+=`<tr><td class="dc-r"><span class="bt-rank ${i<3?'bt-r'+(i+1):'bt-ro'}">${i+1}</span></td>
+<td class="dc-t"><a href="${v.url}" target="_blank" title="${(v.title||'').replace(/"/g,'&quot;')}">${slice(v.title,50)||'--'} ↗</a></td>
+<td class="dc-n hl-bold">${F(v.views)}</td><td class="dc-n">${v.engagement_rate||'--'}</td>
+<td class="dc-rg">${v.region||'--'}</td><td class="dc-p">${v.product_type||'--'}</td>
+<td class="dc-p" style="font-size:10px">${slice(v.content_format,8)||'--'}</td><td class="dc-s">${v.buzz_score||'--'}</td></tr>`})
+  h+='</tbody></table>';el.innerHTML=h}
+function renderDetail(d){const el=$('detailTable')
+  if(!d||!d.length){el.innerHTML=`<div class="empty">暂无数据</div>`;return}
+  let h=`<table class="dt"><colgroup><col class="dc-r"><col class="dc-t"><col class="dc-n"><col class="dc-n"><col class="dc-rg"><col class="dc-p"><col class="dc-p"><col class="dc-s"></colgroup><thead><tr><th>#</th><th>标题</th><th class="dc-n">播放</th><th class="dc-n">互动率</th><th>国家</th><th>品类</th><th>形式</th><th class="dc-s">评分</th></tr></thead><tbody>`
+  d.slice(0,30).forEach((v,i)=>{h+=`<tr><td class="dc-r"><span class="bt-rank ${i<3?'bt-r'+(i+1):'bt-ro'}">${i+1}</span></td>
+<td class="dc-t"><a href="${v.url}" target="_blank">${slice(v.title,40)||'--'} ↗</a></td>
+<td class="dc-n hl-bold">${F(v.views)}</td><td class="dc-n">${v.engagement_rate||'--'}</td>
+<td class="dc-rg">${v.region||'--'}</td><td class="dc-p">${v.product_type||'--'}</td>
+<td class="dc-p" style="font-size:10px">${slice(v.content_format,8)||'--'}</td><td class="dc-s">${v.buzz_score||'--'}</td></tr>`})
+  h+='</tbody></table>';el.innerHTML=h}
 </script>
 </body>
 </html>
