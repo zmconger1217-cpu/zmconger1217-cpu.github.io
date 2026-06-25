@@ -1,0 +1,47 @@
+name: 📊 仪表盘自动更新
+
+on:
+  schedule:
+    # 北京时间每天 8:30 和 20:30 (UTC 0:30 / 12:30)
+    - cron: '30 0,12 * * *'
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安装依赖
+        run: |
+          pip install playwright
+          python -m playwright install chromium --with-deps
+
+      - name: 运行 Hunter 采集 🎯
+        env:
+          HTTP_PROXY: ""   # GitHub Actions 直连
+          HTTPS_PROXY: ""
+        run: |
+          python agents/hunter/run.py || echo "⚠️ Hunter 采集未成功（TikTok 可能需要代理）"
+
+      - name: 运行 Alchemist 处理 ⚗️
+        run: |
+          python agents/alchemist/process.py
+
+      - name: 提交更新
+        run: |
+          git config user.name "Butler 🤖"
+          git config user.email "butler@dashboard.bot"
+          git add dashboard/data.json data/raw/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交"
+          else
+            git commit -m "auto: 仪表盘数据更新 $(date +'%Y-%m-%d %H:%M' --utc)"
+            git push
+          fi

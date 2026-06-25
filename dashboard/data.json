@@ -1,39 +1,724 @@
 {
-  "updatedAt": "2026-06-23 16:32",
+  "updatedAt": "2026-06-25 09:55",
+  "version": "2.0",
   "kpi": [
-    { "label": "总播放", "value": "7.79M", "sub": "10条爆款视频合计", "chg": "+12.3%" },
-    { "label": "总粉丝", "value": "35.2K", "sub": "10个低粉账号平均粉丝3,520", "chg": "+184%" },
-    { "label": "爆款率", "value": "18%", "unit": "", "sub": "高于行业均值6%", "chg": "+6.0%" },
-    { "label": "平均播放", "value": "779K", "sub": "单条最高 2,200 播放", "chg": "" }
+    {
+      "label": "总播放",
+      "value": "156.30M",
+      "sub": "40条视频合计",
+      "chg": "+1906.4%"
+    },
+    {
+      "label": "总粉丝",
+      "value": "0",
+      "sub": "平均 0",
+      "chg": ""
+    },
+    {
+      "label": "爆款率",
+      "value": "100%",
+      "sub": "播放>50K占比",
+      "chg": ""
+    },
+    {
+      "label": "平均播放",
+      "value": "3.91M",
+      "sub": "总点赞 10.39M",
+      "chg": ""
+    }
   ],
   "trend": {
-    "labels": ["6/17","6/18","6/19","6/20","6/21","6/22","6/23"],
-    "values": [674, 1355, 2100, 980, 1650, 810, 2200]
+    "labels": [
+      "06/19",
+      "06/20",
+      "06/21",
+      "06/22",
+      "06/23",
+      "06/24",
+      "06/25"
+    ],
+    "values": [
+      1355,
+      2100,
+      980,
+      1650,
+      810,
+      2200,
+      156300
+    ]
   },
   "pie": {
-    "labels": ["新奇特品类","强情感共鸣","解压治愈","手工过程","痛点喜剧","升级改造"],
-    "values": [28, 22, 18, 15, 10, 7]
+    "labels": [
+      "其他",
+      "强情感共鸣",
+      "手工过程",
+      "新奇特品类"
+    ],
+    "values": [
+      65.0,
+      25.0,
+      5.0,
+      5.0
+    ]
   },
   "scatter": {
     "data": [
-      { "fans": 350,  "views": 520000, "title": "神奇开箱·新奇特首饰", "url": "https://www.tiktok.com/@example/video/123456789" },
-      { "fans": 180,  "views": 380000, "title": "手工制作全过程治愈", "url": "https://www.tiktok.com/@example/video/123456790" },
-      { "fans": 800,  "views": 290000, "title": "情感故事·礼物背后的含义", "url": "https://www.tiktok.com/@example/video/123456791" },
-      { "fans": 120,  "views": 410000, "title": "解压视频·首饰清洁过程", "url": "https://www.tiktok.com/@example/video/123456792" },
-      { "fans": 2000, "views": 210000, "title": "教程分享·穿搭搭配技巧", "url": "https://www.tiktok.com/@example/video/123456793" },
-      { "fans": 50,   "views": 670000, "title": "新奇发现·独一无二的设计", "url": "https://www.tiktok.com/@example/video/123456794" }
+      {
+        "fans": 0,
+        "views": 13700000,
+        "title": "Soooo beautiful 🥹#loveyou #love #girldre",
+        "url": "https://www.tiktok.com/@miffyabby/video/7602203429968071991"
+      },
+      {
+        "fans": 0,
+        "views": 12600000,
+        "title": "Relieve anxiety 🥹🥹💍💍#anxietyrelief #rota",
+        "url": "https://www.tiktok.com/@senpeo.shop/video/7623979710992682254"
+      },
+      {
+        "fans": 0,
+        "views": 10900000,
+        "title": "I made this handmade hair jewelry set wi",
+        "url": "https://www.tiktok.com/@taoreethnic/video/7641245363675958561"
+      },
+      {
+        "fans": 0,
+        "views": 9100000,
+        "title": "Start your personal design journey #usa ",
+        "url": "https://www.tiktok.com/@myastris/video/7643513135114013982"
+      },
+      {
+        "fans": 0,
+        "views": 8100000,
+        "title": "ရင်နဲ့လွယ်မမွေးရပေမယ့် ဘဝနဲ့ရင်းပြီး သား",
+        "url": "https://www.tiktok.com/@29jewelleryofficial.3/video/7349794209777339655"
+      },
+      {
+        "fans": 0,
+        "views": 7500000,
+        "title": "Looks like it’s time to propose🤷‍♀️🤗  #w",
+        "url": "https://www.tiktok.com/@winks.fine.jewelry/video/7649792403230018846"
+      },
+      {
+        "fans": 0,
+        "views": 6900000,
+        "title": "For the girls who want options, not heal",
+        "url": "https://www.tiktok.com/@beaditwearitloveit/video/7640614051113930015"
+      },
+      {
+        "fans": 0,
+        "views": 6500000,
+        "title": "#inspire #bracelet #foru #jewelrygift #n",
+        "url": "https://www.tiktok.com/@wenonahhawks/video/7643088265913961749"
+      },
+      {
+        "fans": 0,
+        "views": 6200000,
+        "title": "SOMEONE SAVE ME 😭😭 from @Mystical Mayhem",
+        "url": "https://www.tiktok.com/@kendylbrookie/video/7643882583402630430"
+      },
+      {
+        "fans": 0,
+        "views": 5500000,
+        "title": "ASMR Packaging for Orfea✨ Luxury Gold Pl",
+        "url": "https://www.tiktok.com/@shinewiithme.co/video/7640073412504784129"
+      },
+      {
+        "fans": 0,
+        "views": 4600000,
+        "title": "casually having the best jewelry cabinet",
+        "url": "https://www.tiktok.com/@raquellnelsonn/video/7645123413908016398"
+      },
+      {
+        "fans": 0,
+        "views": 4400000,
+        "title": "#necklace #design #tewiky #daintyjewelry",
+        "url": "https://www.tiktok.com/@auroraboreas/video/7623334956365810975"
+      },
+      {
+        "fans": 0,
+        "views": 3400000,
+        "title": "10/10 jewelry day 🌟 Matching charm brace",
+        "url": "https://www.tiktok.com/@brookeannalee_/video/7624959120583429398"
+      },
+      {
+        "fans": 0,
+        "views": 3200000,
+        "title": "Latto almost had this question in the ba",
+        "url": "https://www.tiktok.com/@jewelryunlimited/video/7532993458269736223"
+      },
+      {
+        "fans": 0,
+        "views": 3100000,
+        "title": "E35/Whether paired with a T-shirt, sweat",
+        "url": "https://www.tiktok.com/@wishing.you.good.f/video/7634465151155981581"
+      },
+      {
+        "fans": 0,
+        "views": 3000000,
+        "title": "ABSOLUTELY GAGGED i will never get anoth",
+        "url": "https://www.tiktok.com/@raquellnelsonn/video/7642090233613323533"
+      },
+      {
+        "fans": 0,
+        "views": 2900000,
+        "title": "Like why is that necklace SO popular #gi",
+        "url": "https://www.tiktok.com/@cgeebs9/video/7636405693590850830"
+      },
+      {
+        "fans": 0,
+        "views": 2700000,
+        "title": "Akhirnya bisa ikutan trend sound ini 🥰 #",
+        "url": "https://www.tiktok.com/@pipitt.kuma/video/7650135250529422599"
+      },
+      {
+        "fans": 0,
+        "views": 2700000,
+        "title": "Este collar para parejas te dejará marav",
+        "url": "https://www.tiktok.com/@user61401552483986/video/7645248930388757768"
+      },
+      {
+        "fans": 0,
+        "views": 2700000,
+        "title": "badly want to give this to my mowm #neck",
+        "url": "https://www.tiktok.com/@haerinthinker_/video/7636654990391528722"
+      }
     ]
   },
   "rank": {
-    "labels": ["新奇特品类","强情感共鸣","解压/治愈","手工过程党","痛点喜剧化","升级改造类","文化符号","人设反差"],
-    "values": [95, 82, 68, 55, 38, 25, 18, 12]
+    "labels": [
+      "手工过程",
+      "其他",
+      "新奇特品类",
+      "强情感共鸣"
+    ],
+    "values": [
+      100.0,
+      91.7,
+      85.4,
+      83.8
+    ]
   },
   "details": [
-    { "title": "这个神奇开箱让所有人都惊呆了", "fans": 350,  "views": 520000, "likes": 48500, "url": "https://www.tiktok.com/@example/video/123456789", "tags": [{ "name": "开箱", "hot": true }, { "name": "新奇特" }, { "name": "珠宝" }], "factor": "新奇特品类+强视觉冲击" },
-    { "title": "手工制作全过程太治愈了", "fans": 180,  "views": 380000, "likes": 32000, "url": "https://www.tiktok.com/@example/video/123456790", "tags": [{ "name": "手工", "hot": true }, { "name": "治愈" }, { "name": "过程" }], "factor": "手工过程>成果+解压BGM" },
-    { "title": "送这个礼物她一定会感动哭", "fans": 800,  "views": 290000, "likes": 28000, "url": "https://www.tiktok.com/@example/video/123456791", "tags": [{ "name": "情感" }, { "name": "礼物" }, { "name": "故事" }], "factor": "强情感共鸣+送礼场景" },
-    { "title": "5分钟清洁首饰焕然一新", "fans": 120,  "views": 410000, "likes": 35000, "url": "https://www.tiktok.com/@example/video/123456792", "tags": [{ "name": "解压" }, { "name": "清洁" }, { "name": "教程" }], "factor": "解压治愈+实用技巧" },
-    { "title": "小众穿搭技巧大公开", "fans": 2000, "views": 210000, "likes": 18000, "url": "https://www.tiktok.com/@example/video/123456793", "tags": [{ "name": "穿搭" }, { "name": "技巧" }, { "name": "小众" }], "factor": "实用干货+人设反差" },
-    { "title": "独一无二的手工定制首饰", "fans": 50,   "views": 670000, "likes": 55000, "url": "https://www.tiktok.com/@example/video/123456794", "tags": [{ "name": "定制" }, { "name": "手工" }, { "name": "独家" }], "factor": "稀缺性+新奇特品类" }
+    {
+      "title": "Soooo beautiful 🥹#loveyou #love #girldream #cross #crossneck",
+      "fans": 0,
+      "views": 13700000,
+      "likes": 332600,
+      "url": "https://www.tiktok.com/@miffyabby/video/7602203429968071991",
+      "tags": [
+        {
+          "name": "loveyou",
+          "hot": false
+        },
+        {
+          "name": "Love",
+          "hot": false
+        },
+        {
+          "name": "girldream",
+          "hot": false
+        },
+        {
+          "name": "cross",
+          "hot": false
+        }
+      ],
+      "factor": "强情感共鸣+平均互动率2.4%"
+    },
+    {
+      "title": "Relieve anxiety 🥹🥹💍💍#anxietyrelief #rotation #anxietyring #f",
+      "fans": 0,
+      "views": 12600000,
+      "likes": 61700,
+      "url": "https://www.tiktok.com/@senpeo.shop/video/7623979710992682254",
+      "tags": [
+        {
+          "name": "anxietyrelief",
+          "hot": false
+        },
+        {
+          "name": "rotation",
+          "hot": false
+        },
+        {
+          "name": "anxietyring",
+          "hot": false
+        },
+        {
+          "name": "foryoupage",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率0.5%"
+    },
+    {
+      "title": "I made this handmade hair jewelry set with natural emerald &",
+      "fans": 0,
+      "views": 10900000,
+      "likes": 1000000,
+      "url": "https://www.tiktok.com/@taoreethnic/video/7641245363675958561",
+      "tags": [
+        {
+          "name": "haircharms",
+          "hot": false
+        },
+        {
+          "name": "crystalaccessories",
+          "hot": false
+        },
+        {
+          "name": "hairjewelry",
+          "hot": false
+        },
+        {
+          "name": "beadedjewelry",
+          "hot": false
+        }
+      ],
+      "factor": "手工过程+平均互动率9.2%"
+    },
+    {
+      "title": "Start your personal design journey #usa #bracelet #crystal #",
+      "fans": 0,
+      "views": 9100000,
+      "likes": 218100,
+      "url": "https://www.tiktok.com/@myastris/video/7643513135114013982",
+      "tags": [
+        {
+          "name": "usa",
+          "hot": false
+        },
+        {
+          "name": "bracelet",
+          "hot": false
+        },
+        {
+          "name": "crystal",
+          "hot": true
+        },
+        {
+          "name": "fyp",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率2.4%"
+    },
+    {
+      "title": "ရင်နဲ့လွယ်မမွေးရပေမယ့် ဘဝနဲ့ရင်းပြီး သားသမီးတို့အတွက် ပေးဆပ်",
+      "fans": 0,
+      "views": 8100000,
+      "likes": 525300,
+      "url": "https://www.tiktok.com/@29jewelleryofficial.3/video/7349794209777339655",
+      "tags": [
+        {
+          "name": "29jewellery",
+          "hot": false
+        },
+        {
+          "name": "အဖေများနေ့",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率6.6%"
+    },
+    {
+      "title": "Looks like it’s time to propose🤷‍♀️🤗  #winksjewelry #sendthi",
+      "fans": 0,
+      "views": 7500000,
+      "likes": 982000,
+      "url": "https://www.tiktok.com/@winks.fine.jewelry/video/7649792403230018846",
+      "tags": [
+        {
+          "name": "winksjewelry",
+          "hot": false
+        },
+        {
+          "name": "sendthistohim",
+          "hot": false
+        },
+        {
+          "name": "propose",
+          "hot": false
+        },
+        {
+          "name": "jewelrytok",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率13.3%"
+    },
+    {
+      "title": "For the girls who want options, not healing time 😭✨ #fauxjew",
+      "fans": 0,
+      "views": 6900000,
+      "likes": 236700,
+      "url": "https://www.tiktok.com/@beaditwearitloveit/video/7640614051113930015",
+      "tags": [
+        {
+          "name": "fauxjewelry",
+          "hot": false
+        },
+        {
+          "name": "piercings",
+          "hot": false
+        },
+        {
+          "name": "bodyjewelry",
+          "hot": false
+        },
+        {
+          "name": "jewelryinspo",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率3.5%"
+    },
+    {
+      "title": "#inspire #bracelet #foru #jewelrygift #nevergiveup ",
+      "fans": 0,
+      "views": 6500000,
+      "likes": 81200,
+      "url": "https://www.tiktok.com/@wenonahhawks/video/7643088265913961749",
+      "tags": [
+        {
+          "name": "inspire",
+          "hot": false
+        },
+        {
+          "name": "bracelet",
+          "hot": false
+        },
+        {
+          "name": "foru",
+          "hot": false
+        },
+        {
+          "name": "jewelrygift",
+          "hot": false
+        }
+      ],
+      "factor": "强情感共鸣+平均互动率1.3%"
+    },
+    {
+      "title": "SOMEONE SAVE ME 😭😭 from @Mystical Mayhem !!! #jewelrytiktok ",
+      "fans": 0,
+      "views": 6200000,
+      "likes": 528200,
+      "url": "https://www.tiktok.com/@kendylbrookie/video/7643882583402630430",
+      "tags": [
+        {
+          "name": "jewelrytiktok",
+          "hot": false
+        },
+        {
+          "name": "mysteryjewelryjar",
+          "hot": false
+        },
+        {
+          "name": "fyp",
+          "hot": false
+        },
+        {
+          "name": "mermaid",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率8.5%"
+    },
+    {
+      "title": "ASMR Packaging for Orfea✨ Luxury Gold Plated Jewellery #asmr",
+      "fans": 0,
+      "views": 5500000,
+      "likes": 82700,
+      "url": "https://www.tiktok.com/@shinewiithme.co/video/7640073412504784129",
+      "tags": [
+        {
+          "name": "asmrvideo",
+          "hot": false
+        },
+        {
+          "name": "asmrsounds",
+          "hot": false
+        },
+        {
+          "name": "packingorders",
+          "hot": false
+        },
+        {
+          "name": "unboxing",
+          "hot": false
+        }
+      ],
+      "factor": "新奇特品类+平均互动率1.5%"
+    },
+    {
+      "title": "casually having the best jewelry cabinet ever 💅🏼 #jewelrytik",
+      "fans": 0,
+      "views": 4600000,
+      "likes": 839100,
+      "url": "https://www.tiktok.com/@raquellnelsonn/video/7645123413908016398",
+      "tags": [
+        {
+          "name": "jewelrytiktok",
+          "hot": false
+        },
+        {
+          "name": "jewelrylover",
+          "hot": false
+        },
+        {
+          "name": "fyp",
+          "hot": false
+        },
+        {
+          "name": "jewelrygirl",
+          "hot": false
+        }
+      ],
+      "factor": "强情感共鸣+平均互动率18.3%"
+    },
+    {
+      "title": "#necklace #design #tewiky #daintyjewelry #couple #sun #moon ",
+      "fans": 0,
+      "views": 4400000,
+      "likes": 171200,
+      "url": "https://www.tiktok.com/@auroraboreas/video/7623334956365810975",
+      "tags": [
+        {
+          "name": "necklace",
+          "hot": false
+        },
+        {
+          "name": "design",
+          "hot": false
+        },
+        {
+          "name": "tewiky",
+          "hot": false
+        },
+        {
+          "name": "daintyjewelry",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率3.9%"
+    },
+    {
+      "title": "10/10 jewelry day 🌟 Matching charm bracelet & Necklace from ",
+      "fans": 0,
+      "views": 3400000,
+      "likes": 598700,
+      "url": "https://www.tiktok.com/@brookeannalee_/video/7624959120583429398",
+      "tags": [
+        {
+          "name": "jewelry",
+          "hot": true
+        },
+        {
+          "name": "fitcheck",
+          "hot": false
+        },
+        {
+          "name": "OOTD",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率17.7%"
+    },
+    {
+      "title": "Latto almost had this question in the bag 😂😂 #latto #jewelry",
+      "fans": 0,
+      "views": 3200000,
+      "likes": 264500,
+      "url": "https://www.tiktok.com/@jewelryunlimited/video/7532993458269736223",
+      "tags": [
+        {
+          "name": "latto",
+          "hot": false
+        },
+        {
+          "name": "jewelryunlimited",
+          "hot": false
+        },
+        {
+          "name": "foryou",
+          "hot": false
+        },
+        {
+          "name": "fyp",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率8.3%"
+    },
+    {
+      "title": "E35/Whether paired with a T-shirt, sweatshirt, or suit, it f",
+      "fans": 0,
+      "views": 3100000,
+      "likes": 25900,
+      "url": "https://www.tiktok.com/@wishing.you.good.f/video/7634465151155981581",
+      "tags": [
+        {
+          "name": "earstud",
+          "hot": false
+        },
+        {
+          "name": "fyp",
+          "hot": false
+        },
+        {
+          "name": "style",
+          "hot": false
+        },
+        {
+          "name": "mothersday",
+          "hot": false
+        }
+      ],
+      "factor": "强情感共鸣+平均互动率0.8%"
+    },
+    {
+      "title": "ABSOLUTELY GAGGED i will never get another jar like this. sh",
+      "fans": 0,
+      "views": 3000000,
+      "likes": 418100,
+      "url": "https://www.tiktok.com/@raquellnelsonn/video/7642090233613323533",
+      "tags": [
+        {
+          "name": "jewelryjar",
+          "hot": false
+        },
+        {
+          "name": "jewelrytiktok",
+          "hot": false
+        },
+        {
+          "name": "mysteryjewelryjar",
+          "hot": false
+        },
+        {
+          "name": "unboxing",
+          "hot": false
+        }
+      ],
+      "factor": "新奇特品类+平均互动率14.0%"
+    },
+    {
+      "title": "Like why is that necklace SO popular #girls #jewelry #neckla",
+      "fans": 0,
+      "views": 2900000,
+      "likes": 65100,
+      "url": "https://www.tiktok.com/@cgeebs9/video/7636405693590850830",
+      "tags": [
+        {
+          "name": "girls",
+          "hot": false
+        },
+        {
+          "name": "jewelry",
+          "hot": true
+        },
+        {
+          "name": "necklace",
+          "hot": false
+        },
+        {
+          "name": "fashion",
+          "hot": false
+        }
+      ],
+      "factor": "其他+平均互动率2.3%"
+    },
+    {
+      "title": "Akhirnya bisa ikutan trend sound ini 🥰 #cartier #lovebracele",
+      "fans": 0,
+      "views": 2700000,
+      "likes": 162100,
+      "url": "https://www.tiktok.com/@pipitt.kuma/video/7650135250529422599",
+      "tags": [
+        {
+          "name": "cartier",
+          "hot": false
+        },
+        {
+          "name": "lovebracelet",
+          "hot": false
+        },
+        {
+          "name": "cartierlovebracelet",
+          "hot": false
+        },
+        {
+          "name": "cartierlove",
+          "hot": false
+        }
+      ],
+      "factor": "强情感共鸣+平均互动率6.1%"
+    },
+    {
+      "title": "Este collar para parejas te dejará maravillosamente enamorad",
+      "fans": 0,
+      "views": 2700000,
+      "likes": 75800,
+      "url": "https://www.tiktok.com/@user61401552483986/video/7645248930388757768",
+      "tags": [
+        {
+          "name": "parejas",
+          "hot": false
+        },
+        {
+          "name": "regaloparaparejas",
+          "hot": false
+        },
+        {
+          "name": "collaresparaparejas",
+          "hot": false
+        },
+        {
+          "name": "dijesdepareja",
+          "hot": false
+        }
+      ],
+      "factor": "强情感共鸣+平均互动率2.9%"
+    },
+    {
+      "title": "badly want to give this to my mowm #necklace #necklacegift #",
+      "fans": 0,
+      "views": 2700000,
+      "likes": 29900,
+      "url": "https://www.tiktok.com/@haerinthinker_/video/7636654990391528722",
+      "tags": [
+        {
+          "name": "necklace",
+          "hot": false
+        },
+        {
+          "name": "necklacegift",
+          "hot": false
+        },
+        {
+          "name": "necklaceforwomen",
+          "hot": false
+        },
+        {
+          "name": "mothersdaygiftideas",
+          "hot": false
+        }
+      ],
+      "factor": "强情感共鸣+平均互动率1.1%"
+    }
+  ],
+  "insights": [
+    {
+      "level": "info",
+      "type": "trend_up",
+      "text": "手工过程品类播放量占比最高，平均互动率9.2%"
+    },
+    {
+      "level": "warning",
+      "type": "alert",
+      "text": "粉丝字段暂缺，需修复数据源映射"
+    }
   ]
 }
