@@ -33,8 +33,9 @@ a{color:#ffc832;text-decoration:none}
 .insight i{font-style:normal;color:#ffc832}
 
 /* Cards */
-.brand-hero{background:linear-gradient(135deg,#141414,#0d0d0d);border:1px solid #1e1e1e;border-radius:10px;padding:18px 22px;margin-bottom:16px;display:none}
-.brand-hero.show{display:block}
+.brand-hero{background:linear-gradient(135deg,#141414,#0d0d0d);border:1px solid #1e1e1e;border-radius:10px;padding:18px 22px;margin-bottom:16px;display:none;transition:all .3s}
+.brand-hero.show{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 .brand-info{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .brand-name{display:flex;align-items:center;gap:12px}
 .brand-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ffc832,#f5b342);color:#111;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600}
@@ -114,7 +115,7 @@ tr:hover td{background:#141414}
 <div class="wrap">
 
   <!-- 品牌账号 -->
-  <div class="brand-hero" id="brandHero" style="display:none">
+  <div class="brand-hero" id="brandHero">
     <div class="brand-info">
       <div class="brand-name">
         <span class="brand-avatar">M</span>
@@ -278,18 +279,23 @@ function renderContent(f){
   const labels=(f.labels||[]).slice()
   const er=(f.er||[]).slice()
   const plays=(f.avg_plays||[]).slice()
+  // 标签截短
+  const shortLabels = labels.map(l => {
+    const m = l.match(/^(\w+)\/?\w*/)
+    return m ? m[1] : l.slice(0,10)
+  })
   c.setOption({
     tooltip:{trigger:'axis'},
     legend:{data:['互动率%','均播放'],textStyle:{color:'#555',fontSize:9},top:-2,right:0},
-    grid:{left:56,right:36,top:24,bottom:16},
-    xAxis:{type:'category',data:labels,axisLabel:{color:'#444',fontSize:8,rotate:15}},
+    grid:{left:46,right:40,top:26,bottom:28},
+    xAxis:{type:'category',data:shortLabels,axisLabel:{color:'#444',fontSize:8}},
     yAxis:[
-      {type:'value',name:'互动率%',nameTextStyle:{color:'#444',fontSize:9},splitLine:{lineStyle:{color:'#151515'}},axisLabel:{color:'#444',fontSize:8}},
-      {type:'value',name:'均播放',nameTextStyle:{color:'#444',fontSize:9},splitLine:{show:false},axisLabel:{color:'#444',fontSize:8,formatter:v=>v>=10000?(v/10000).toFixed(0)+'万':v}}
+      {type:'value',name:'互动率%',nameTextStyle:{color:'#444',fontSize:8},splitLine:{lineStyle:{color:'#151515'}},axisLabel:{color:'#444',fontSize:8,formatter:'{value}%'}},
+      {type:'value',name:'均播放(万)',nameTextStyle:{color:'#444',fontSize:8},splitLine:{show:false},axisLabel:{color:'#444',fontSize:8,formatter:v=>(v/10000).toFixed(0)}}
     ],
     series:[
-      {type:'bar',data:er,barWidth:12,borderRadius:[3,3,0,0],itemStyle:{color:'#ffc832'},label:{show:true,position:'top',color:'#888',fontSize:8,formatter:'{c}%'}},
-      {type:'line',data:plays,smooth:true,symbol:'diamond',symbolSize:6,lineStyle:{color:'#4fc3f7',width:1.5},itemStyle:{color:'#4fc3f7'},yAxisIndex:1,
+      {type:'bar',data:er,barWidth:14,borderRadius:[3,3,0,0],itemStyle:{color:'#ffc832'},label:{show:true,position:'top',color:'#888',fontSize:8,formatter:'{c}%'},yAxisIndex:0},
+      {type:'line',data:plays,smooth:true,symbol:'diamond',symbolSize:7,lineStyle:{color:'#4fc3f7',width:2},itemStyle:{color:'#4fc3f7'},yAxisIndex:1,
        label:{show:true,position:'bottom',color:'#888',fontSize:7,formatter:v=>v>=10000?(v/10000).toFixed(0)+'万':v}}
     ]
   });R(c)
