@@ -6,243 +6,329 @@
 <title>数据看板</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
+/* ===== Reset ===== */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:#f8f8f8;color:#222;min-height:100vh}
+body{font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:#f8f8f8;color:#222}
 a{color:#222;text-decoration:none}
+a:hover{opacity:.7}
 
-.header{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid #eee}
-.h-left{display:flex;align-items:center;gap:10px}
-.h-left h1{font-size:17px;font-weight:600}
-.h-left h1 span{font-weight:300;color:#999}
-.meta{font-size:11px;color:#bbb}
+/* ===== Header ===== */
+.header{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid #eee;background:#fff}
+.header h1{font-size:16px;font-weight:600}
+.header h1 span{font-weight:300;color:#999}
+.header-time{font-size:11px;color:#bbb}
 
-.wrap{max-width:1400px;margin:0 auto;padding:16px 24px}
+/* ===== Layout ===== */
+.wrap{max-width:1320px;margin:0 auto;padding:16px 24px}
 .grid{display:grid;gap:12px;margin-bottom:12px}
-.g5{grid-template-columns:repeat(5,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
-.g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:1fr 1fr}
 
-/* 区块标题 */
-.section-title{font-size:13px;font-weight:500;color:#555;margin:16px 0 10px;display:flex;align-items:center;gap:6px}
-.section-title .line{flex:1;height:1px;background:#eee;margin-left:8px}
+/* ===== Section divider ===== */
+.divider{display:flex;align-items:center;gap:8px;margin:18px 0 12px}
+.divider h2{font-size:13px;font-weight:500;color:#555;white-space:nowrap}
+.divider .line{flex:1;height:1px;background:#eee}
 
-/* 卡片 */
-.card{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #eee}
-.card .lbl{font-size:9px;color:#bbb;text-transform:uppercase;letter-spacing:.3px;margin-bottom:2px}
-.card .val{font-size:22px;font-weight:500;color:#222;line-height:1.2}
-.card .sub{font-size:10px;color:#ccc;margin-top:1px}
-.card .chg{font-size:10px;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:middle}
-.card .chg.up{color:#4caf50;background:#4caf5008}
-.card .chg.down{color:#ef5350;background:#ef535008}
+/* ===== KPI Card ===== */
+.kpi{background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #eee}
+.kpi .lbl{font-size:9px;color:#bbb;text-transform:uppercase;letter-spacing:.3px;margin-bottom:2px}
+.kpi .val{font-size:22px;font-weight:500;color:#222;line-height:1.2}
+.kpi .sub{font-size:10px;color:#ccc;margin-top:1px}
+.kpi .chg{font-size:9px;display:inline-block;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle;font-weight:400}
+.kpi .chg.up{color:#4caf50;background:#4caf5008}
+.kpi .chg.down{color:#ef5350;background:#ef535008}
 
-/* 图表卡 */
-.cc{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #eee}
-.cc h3{font-size:11px;font-weight:500;color:#666;margin-bottom:8px;display:flex;align-items:center;gap:5px}
-.cb{width:100%;height:300px}
-.cb-sm{width:100%;height:240px}
+/* ===== Brand Video Table ===== */
+.brand-table{background:#fff;border-radius:8px;border:1px solid #eee;overflow:hidden}
+.brand-table table{width:100%;border-collapse:collapse;font-size:11px}
+.brand-table th{color:#bbb;padding:9px 12px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee;background:#fafafa}
+.brand-table td{padding:8px 12px;border-bottom:1px solid #f5f5f5;color:#888}
+.brand-table tr:last-child td{border-bottom:none}
+.brand-table tr:hover td{background:#fafafa}
+.bt-num{text-align:right;font-variant-numeric:tabular-nums}
+.bt-id{color:#ccc;font-size:10px;text-align:right}
 
-/* MJ 视频表 */
-.mj-table-wrap{overflow-x:auto;background:#fff;border-radius:10px;border:1px solid #eee}
-.mj-table-wrap table{width:100%;border-collapse:collapse;font-size:11px}
-.mj-table-wrap th{color:#bbb;padding:9px 12px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee}
-.mj-table-wrap td{padding:8px 12px;border-bottom:1px solid #f5f5f5;color:#888}
-.mj-table-wrap tr:last-child td{border-bottom:none}
-.mj-table-wrap tr:hover td{background:#fafafa}
-.mj-table-wrap a{color:#222}
-.mj-num{text-align:right;font-variant-numeric:tabular-nums}
+/* ===== Chart Card ===== */
+.chart{background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #eee}
+.chart h3{font-size:11px;font-weight:500;color:#666;margin-bottom:8px}
+.chart-body{width:100%;height:300px}
+.chart-sm{width:100%;height:240px}
 
-/* 市场视频网格（无封面，纯文字列表） */
-.market-list{background:#fff;border-radius:10px;border:1px solid #eee;overflow:hidden}
-.market-list table{width:100%;border-collapse:collapse;font-size:11px}
-.market-list th{color:#bbb;padding:9px 12px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee}
-.market-list td{padding:8px 12px;border-bottom:1px solid #f5f5f5;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.market-list tr:last-child td{border-bottom:none}
-.market-list tr:hover td{background:#fafafa}
-.market-list a{color:#222}
-.market-list .rn{display:inline-flex;width:18px;height:18px;border-radius:3px;align-items:center;justify-content:center;font-size:9px;font-weight:500}
-.market-list .r1{background:#0000000a;color:#000}.r2{background:#5555550a;color:#555}.r3{background:#9999990a;color:#777}
-.market-list .ro{color:#bbb}
-.ml-num{text-align:right;font-variant-numeric:tabular-nums}
-.ml-hl{color:#000;font-weight:500}
+/* ===== Market Hot List ===== */
+.hot-list{background:#fff;border-radius:8px;border:1px solid #eee;overflow:hidden}
+.hot-list table{width:100%;border-collapse:collapse;font-size:11px}
+.hot-list th{color:#bbb;padding:9px 11px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee;background:#fafafa}
+.hot-list td{padding:8px 11px;border-bottom:1px solid #f5f5f5;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hot-list tr:last-child td{border-bottom:none}
+.hot-list tr:hover td{background:#fafafa}
+.hot-list .rn{display:inline-flex;width:18px;height:18px;border-radius:3px;align-items:center;justify-content:center;font-size:9px;font-weight:500}
+.hl-r1{background:#0000000a;color:#000}.hl-r2{background:#5555550a;color:#555}.hl-r3{background:#9999990a;color:#777}
+.hl-ro{color:#bbb}
+.hl-num{text-align:right;font-variant-numeric:tabular-nums}
+.hl-bold{color:#000;font-weight:500}
+.hl-center{text-align:center}
 
-/* 表格（详情） */
-.tw{overflow-x:auto;border-radius:8px;background:#fff;border:1px solid #eee;margin-bottom:16px}
-table.detail{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
-table.detail th{color:#bbb;padding:9px 11px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee}
-table.detail td{padding:8px 11px;border-bottom:1px solid #f5f5f5;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-table.detail tr:last-child td{border-bottom:none}
-table.detail tr:hover td{background:#fafafa}
-.col-r{width:26px;text-align:center}.col-t{width:auto}
-.col-t a{color:#000;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.col-n{width:72px;text-align:right}.col-rg{width:50px;text-align:center}.col-p{width:60px;text-align:center}.col-s{width:32px;text-align:center}
+/* ===== Detail Table ===== */
+.detail-wrap{overflow-x:auto;background:#fff;border-radius:8px;border:1px solid #eee}
+.detail-wrap table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
+.detail-wrap th{color:#bbb;padding:9px 11px;text-align:left;font-weight:400;font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #eee;background:#fafafa}
+.detail-wrap td{padding:8px 11px;border-bottom:1px solid #f5f5f5;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.detail-wrap tr:last-child td{border-bottom:none}
+.detail-wrap tr:hover td{background:#fafafa}
+.dc-r{width:26px;text-align:center}.dc-t{width:auto}
+.dc-t a{color:#000;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dc-n{width:72px;text-align:right}.dc-rg{width:50px;text-align:center}.dc-p{width:58px;text-align:center}.dc-s{width:30px;text-align:center}
 
-.ft{text-align:center;padding:16px 0 6px;font-size:10px;color:#eee}
+/* ===== Insight ===== */
+.insight{background:#fff;border:1px solid #eee;border-radius:8px;padding:10px 14px;margin-bottom:12px;display:none;font-size:11px;color:#999;gap:14px;flex-wrap:wrap}
+.insight.show{display:flex}
 
-@media(max-width:900px){.g5{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(2,1fr)}}
+/* ===== Empty ===== */
+.empty{padding:24px;text-align:center;color:#ccc;font-size:12px}
+
+/* ===== Footer ===== */
+.footer{text-align:center;padding:16px 0 6px;font-size:10px;color:#eee}
+
+/* ===== Responsive ===== */
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){
   .wrap{padding:0 14px}
-  .g5,.g4,.g3,.g2{grid-template-columns:1fr}
-  .cb,.cb-sm{height:220px}
+  .g4,.g2{grid-template-columns:1fr}
+  .chart-body,.chart-sm{height:220px}
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="h-left"><h1>◆ <span>数据看板</span></h1></div>
-  <div class="meta"><b id="updateTime">加载中...</b></div>
+  <h1>◆ <span>数据看板</span></h1>
+  <span class="header-time" id="updateTime">--</span>
 </div>
 
 <div class="wrap">
 
-  <!-- ============ 品牌 ============ -->
-  <div class="section-title">🏪 MindJewel <span class="line"></span></div>
+  <!-- ==================== 品牌区 ==================== -->
+  <div class="divider"><h2>🏪 MindJewel</h2><span class="line"></span></div>
 
-  <div class="grid g5" id="brandKPI"></div>
+  <div class="grid g4" id="brandKpi"></div>
 
-  <div class="mj-table-wrap" id="mjVideoTable"></div>
+  <div class="brand-table" id="brandVideos"></div>
 
-  <!-- ============ 市场 ============ -->
-  <div class="section-title">📊 珠宝市场 <span class="line"></span></div>
+  <!-- ==================== 市场区 ==================== -->
+  <div class="divider"><h2>📊 珠宝市场</h2><span class="line"></span></div>
 
   <div class="insight" id="insightBar">
-    <div id="insightText" style="display:flex;flex-wrap:wrap;gap:2px 16px"></div>
+    <div id="insightText"></div>
   </div>
 
-  <div class="grid g4" id="marketKPI"></div>
+  <div class="grid g4" id="marketKpi"></div>
 
   <div class="grid g2">
-    <div class="cc"><h3>🌍 国家分布</h3><div class="cb" id="chartGeo"></div></div>
-    <div class="cc"><h3>💍 品类分布</h3><div class="cb" id="chartProduct"></div></div>
+    <div class="chart"><h3>🌍 国家分布</h3><div class="chart-body" id="geoChart"></div></div>
+    <div class="chart"><h3>💍 品类分布</h3><div class="chart-body" id="productChart"></div></div>
   </div>
 
   <div class="grid g2">
-    <div class="cc"><h3>📈 播放趋势</h3><div class="cb" id="chartTrend"></div></div>
-    <div class="cc"><h3>🏆 策略评分</h3><div class="cb-sm" id="chartRank"></div></div>
+    <div class="chart"><h3>📈 播放趋势</h3><div class="chart-body" id="trendChart"></div></div>
+    <div class="chart"><h3>🏆 策略评分</h3><div class="chart-sm" id="rankChart"></div></div>
   </div>
 
-  <div class="section-title">🔥 7天爆款 TOP 15 <span class="line"></span></div>
+  <div class="divider"><h2>🔥 7天爆款 TOP 15</h2><span class="line"></span></div>
 
-  <div class="market-list" id="hotList"></div>
+  <div class="hot-list" id="hotList"></div>
 
-  <div class="section-title">📋 完整详情 <span class="line"></span></div>
+  <div class="divider"><h2>📋 完整详情</h2><span class="line"></span></div>
 
-  <div class="tw" id="detailTable"></div>
+  <div class="detail-wrap" id="detailTable"></div>
 
 </div>
 
-<div class="ft">自动采集 · TikTok 珠宝数据</div>
+<div class="footer">自动采集 · TikTok 珠宝数据</div>
 
 <script>
-function E(id){return echarts.init(document.getElementById(id))}
-function R(c){window.addEventListener('resize',()=>c.resize())}
-function F(n){return (n||0).toLocaleString()}
+// ===== Utils =====
+const $ = id => document.getElementById(id)
+const E = id => echarts.init(document.getElementById(id))
+const R = c => window.addEventListener('resize', () => c.resize())
+const F = n => (n || 0).toLocaleString()
+const slice = (t, n) => t ? t.slice(0, n) : ''
 
+// ===== Data =====
 Promise.all([
-  fetch('data.json?'+Date.now()).then(r=>r.json()).catch(()=>null),
-  fetch('mindjewel_videos.json?'+Date.now()).then(r=>r.json()).catch(()=>[])
-]).then(([d, mjVids])=>{
-  document.getElementById('updateTime').textContent='更新 '+(d?.updatedAt||'--')
-  if(d?.brand) renderBrand(d.brand)
-  renderMJTable(mjVids)
-  if(d?.kpi) renderKPI(d.kpi)
-  if(d?.insights) renderInsight(d.insights)
-  if(d?.geo) renderGeo(d.geo)
-  if(d?.pie) renderProduct(d.pie)
-  if(d?.trend) renderTrend(d.trend)
-  if(d?.rank) renderRank(d.rank)
-  if(d?.details){
-    renderHotList(d.details.slice(0,15))
-    renderDetailTable(d.details)
+  fetch('data.json?' + Date.now()).then(r => r.json()).catch(() => null),
+  fetch('mindjewel_videos.json?' + Date.now()).then(r => r.json()).catch(() => [])
+]).then(([mkt, brandVids]) => {
+  if (!mkt) { $('updateTime').textContent = '⚠️'; return }
+
+  $('updateTime').textContent = '更新 ' + (mkt.updatedAt || '')
+
+  // Brand
+  renderBrandKpi(mkt.brand)
+  renderBrandVideos(brandVids)
+
+  // Market
+  renderInsight(mkt.insights)
+  renderMarketKpi(mkt.kpi)
+  if (mkt.geo)    initGeo(mkt.geo)
+  if (mkt.pie)    initProduct(mkt.pie)
+  if (mkt.trend)  initTrend(mkt.trend)
+  if (mkt.rank)   initRank(mkt.rank)
+  if (mkt.details) {
+    renderHotList(mkt.details.slice(0, 15))
+    renderDetail(mkt.details)
   }
-}).catch(()=>{
-  document.getElementById('updateTime').textContent='⚠️ 加载失败'
 })
 
-// ---------- 品牌 ----------
-function renderBrand(b){
-  if(!b||!b.followers) return
-  const el=document.getElementById('brandKPI')
-  el.innerHTML=`
-    <div class="card"><div class="lbl">粉丝</div><div class="val">${F(b.followers)}${b.followers_growth?`<span class="chg up">+${b.followers_growth}</span>`:''}</div><div class="sub">@mindjewel.co</div></div>
-    <div class="card"><div class="lbl">点赞</div><div class="val">${F(b.likes)}${b.likes_growth?`<span class="chg up">+${b.likes_growth}</span>`:''}</div><div class="sub">总点赞</div></div>
-    <div class="card"><div class="lbl">关注</div><div class="val">${F(b.following||0)}</div><div class="sub">正在关注</div></div>
-    <div class="card"><div class="lbl">增长率</div><div class="val">${b.growth_rate?b.growth_rate+'%':'--'}</div><div class="sub">近7天</div></div>
-    <div class="card"><div class="lbl">视频数</div><div class="val">${document.querySelector('#mjVideoTable tbody')?.rows?.length||'--'}</div><div class="sub">已发布</div></div>`
+// ==================== 品牌 ====================
+function renderBrandKpi(b) {
+  const el = $('brandKpi')
+  if (!b || !b.followers) { el.innerHTML = ''; return }
+  el.innerHTML = `
+    <div class="kpi"><div class="lbl">粉丝</div><div class="val">${F(b.followers)}${b.followers_growth ? `<span class="chg up">+${b.followers_growth}</span>` : ''}</div><div class="sub">@mindjewel.co</div></div>
+    <div class="kpi"><div class="lbl">点赞</div><div class="val">${F(b.likes)}${b.likes_growth ? `<span class="chg up">+${b.likes_growth}</span>` : ''}</div><div class="sub">总获赞</div></div>
+    <div class="kpi"><div class="lbl">关注</div><div class="val">${F(b.following || 0)}</div><div class="sub">正在关注</div></div>
+    <div class="kpi"><div class="lbl">视频</div><div class="val" id="brandVideoCount">${F((document.querySelector('#brandVideos tbody') || {}).rows?.length || 0)}</div><div class="sub">已发布</div></div>`
 }
 
-function renderMJTable(vids){
-  const el=document.getElementById('mjVideoTable')
-  if(!vids||!vids.length){
-    el.innerHTML='<div style="padding:20px;text-align:center;color:#ccc">暂无视频数据 — 登录后告诉我"采视频"</div>'
+function renderBrandVideos(vids) {
+  const el = $('brandVideos')
+  if (!vids || !vids.length) {
+    el.innerHTML = `<div class="empty">暂无视频数据 — 登录后告诉我"采视频"</div>`
     return
   }
-  let h='<table><thead><tr><th style="width:24px">#</th><th>视频</th><th class="mj-num">播放</th><th class="mj-num">ID</th></tr></thead><tbody>'
-  vids.forEach((v,i)=>{
-    const id=v.url?.match(/video\/(\d+)/)?.[1]||'--'
-    h+=`<tr><td style="color:#bbb">${i+1}</td><td><a href="${v.url}" target="_blank" title="${v.title||''}">${v.title?.slice(0,40)||'无标题'} ↗</a></td><td class="mj-num">${v.views||'--'}</td><td class="mj-num" style="color:#ccc;font-size:10px">${id.slice(-6)}</td></tr>`
+  let h = `<table><thead><tr><th style="width:24px">#</th><th>标题</th><th class="bt-num">播放</th><th class="bt-num">点赞</th><th class="bt-id">视频ID</th></tr></thead><tbody>`
+  vids.forEach((v, i) => {
+    const id = (v.url || '').match(/video\/(\d+)/)?.[1] || ''
+    h += `<tr>
+      <td style="color:#bbb">${i + 1}</td>
+      <td><a href="${v.url}" target="_blank" title="${(v.title || '').replace(/"/g,'&quot;')}">${slice(v.title, 40) || '无标题'} ↗</a></td>
+      <td class="bt-num">${v.views || '--'}</td>
+      <td class="bt-num">${v.likes || '--'}</td>
+      <td class="bt-id">${slice(id, 6)}</td>
+    </tr>`
   })
-  h+='</tbody></table>'
-  el.innerHTML=h
+  h += '</tbody></table>'
+  el.innerHTML = h
+  const count = $('brandVideoCount')
+  if (count) count.textContent = F(vids.length)
 }
 
-// ---------- 市场 ----------
-function renderKPI(arr){
-  const el=document.getElementById('marketKPI');el.innerHTML=''
-  ;(arr||[]).forEach(i=>{
-    const c=i.chg?(i.chg[0]=='+'?'up':'down'):''
-    el.innerHTML+=`<div class="card"><div class="lbl">${i.label}</div><div class="val">${i.value}${i.chg?`<span class="chg ${c}">${i.chg}</span>`:''}</div><div class="sub">${i.sub||''}</div></div>`
-  })
-}
-function renderInsight(arr){
-  if(!arr||!arr.length)return
-  const bar=document.getElementById('insightBar');bar.style.display='flex'
-  document.getElementById('insightText').innerHTML=arr.map(i=>`<i>${i.text}</i>`).join('')
-}
-function renderGeo(g){
-  const c=E('chartGeo')
-  c.setOption({tooltip:{trigger:'item',formatter:'{b}: {c}%'},grid:{left:80,right:20,top:6,bottom:16},xAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#bbb',fontSize:9,formatter:'{value}%'}},yAxis:{type:'category',data:(g.labels||[]).slice().reverse(),axisLabel:{color:'#888',fontSize:10}},series:[{type:'bar',data:(g.values||[]).slice().reverse(),barWidth:14,borderRadius:[0,4,4,0],itemStyle:{color:'#555'},label:{show:true,position:'right',color:'#888',fontSize:9,formatter:'{c}%'}}]});R(c)
-}
-function renderProduct(p){
-  const c=E('chartProduct')
-  c.setOption({tooltip:{trigger:'item',formatter:'{b}: {c}%'},series:[{type:'pie',radius:['28%','58%'],center:['50%','48%'],data:p.data||(p.labels||[]).map((n,i)=>({name:n,value:(p.values||[])[i]||0})),label:{color:'#888',fontSize:9},labelLine:{lineStyle:{color:'#eee'}},color:['#333','#666','#999','#bbb','#ddd','#eee'],emphasis:{scale:false}}]});R(c)
-}
-function renderTrend(t){
-  const c=E('chartTrend')
-  c.setOption({tooltip:{trigger:'axis',valueFormatter:v=>v.toLocaleString()},grid:{left:42,right:10,top:12,bottom:16},xAxis:{type:'category',data:t.labels,axisLabel:{color:'#bbb',fontSize:9}},yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#bbb'}},series:[{type:'line',data:t.values,smooth:true,symbol:'circle',symbolSize:4,lineStyle:{color:'#444',width:2},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#00000006'},{offset:1,color:'#00000000'}]}},itemStyle:{color:'#333'},markLine:{data:[{type:'average'}],lineStyle:{color:'#ddd',type:'dashed'},label:{color:'#bbb',fontSize:9,formatter:'均 {c}'}}}]});R(c)
-}
-function renderRank(r){
-  const c=E('chartRank')
-  c.setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:70,right:16,top:4,bottom:12},xAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#bbb'}},yAxis:{type:'category',data:(r.labels||[]).slice().reverse(),axisLabel:{color:'#888',fontSize:9}},series:[{type:'bar',data:(r.values||[]).slice().reverse(),barWidth:10,borderRadius:[0,3,3,0],itemStyle:{color:'#555'},label:{show:true,position:'right',color:'#888',fontSize:8,formatter:'{c}'}}]});R(c)
+// ==================== 市场 ====================
+function renderInsight(arr) {
+  if (!arr || !arr.length) return
+  const bar = $('insightBar')
+  bar.classList.add('show')
+  bar.innerHTML = arr.map(i => `<span>${i.text}</span>`).join('')
 }
 
-// 7天热榜（纯文字列表）
-function renderHotList(d){
-  const el=document.getElementById('hotList')
-  if(!d||!d.length){el.innerHTML='<div style="padding:24px;text-align:center;color:#ccc">暂无数据</div>';return}
-  let h='<table><thead><tr><th style="width:24px">#</th><th>标题</th><th class="ml-num" style="width:60px">播放</th><th class="ml-num" style="width:50px">互动率</th><th style="width:44px">国家</th><th style="width:52px">品类</th><th style="width:64px">形式</th><th class="ml-num" style="width:30px">评分</th></tr></thead><tbody>'
-  d.forEach((v,i)=>{
-    const r=i<3?'r'+(i+1):'ro'
-    const t=v.url?`<a href="${v.url}" target="_blank" title="${(v.title||'').replace(/"/g,'&quot;')}">${v.title||'--'} ↗</a>`:`<span>${v.title||'--'}</span>`
-    h+=`<tr><td><span class="rn ${r}">${i+1}</span></td><td style="overflow:hidden;text-overflow:ellipsis">${t}</td><td class="ml-num ml-hl">${F(v.views)}</td><td class="ml-num">${v.engagement_rate||'--'}</td><td style="text-align:center">${v.region||'--'}</td><td style="text-align:center">${v.product_type||'--'}</td><td style="text-align:center;font-size:10px">${v.content_format?.slice(0,8)||'--'}</td><td class="ml-num">${v.buzz_score||'--'}</td></tr>`
-  })
-  h+='</tbody></table>'
-  el.innerHTML=h
+function renderMarketKpi(arr) {
+  const el = $('marketKpi')
+  if (!arr) { el.innerHTML = ''; return }
+  el.innerHTML = arr.map(i => {
+    const c = i.chg ? (i.chg[0] === '+' ? 'up' : 'down') : ''
+    return `<div class="kpi"><div class="lbl">${i.label}</div><div class="val">${i.value}${i.chg ? `<span class="chg ${c}">${i.chg}</span>` : ''}</div><div class="sub">${i.sub || ''}</div></div>`
+  }).join('')
 }
 
-// 详情表
-function renderDetailTable(d){
-  const el=document.getElementById('detailTable')
-  if(!d||!d.length){el.innerHTML='<div style="padding:24px;text-align:center;color:#ccc">暂无数据</div>';return}
-  let h='<table class="detail"><colgroup><col class="col-r"><col class="col-t"><col class="col-n"><col class="col-n"><col class="col-rg"><col class="col-p"><col class="col-p"><col class="col-s"></colgroup><thead><tr><th>#</th><th>标题</th><th class="col-n">播放</th><th class="col-n">互动率</th><th class="col-rg">国家</th><th class="col-p">品类</th><th class="col-p">形式</th><th class="col-s">评分</th></tr></thead><tbody>'
-  d.slice(0,30).forEach((v,i)=>{
-    const r=i<3?'r'+(i+1):'ro'
-    const t=v.url?`<a href="${v.url}" target="_blank">${v.title||'--'} ↗</a>`:`<span>${v.title||'--'}</span>`
-    h+=`<tr><td class="col-r"><span class="rn ${r}">${i+1}</span></td><td class="col-t">${t}</td><td class="col-n">${F(v.views)}</td><td class="col-n">${v.engagement_rate||'--'}</td><td class="col-rg">${v.region||'--'}</td><td class="col-p">${v.product_type||'--'}</td><td class="col-p" style="font-size:10px">${v.content_format?.slice(0,8)||'--'}</td><td class="col-s">${v.buzz_score||'--'}</td></tr>`
+function initGeo(d) {
+  const c = E('geoChart')
+  c.setOption({
+    tooltip: { trigger: 'item', formatter: '{b}: {c}%' },
+    grid: { left: 80, right: 20, top: 6, bottom: 16 },
+    xAxis: { type: 'value', splitLine: { lineStyle: { color: '#eee' } }, axisLabel: { color: '#bbb', fontSize: 9, formatter: '{value}%' } },
+    yAxis: { type: 'category', data: (d.labels || []).slice().reverse(), axisLabel: { color: '#888', fontSize: 10 } },
+    series: [{ type: 'bar', data: (d.values || []).slice().reverse(), barWidth: 14, borderRadius: [0, 4, 4, 0], itemStyle: { color: '#555' }, label: { show: true, position: 'right', color: '#888', fontSize: 9, formatter: '{c}%' } }]
   })
-  h+='</tbody></table>'
-  el.innerHTML=h
+  R(c)
+}
+
+function initProduct(d) {
+  const c = E('productChart')
+  c.setOption({
+    tooltip: { trigger: 'item', formatter: '{b}: {c}%' },
+    series: [{
+      type: 'pie', radius: ['28%', '58%'], center: ['50%', '48%'],
+      data: d.data || (d.labels || []).map((n, i) => ({ name: n, value: (d.values || [])[i] || 0 })),
+      label: { color: '#888', fontSize: 9 }, labelLine: { lineStyle: { color: '#eee' } },
+      color: ['#333', '#666', '#999', '#bbb', '#ddd'], emphasis: { scale: false }
+    }]
+  })
+  R(c)
+}
+
+function initTrend(t) {
+  const c = E('trendChart')
+  c.setOption({
+    tooltip: { trigger: 'axis', valueFormatter: v => F(v) },
+    grid: { left: 44, right: 10, top: 12, bottom: 16 },
+    xAxis: { type: 'category', data: t.labels, axisLabel: { color: '#bbb', fontSize: 9 } },
+    yAxis: { type: 'value', splitLine: { lineStyle: { color: '#eee' } }, axisLabel: { color: '#bbb' } },
+    series: [{
+      type: 'line', data: t.values, smooth: true, symbol: 'circle', symbolSize: 4,
+      lineStyle: { color: '#444', width: 2 },
+      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: '#00000006' }, { offset: 1, color: '#00000000' }] } },
+      itemStyle: { color: '#333' },
+      markLine: { data: [{ type: 'average' }], lineStyle: { color: '#ddd', type: 'dashed' }, label: { color: '#bbb', fontSize: 9, formatter: '均 {c}' } }
+    }]
+  })
+  R(c)
+}
+
+function initRank(r) {
+  const c = E('rankChart')
+  c.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: 70, right: 16, top: 4, bottom: 12 },
+    xAxis: { type: 'value', splitLine: { lineStyle: { color: '#eee' } }, axisLabel: { color: '#bbb' } },
+    yAxis: { type: 'category', data: (r.labels || []).slice().reverse(), axisLabel: { color: '#888', fontSize: 9 } },
+    series: [{
+      type: 'bar', data: (r.values || []).slice().reverse(), barWidth: 10, borderRadius: [0, 3, 3, 0],
+      itemStyle: { color: '#555' }, label: { show: true, position: 'right', color: '#888', fontSize: 8, formatter: '{c}' }
+    }]
+  })
+  R(c)
+}
+
+function renderHotList(d) {
+  const el = $('hotList')
+  if (!d || !d.length) { el.innerHTML = `<div class="empty">暂无数据</div>`; return }
+  let h = `<table><thead><tr><th style="width:24px">#</th><th>标题</th><th class="hl-num">播放</th><th class="hl-num">互动率</th><th class="hl-center">国家</th><th class="hl-center">品类</th><th class="hl-center">形式</th><th class="hl-num">评分</th></tr></thead><tbody>`
+  d.forEach((v, i) => {
+    const r = i < 3 ? `hl-r${i + 1}` : 'hl-ro'
+    h += `<tr>
+      <td><span class="rn ${r}">${i + 1}</span></td>
+      <td style="overflow:hidden;text-overflow:ellipsis"><a href="${v.url}" target="_blank" title="${(v.title || '').replace(/"/g,'&quot;')}">${slice(v.title, 50) || '--'} ↗</a></td>
+      <td class="hl-num hl-bold">${F(v.views)}</td>
+      <td class="hl-num">${v.engagement_rate || '--'}</td>
+      <td class="hl-center">${v.region || '--'}</td>
+      <td class="hl-center">${v.product_type || '--'}</td>
+      <td class="hl-center" style="font-size:10px">${slice(v.content_format, 8) || '--'}</td>
+      <td class="hl-num">${v.buzz_score || '--'}</td>
+    </tr>`
+  })
+  h += '</tbody></table>'
+  el.innerHTML = h
+}
+
+function renderDetail(d) {
+  const el = $('detailTable')
+  if (!d || !d.length) { el.innerHTML = `<div class="empty">暂无数据</div>`; return }
+  let h = `<table><colgroup><col class="dc-r"><col class="dc-t"><col class="dc-n"><col class="dc-n"><col class="dc-rg"><col class="dc-p"><col class="dc-p"><col class="dc-s"></colgroup><thead><tr><th>#</th><th>标题</th><th class="dc-n">播放</th><th class="dc-n">互动率</th><th class="dc-rg">国家</th><th class="dc-p">品类</th><th class="dc-p">形式</th><th class="dc-s">评分</th></tr></thead><tbody>`
+  d.slice(0, 30).forEach((v, i) => {
+    const r = i < 3 ? `hl-r${i + 1}` : 'hl-ro'
+    h += `<tr>
+      <td class="dc-r"><span class="rn ${r}">${i + 1}</span></td>
+      <td class="dc-t"><a href="${v.url}" target="_blank">${slice(v.title, 40) || '--'} ↗</a></td>
+      <td class="dc-n hl-bold">${F(v.views)}</td>
+      <td class="dc-n">${v.engagement_rate || '--'}</td>
+      <td class="dc-rg">${v.region || '--'}</td>
+      <td class="dc-p">${v.product_type || '--'}</td>
+      <td class="dc-p" style="font-size:10px">${slice(v.content_format, 8) || '--'}</td>
+      <td class="dc-s">${v.buzz_score || '--'}</td>
+    </tr>`
+  })
+  h += '</tbody></table>'
+  el.innerHTML = h
 }
 </script>
 </body>
