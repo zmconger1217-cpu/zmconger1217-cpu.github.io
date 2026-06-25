@@ -7,65 +7,81 @@
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:#0b0b0b;color:#eee;min-height:100vh}
-a{color:#ffc832;text-decoration:none}
+body{font-family:-apple-system,'Noto Sans SC','Segoe UI',sans-serif;background:#f8f6f2;color:#2c2c2c;min-height:100vh}
+a{color:#c49a2b;text-decoration:none}
+a:hover{opacity:.8}
 
 /* Nav */
-.nav{display:flex;align-items:center;gap:0;background:#111;border-bottom:1px solid #181818;padding:0 24px}
-.nav a{display:flex;align-items:center;gap:6px;padding:14px 18px;font-size:12px;color:#555;border-bottom:2px solid transparent;transition:all .2s}
-.nav a:hover{color:#888}
-.nav a.active{color:#ffc832;border-bottom-color:#ffc832;background:linear-gradient(0deg,#ffc83206,transparent)}
+.nav{display:flex;align-items:center;gap:0;background:#fff;border-bottom:1px solid #ece8e0;padding:0 24px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.nav a{display:flex;align-items:center;gap:6px;padding:14px 18px;font-size:12px;color:#999;border-bottom:2px solid transparent;transition:all .2s}
+.nav a:hover{color:#666}
+.nav a.active{color:#c49a2b;border-bottom-color:#c49a2b;background:linear-gradient(0deg,#c49a2b06,transparent)}
 .nav a span{font-size:14px}
+@media(max-width:640px){.nav{padding:0 14px;overflow-x:auto}}
 
 /* Header */
-.header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 12px;margin-bottom:4px}
-.h-left{display:flex;align-items:center;gap:14px}
-.h-left h1{font-size:18px;font-weight:500;color:#eee}
-.h-left h1 span{color:#ffc832}
-.meta{font-size:11px;color:#333}
+.header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 12px}
+.h-left{display:flex;align-items:center;gap:12px}
+.h-left h1{font-size:18px;font-weight:600;color:#2c2c2c}
+.h-left h1 span{color:#c49a2b}
+.meta{font-size:11px;color:#bbb}
 
 /* Wrap */
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.grid{display:grid;gap:12px;margin-bottom:12px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px 24px}
+.grid{display:grid;gap:12px;margin-bottom:16px}
 .g4{grid-template-columns:repeat(4,1fr)}
 .g2{grid-template-columns:1fr 1fr}
 
 /* Brand Hero */
-.brand-hero{background:linear-gradient(135deg,#141414,#0d0d0d);border:1px solid #1e1e1e;border-radius:12px;padding:28px 32px;margin-bottom:16px}
+.brand-hero{background:#fff;border:1px solid #ece8e0;border-radius:14px;padding:28px 32px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .brand-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .brand-identity{display:flex;align-items:center;gap:16px}
-.brand-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#ffc832,#e6a800);color:#111;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:600}
-.brand-name{font-size:20px;font-weight:500;color:#eee}
-.brand-handle{font-size:13px;color:#555;margin-top:2px}
-.brand-bio{font-size:12px;color:#666;margin-top:4px;max-width:400px}
+.brand-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#c49a2b,#e6be5e);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600}
+.brand-name{font-size:20px;font-weight:600;color:#2c2c2c}
+.brand-handle{font-size:13px;color:#bbb;margin-top:2px}
+.brand-bio{font-size:12px;color:#999;margin-top:4px}
+.brand-link{font-size:11px;color:#bbb;margin-top:6px;display:inline-flex;align-items:center;gap:4px}
+.brand-link:hover{color:#c49a2b}
 .brand-metrics{display:flex;gap:28px}
 .brand-metric{text-align:center}
-.brand-metric .val{display:block;font-size:28px;font-weight:300;color:#ffc832;line-height:1.2;font-family:Outfit,sans-serif}
-.brand-metric .lbl{font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
+.brand-metric .val{display:block;font-size:28px;font-weight:400;color:#c49a2b;line-height:1.2;font-family:Outfit,sans-serif}
+.brand-metric .lbl{font-size:10px;color:#bbb;text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
 .brand-metric .chg{font-size:10px;display:inline-block;padding:1px 6px;border-radius:4px;margin-top:2px}
 .brand-metric .chg.up{color:#4caf50;background:#4caf5008}
 .brand-metric .chg.down{color:#ef5350;background:#ef535008}
-.brand-link{font-size:11px;color:#555;margin-top:8px;display:inline-flex;align-items:center;gap:4px}
-.brand-link:hover{color:#ffc832}
-
-/* Cards */
-.card{background:#111;border-radius:8px;padding:16px;border:1px solid #181818}
-.card .lbl{font-size:10px;color:#444;text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
-.card .val{font-size:22px;font-weight:300;color:#eee;line-height:1.2}
-.card .sub{font-size:10px;color:#2a2a2a;margin-top:1px}
-
-/* Chart */
-.cc{background:#111;border-radius:8px;padding:16px;border:1px solid #181818}
-.cc h3{font-size:11px;font-weight:400;color:#555;margin-bottom:8px;display:flex;align-items:center;gap:5px}
-.cb{width:100%;height:300px}
 
 /* Status */
-.status-bar{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;padding:12px 16px;background:#111;border-radius:8px;border:1px solid #181818;font-size:11px;color:#444}
+.status-bar{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding:12px 16px;background:#fff;border-radius:8px;border:1px solid #ece8e0;font-size:11px;color:#bbb}
 .status-bar span{display:flex;align-items:center;gap:4px}
 .status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#4caf50}
 
+/* Cards */
+.card{background:#fff;border-radius:10px;padding:16px;border:1px solid #ece8e0;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.card .lbl{font-size:10px;color:#bbb;text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.card .val{font-size:22px;font-weight:500;color:#2c2c2c;line-height:1.2}
+.card .sub{font-size:10px;color:#ccc;margin-top:1px}
+
+/* Chart */
+.cc{background:#fff;border-radius:10px;padding:16px;border:1px solid #ece8e0;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.cc h3{font-size:11px;font-weight:500;color:#666;margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.cb{width:100%;height:300px}
+
+/* Video Grid */
+.video-section{margin-top:16px}
+.video-section h3{font-size:13px;font-weight:500;color:#666;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.video-card{background:#fff;border-radius:10px;border:1px solid #ece8e0;overflow:hidden;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.video-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px)}
+.video-cover{width:100%;aspect-ratio:9/16;background:#f5f3ee;display:flex;align-items:center;justify-content:center;color:#ddd;font-size:12px;overflow:hidden;position:relative}
+.video-cover img{width:100%;height:100%;object-fit:cover}
+.video-cover .play-badge{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px}
+.video-info{padding:10px 12px}
+.video-info .vtitle{font-size:11px;color:#444;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:4px}
+.video-info .vstats{display:flex;gap:10px;font-size:10px;color:#bbb}
+.video-info .vstats span{display:flex;align-items:center;gap:3px}
+
 /* Footer */
-.ft{text-align:center;padding:20px 0 6px;font-size:10px;color:#151515}
+.ft{text-align:center;padding:20px 0 6px;font-size:10px;color:#e8e4dc}
 
 @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){
@@ -77,27 +93,26 @@ a{color:#ffc832;text-decoration:none}
   .brand-metric .val{font-size:22px}
   .g4,.g2{grid-template-columns:1fr}
   .cb{height:220px}
+  .video-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
 <body>
 
 <div class="nav">
-  <a href="index.html"><span>◈</span> 总览</a>
   <a href="brand.html" class="active"><span>🏪</span> 品牌</a>
   <a href="market.html"><span>📊</span> 市场</a>
 </div>
 
 <div class="header">
   <div class="h-left">
-    <h1>🏪 <span>MindJewel</span> 品牌看板</h1>
+    <h1>🏪 <span>MindJewel</span></h1>
   </div>
   <div class="meta"><b id="updateTime">加载中...</b></div>
 </div>
 
 <div class="wrap">
 
-  <!-- 品牌信息 -->
   <div class="brand-hero" id="brandHero">
     <div class="brand-top">
       <div class="brand-identity">
@@ -106,7 +121,7 @@ a{color:#ffc832;text-decoration:none}
           <div class="brand-name">MindJewel</div>
           <div class="brand-handle">@mindjewel.co</div>
           <div class="brand-bio" id="brandBio">Mind is the finest jewel.</div>
-          <a class="brand-link" href="https://www.tiktok.com/@mindjewel.co" target="_blank">打开 TikTok 主页 ↗</a>
+          <a class="brand-link" href="https://www.tiktok.com/@mindjewel.co" target="_blank">TikTok ↗</a>
         </div>
       </div>
       <div class="brand-metrics">
@@ -126,26 +141,28 @@ a{color:#ffc832;text-decoration:none}
         </div>
         <div class="brand-metric">
           <span class="val" id="mGrowth">--</span>
-          <span class="lbl">粉丝增长率</span>
+          <span class="lbl">粉丝增长</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 状态 -->
   <div class="status-bar">
-    <span><span class="status-dot"></span> 数据实时</span>
-    <span>📱 TikTok 国际版</span>
-    <span>💎 珠宝品类</span>
+    <span><span class="status-dot"></span> TikTok 国际版</span>
+    <span>💎 珠宝品牌</span>
   </div>
 
-  <!-- KPI -->
   <div class="grid g4" id="kpiCards"></div>
 
-  <!-- 粉丝趋势 + 对比市场 -->
   <div class="grid g2">
-    <div class="cc"><h3>📈 粉丝增长趋势</h3><div class="cb" id="chartFollowers"></div></div>
-    <div class="cc"><h3>⚡ 品牌 vs 市场基准</h3><div class="cb" id="chartBenchmark"></div></div>
+    <div class="cc"><h3>📈 粉丝增长</h3><div class="cb" id="chartFollowers"></div></div>
+    <div class="cc"><h3>⚡ 品牌 vs 市场</h3><div class="cb" id="chartBenchmark"></div></div>
+  </div>
+
+  <!-- 热门视频 -->
+  <div class="video-section">
+    <h3>🎬 热门视频 TOP 10</h3>
+    <div class="video-grid" id="videoGrid"></div>
   </div>
 
 </div>
@@ -160,10 +177,10 @@ function F(n){return (n||0).toLocaleString()}
 fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
   document.getElementById('updateTime').textContent='更新 '+d.updatedAt
   if(d.brand) renderBrand(d.brand)
-  else loadDemo()
   if(d.kpi) renderKPI(d.kpi)
+  if(d.details) renderVideos(d.details.slice(0,10))
 }).catch(()=>{
-  document.getElementById('updateTime').textContent='⚠️ 加载失败'
+  document.getElementById('updateTime').textContent='示例数据'
   loadDemo()
 })
 
@@ -172,7 +189,6 @@ function renderBrand(b){
   document.getElementById('mLikes').textContent=F(b.likes)
   document.getElementById('mFollowing').textContent=F(b.following||0)
   if(b.bio) document.getElementById('brandBio').textContent=b.bio
-
   const fc=document.getElementById('mFollowersChg')
   if(b.followers_growth){
     fc.textContent=(b.followers_growth>=0?'+':'')+b.followers_growth
@@ -184,16 +200,8 @@ function renderBrand(b){
     lc.className='chg'+(b.likes_growth>=0?' up':' down')
   }
   const gc=document.getElementById('mGrowth')
-  if(b.growth_rate){
-    gc.textContent=(b.growth_rate>=0?'+':'')+b.growth_rate+'%'
-  }
-
-  // 粉丝趋势
-  if(b.trend_labels&&b.followers_trend){
-    renderFollowersChart(b.trend_labels, b.followers_trend)
-  }
-
-  // 对比市场
+  if(b.growth_rate) gc.textContent=(b.growth_rate>=0?'+':'')+b.growth_rate+'%'
+  if(b.trend_labels&&b.followers_trend) renderFollowers(b.trend_labels,b.followers_trend)
   renderBenchmark(b.followers)
 }
 
@@ -204,56 +212,68 @@ function renderKPI(arr){
   })
 }
 
-function renderFollowersChart(labels, data){
+function renderFollowers(labels,data){
   const c=E('chartFollowers')
   c.setOption({
     tooltip:{trigger:'axis',valueFormatter:v=>v.toLocaleString()},
     grid:{left:44,right:10,top:12,bottom:16},
-    xAxis:{type:'category',data:labels,axisLabel:{color:'#444',fontSize:9}},
-    yAxis:{type:'value',splitLine:{lineStyle:{color:'#151515'}},axisLabel:{color:'#444'}},
+    xAxis:{type:'category',data:labels,axisLabel:{color:'#bbb',fontSize:9}},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#ece8e0'}},axisLabel:{color:'#bbb'}},
     series:[{
       type:'line',data,smooth:true,symbol:'circle',symbolSize:6,
-      lineStyle:{color:'#ffc832',width:2},
-      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#ffc83218'},{offset:1,color:'#ffc83200'}]}},
-      itemStyle:{color:'#ffc832'},
-      markLine:{data:[{type:'average'}],lineStyle:{color:'#2a2a2a',type:'dashed'},label:{color:'#444',fontSize:9,formatter:'均 {c}'}}
+      lineStyle:{color:'#c49a2b',width:2},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#c49a2b12'},{offset:1,color:'#c49a2b00'}]}},
+      itemStyle:{color:'#c49a2b'},
+      markLine:{data:[{type:'average'}],lineStyle:{color:'#e0dcd4',type:'dashed'},label:{color:'#bbb',fontSize:9,formatter:'均 {c}'}}
     }]
   });R(c)
 }
 
 function renderBenchmark(followers){
   const c=E('chartBenchmark')
-  // 对比数据: 品牌 vs 市场均值 vs 头部账号
-  const labels=['粉丝数','点赞数','互动率']
-  const brand=[followers||1068, 1915, 8.4]
-  const avg=[5000, 80000, 5.2]       // 市场均值
-  const top=[50000, 500000, 12.5]    // 头部账号
-
+  const brand=[followers||1068,1915,8.4]
+  const avg=[5000,80000,5.2]
+  const top=[50000,500000,12.5]
   c.setOption({
     tooltip:{trigger:'axis'},
-    legend:{data:['MindJewel','市场平均','头部账号'],textStyle:{color:'#555',fontSize:9},top:-2,right:0},
+    legend:{data:['MindJewel','市场平均','头部账号'],textStyle:{color:'#bbb',fontSize:9},top:-2,right:0},
     grid:{left:50,right:10,top:28,bottom:16},
-    xAxis:{type:'category',data:labels,axisLabel:{color:'#444',fontSize:9}},
-    yAxis:{type:'value',splitLine:{lineStyle:{color:'#151515'}},axisLabel:{color:'#444',fontSize:8}},
+    xAxis:{type:'category',data:['粉丝数','点赞数','互动率'],axisLabel:{color:'#bbb',fontSize:9}},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#ece8e0'}},axisLabel:{color:'#bbb',fontSize:8}},
     series:[
-      {type:'bar',data:brand,barWidth:10,itemStyle:{color:'#ffc832',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#ffc832',fontSize:8}},
-      {type:'bar',data:avg,barWidth:10,itemStyle:{color:'#555',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#888',fontSize:8}},
-      {type:'bar',data:top,barWidth:10,itemStyle:{color:'#4fc3f7',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#888',fontSize:8}}
+      {type:'bar',data:brand,barWidth:10,itemStyle:{color:'#c49a2b',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#c49a2b',fontSize:8}},
+      {type:'bar',data:avg,barWidth:10,itemStyle:{color:'#e0dcd4',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#bbb',fontSize:8}},
+      {type:'bar',data:top,barWidth:10,itemStyle:{color:'#81c784',borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:'#bbb',fontSize:8}}
     ]
   });R(c)
 }
 
+function renderVideos(videos){
+  const el=document.getElementById('videoGrid')
+  if(!videos||!videos.length){el.innerHTML='<div style="grid-column:1/-1;padding:32px;text-align:center;color:#ccc;background:#fff;border-radius:10px;border:1px solid #ece8e0">暂无视频数据</div>';return}
+  el.innerHTML=videos.map(v=>{
+    const cover=v.cover?`<img src="${v.cover}" alt="" loading="lazy" onerror="this.parentElement.innerHTML+='📹'" />`:'📹'
+    return `<a href="${v.url||'#'}" target="_blank" class="video-card">
+      <div class="video-cover">${cover}${v.views?`<span class="play-badge">${F(v.views)}</span>`:''}</div>
+      <div class="video-info">
+        <div class="vtitle">${v.title||'无标题'}</div>
+        <div class="vstats">
+          <span>❤️ ${F(v.likes||0)}</span>
+          <span>📊 ${v.engagement_rate||'--'}</span>
+        </div>
+      </div>
+    </a>`
+  }).join('')
+}
+
 function loadDemo(){
-  renderBrand({
-    followers:1068, likes:1915, following:2, bio:'Mind is the finest jewel. Mindjewel.',
-    followers_growth:21, likes_growth:73, growth_rate:2.0,
-    trend_labels:['06-23','06-24','06-25'], followers_trend:[1047,1055,1068]
-  })
-  renderKPI([
-    {label:'TikTok 粉丝',value:'1,068',sub:'全球'},{label:'总点赞',value:'1,915',sub:''},
-    {label:'关注数',value:'2',sub:''},{label:'近3日增长',value:'+21',sub:'+2.0%'}
+  renderBrand({followers:1068,likes:1915,following:2,bio:'Mind is the finest jewel.',followers_growth:21,likes_growth:73,growth_rate:2.0,trend_labels:['06-23','06-24','06-25'],followers_trend:[1047,1055,1068]})
+  renderKPI([{label:'TikTok 粉丝',value:'1,068'},{label:'总点赞',value:'1,915'},{label:'关注',value:'2'},{label:'近3日增长',value:'+21'}])
+  renderVideos([
+    {title:'MindJewel 珠宝展示',views:520000,likes:48500,engagement_rate:'9.3%'},
+    {title:'手工制作全过程',views:380000,likes:32000,engagement_rate:'8.4%'},
+    {title:'送礼指南',views:290000,likes:28000,engagement_rate:'9.7%'},
   ])
-  document.getElementById('updateTime').textContent='更新 示例数据'
 }
 </script>
 </body>
