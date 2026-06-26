@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-06-26 21:58",
+  "updatedAt": "2026-06-27 00:43",
   "version": "2.1",
   "kpi": [
     {
       "label": "总播放",
-      "value": "5.71M",
+      "value": "5.50M",
       "sub": "40条爆款",
-      "chg": "+0.0%"
+      "chg": ""
     },
     {
       "label": "采集视频",
@@ -16,14 +16,14 @@
     },
     {
       "label": "平均互动率",
-      "value": "9.0%",
+      "value": "9.2%",
       "sub": "点赞+评论+分享 / 播放",
-      "chg": "+4.5%"
+      "chg": "+4.6%"
     },
     {
       "label": "总点赞",
-      "value": "389.1K",
-      "sub": "均 9.7K",
+      "value": "364.2K",
+      "sub": "均 9.1K",
       "chg": ""
     }
   ],
@@ -51,36 +51,38 @@
   },
   "trend": {
     "labels": [
-      "06/20",
       "06/21",
       "06/22",
       "06/23",
       "06/24",
       "06/25",
-      "06/26"
+      "06/26",
+      "06/27"
     ],
     "values": [
       8616,
-      8616,
-      8616,
-      8616,
       8465,
       5711,
-      5711
+      5711,
+      5711,
+      5495,
+      5495
     ]
   },
   "pie": {
     "labels": [
-      "Other",
+      "Jewelry (General)",
       "Bracelet",
       "Necklace",
-      "Ring"
+      "Ring",
+      "Brooch/Pin"
     ],
     "values": [
-      45.0,
+      37.5,
       25.0,
-      17.5,
-      12.5
+      20.0,
+      12.5,
+      5.0
     ]
   },
   "geo": {
@@ -98,25 +100,25 @@
   "content_formats": {
     "labels": [
       "Other",
+      "Showcase/Display",
       "Review/Unboxing",
       "Tutorial/DIY",
-      "Showcase/Display",
       "Storytime/Emotional",
       "Comedy/Skit"
     ],
     "er": [
-      9.12,
+      10.13,
+      7.77,
       7.27,
       11.79,
-      9.42,
       8.21,
       7.92
     ],
     "avg_plays": [
-      235732,
+      224899,
+      148832,
       20475,
       21131,
-      11205,
       11484,
       5354
     ]
@@ -157,12 +159,6 @@
         "fans": 0,
         "views": 264200,
         "title": "How I’d mix and match all these earrings",
-        "url": ""
-      },
-      {
-        "fans": 0,
-        "views": 221800,
-        "title": "I can’t wait to turn this into something",
         "url": ""
       },
       {
@@ -212,6 +208,12 @@
         "views": 47900,
         "title": "Replying to @Meredith sorry it’s long!!!",
         "url": ""
+      },
+      {
+        "fans": 0,
+        "views": 40500,
+        "title": "THIS IS ONE OF MY FAV LOOKS!!! What do y",
+        "url": ""
       }
     ]
   },
@@ -255,8 +257,8 @@
       "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oIwRDEgMQGqFxnErQB3eJSFZkNqKPDfz1oAAzW~tplv-tiktokx-dmt-logom:tos-useast5-i-0068-tx/oQB6APtGYiAAxC5AE1iB3qvQIAoUweEpBJ3qYI.image?dr=9634&x-expires=1782529200&x-signature=lc%2FUvYQm5AoMF0KBz%2B1nBGAl0GE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
-      "content_format": "Other",
+      "product_type": "Jewelry (General)",
+      "content_format": "Showcase/Display",
       "engagement_rate": "6.8%",
       "buzz_score": 100
     },
@@ -270,7 +272,7 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/ooAE85ViED9ESYNCX2ZDfDCRYmAFAAugAgEqIe~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=%2BAGaJmHecPdaRSnQI6GkstLy24o%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Other",
       "engagement_rate": "0.8%",
       "buzz_score": 55.7
@@ -322,21 +324,6 @@
     },
     {
       "rank": 7,
-      "title": "I can’t wait to turn this into something fun!!!  #jewelrytiktok #jewelrytok #jew",
-      "fans": 0,
-      "views": 221800,
-      "likes": 25900,
-      "url": "https://www.tiktok.com/@adrianis_morales/video/7653135024501427487",
-      "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oMQqQGEmRyWNAKDqiFJffX464TsErENAVwW8Bd~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=m5pNmWKuKqdWTClgOBXtS9Odzag%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-      "tags": [],
-      "region": "US/CA",
-      "product_type": "Other",
-      "content_format": "Other",
-      "engagement_rate": "12.5%",
-      "buzz_score": 100
-    },
-    {
-      "rank": 8,
       "title": "holiday shopping therapy 🧿✨ #shopping #bracelet ",
       "fans": 0,
       "views": 212100,
@@ -351,7 +338,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 9,
+      "rank": 8,
       "title": "Slim, flat Cartier bracelet that sits smoothly on the wrist, detailed with fine ",
       "fans": 0,
       "views": 209000,
@@ -366,7 +353,7 @@
       "buzz_score": 92.7
     },
     {
-      "rank": 10,
+      "rank": 9,
       "title": "The most unique chain in the diamond district#jewelry #diamond #gold #lifeisbuta",
       "fans": 0,
       "views": 201900,
@@ -381,7 +368,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 11,
+      "rank": 10,
       "title": "You loved the 14k breakdown, so today we are mapping out the exact rules for 18 ",
       "fans": 0,
       "views": 70300,
@@ -390,13 +377,13 @@
       "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/owd1EYinAGKsESI4iABAI7H5Io1APBACABiofp~tplv-tiktokx-dmt-logom:tos-useast8-i-0068-tx2/o8fuPAqGUEPXfw8LIAAHUAE3IIE4eciAAjIdAx.image?dr=9634&x-expires=1782529200&x-signature=V1bllZE7svZ7qn34SBb%2BxnfQw%2F8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Brooch/Pin",
       "content_format": "Other",
       "engagement_rate": "12.5%",
       "buzz_score": 100
     },
     {
-      "rank": 12,
+      "rank": 11,
       "title": "#redbracelets #gönntfy #fouryou #⭐️ ",
       "fans": 0,
       "views": 68100,
@@ -411,7 +398,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 13,
+      "rank": 12,
       "title": "probably my smallest cartier haul yet #cartier #luxury #luxuryjewelry #jewelry #",
       "fans": 0,
       "views": 61900,
@@ -426,7 +413,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 14,
+      "rank": 13,
       "title": "I wish someone would’ve made a beaded necklace tutorial like this when I first s",
       "fans": 0,
       "views": 58200,
@@ -441,7 +428,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 15,
+      "rank": 14,
       "title": "Replying to @Meredith sorry it’s long!!! So many good jewelry brands!!! @marlaaa",
       "fans": 0,
       "views": 47900,
@@ -450,13 +437,13 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/o8axXA4laEU5qAriAgBYiBAIAABiPja1NrRWE~tplv-tiktokx-dmt-logom:tos-useast8-i-0068-tx2/oMAA1i4ftNh3BqTARfbCa8EzAVi7EAAI8qqjEo.image?dr=9634&x-expires=1782529200&x-signature=IAYsB6PjhKMAGKSCtbmnQfBilU0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Other",
       "engagement_rate": "10.1%",
       "buzz_score": 100
     },
     {
-      "rank": 16,
+      "rank": 15,
       "title": "THIS IS ONE OF MY FAV LOOKS!!! What do you think? 🤭#mysteryjewlerygirl #jewelryt",
       "fans": 0,
       "views": 40500,
@@ -465,13 +452,13 @@
       "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oU40IuSRAEHFCADADAgFeOg4EfU6qBECKAI34A~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=4xRTAER1CUgnGANsfca2VS%2BaGKA%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Other",
       "engagement_rate": "8.5%",
       "buzz_score": 100
     },
     {
-      "rank": 17,
+      "rank": 16,
       "title": "every piece is perfect !! @miomijewelryjar #mermaid #y2k #fyp #mysteryjewelryjar",
       "fans": 0,
       "views": 31400,
@@ -480,13 +467,13 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/owWEEOgVYIAq04Tklws56fBr4AEe7BDMqEMRyF~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=MJDDgsvN%2Bq47qbEtn5cAfuKUs9M%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Other",
       "engagement_rate": "12.1%",
       "buzz_score": 100
     },
     {
-      "rank": 18,
+      "rank": 17,
       "title": "shop online Link in bio free shipping🌍#accessories #jewelry #bellejewelryshop ",
       "fans": 0,
       "views": 30100,
@@ -495,13 +482,13 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/og3E4NCx3F0aABcZdqjrRFgrcEQufBFDQu7mea~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=tKSaaEYlXHUZ8TroPTRKhKOhPxw%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Brooch/Pin",
       "content_format": "Other",
       "engagement_rate": "4.8%",
       "buzz_score": 100
     },
     {
-      "rank": 19,
+      "rank": 18,
       "title": "I went to the pool  #jewelrystack #jewelrytiktok #jewelrytok #sula #jewelryinspo",
       "fans": 0,
       "views": 23000,
@@ -510,13 +497,13 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/owFBNApqNANjD2oAEqR1BRoCSDufQeOAEWIgID~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=ZPLTg56fl%2FCLac%2BQljVwmJ3iQiU%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
-      "content_format": "Other",
+      "product_type": "Jewelry (General)",
+      "content_format": "Showcase/Display",
       "engagement_rate": "14.5%",
       "buzz_score": 100
     },
     {
-      "rank": 20,
+      "rank": 19,
       "title": "STAY STACKED #staystacked #jewelrytour #jewelryoftheday #necklace #bracelet ",
       "fans": 0,
       "views": 22500,
@@ -531,7 +518,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 21,
+      "rank": 20,
       "title": "#leenasjewelry #21kgold #goldbracelet #goldjewelry #gold ",
       "fans": 0,
       "views": 21600,
@@ -546,7 +533,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 22,
+      "rank": 21,
       "title": "THIS MYSTERY JEWELRY JAR IS SO CUTE!!!!!!!! 😍 #mysteryjewlerygirl #jewelrytiktok",
       "fans": 0,
       "views": 21100,
@@ -555,13 +542,13 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oIF6ymOqOASxDs3IEtm9QR3BSp7fQvvfE5AgQD~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=YOd7N1qmL7kA6u8NDSSrRWuhb5o%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Review/Unboxing",
       "engagement_rate": "13.4%",
       "buzz_score": 100
     },
     {
-      "rank": 23,
+      "rank": 22,
       "title": "the cutest summer jewelry pieces from @EvryJewels!💖 (use code LAYLA090) #evryjew",
       "fans": 0,
       "views": 19000,
@@ -570,13 +557,13 @@
       "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/ogRBke1RBnI9iLBCi0AQKEIB2wIpGt4AOzPItz~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=P7p4BGTOnSmdbjrVBg0FHKIa%2B3g%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Review/Unboxing",
       "engagement_rate": "5.7%",
       "buzz_score": 100
     },
     {
-      "rank": 24,
+      "rank": 23,
       "title": "jewelry every day stack as a gold girlie with a little bit of mixed metals! All ",
       "fans": 0,
       "views": 18000,
@@ -586,12 +573,12 @@
       "tags": [],
       "region": "US/CA",
       "product_type": "Ring",
-      "content_format": "Other",
+      "content_format": "Showcase/Display",
       "engagement_rate": "5.6%",
       "buzz_score": 100
     },
     {
-      "rank": 25,
+      "rank": 24,
       "title": "@EvryJewels coastal collection is everythingggg🌺⛵️✨✨ SYDNEY570 to saveee!!! #evr",
       "fans": 0,
       "views": 17600,
@@ -600,13 +587,13 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/o4D5d6A7EiyoN9AiMj1C5BvBHIrTKSAfAAniAI~tplv-tiktokx-dmt-logom:tos-useast8-i-0068-tx2/og5EIABj8A1RoO4iGjCaBlAEAvLABmi5vAEKZ.image?dr=9634&x-expires=1782529200&x-signature=1%2F2215ewdvr1orMdeE1iop4DeJU%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Review/Unboxing",
       "engagement_rate": "6.2%",
       "buzz_score": 100
     },
     {
-      "rank": 26,
+      "rank": 25,
       "title": "The perfect intro to designer fine jewelry picks! #finejewelry #jewelrytiktok #d",
       "fans": 0,
       "views": 15700,
@@ -621,7 +608,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 27,
+      "rank": 26,
       "title": "#obsessions #crystals #jewelry #whimsy #jewelryinspo ",
       "fans": 0,
       "views": 14600,
@@ -630,13 +617,13 @@
       "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/ocy0QVFoQAtgXpGQfIeEeEzAzXuG5Lpe8UF6SR~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=ZSNU7RPgUiQbu6kMGYS11v8xToQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Storytime/Emotional",
       "engagement_rate": "13.2%",
       "buzz_score": 100
     },
     {
-      "rank": 28,
+      "rank": 27,
       "title": "ShopMy in bio for the jewelry 🔗✨ #amazonjewelry #affordablejewelry #jewelryinspo",
       "fans": 0,
       "views": 9999,
@@ -645,13 +632,13 @@
       "cover": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/o8SEfOAAaFPjACVAXqumRXAAOEEwfEVDI5I6Zx~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=19CxI%2FgaGyw4G0stVj4v0TQcbsk%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
       "tags": [],
       "region": "US/CA",
-      "product_type": "Other",
+      "product_type": "Jewelry (General)",
       "content_format": "Tutorial/DIY",
       "engagement_rate": "7.6%",
       "buzz_score": 100
     },
     {
-      "rank": 29,
+      "rank": 28,
       "title": "The price on this 18k gold plated coin necklace is so good rn✨ @HSN, Inc #coinne",
       "fans": 0,
       "views": 9966,
@@ -661,12 +648,12 @@
       "tags": [],
       "region": "US/CA",
       "product_type": "Necklace",
-      "content_format": "Other",
+      "content_format": "Showcase/Display",
       "engagement_rate": "2.0%",
       "buzz_score": 49.7
     },
     {
-      "rank": 30,
+      "rank": 29,
       "title": "Yall loving my tutorials so here’s a beginner friendly Bracelet tutorial ✨ Would",
       "fans": 0,
       "views": 9712,
@@ -679,6 +666,21 @@
       "content_format": "Tutorial/DIY",
       "engagement_rate": "19.1%",
       "buzz_score": 100
+    },
+    {
+      "rank": 30,
+      "title": "Ahh they’re all so pretty 😩✨ #jewelry #jewelryhaul #haul #luxuryjewelry ",
+      "fans": 0,
+      "views": 9653,
+      "likes": 603,
+      "url": "https://www.tiktok.com/@kenaroseee_/video/7654253842141400333",
+      "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/o4IyQCDjRvtOAeDqiFZ7fqxxyxnElEWgStVrBv~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=98rmFdmdXxpqLKE8u9aSMgjM1FM%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+      "tags": [],
+      "region": "US/CA",
+      "product_type": "Jewelry (General)",
+      "content_format": "Review/Unboxing",
+      "engagement_rate": "6.6%",
+      "buzz_score": 100
     }
   ],
   "insights": [
@@ -688,7 +690,7 @@
     },
     {
       "type": "insight",
-      "text": "💍 最热品类: Other 占 45%"
+      "text": "💍 最热品类: Jewelry (General) 占 38%"
     },
     {
       "type": "insight",
@@ -696,7 +698,7 @@
     },
     {
       "type": "metric",
-      "text": "📊 均播放 142.8K | 互动率 9.0% | 40条视频"
+      "text": "📊 均播放 137.4K | 互动率 9.2% | 40条视频"
     }
   ]
 }
