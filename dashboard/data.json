@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-06-27 00:43",
+  "updatedAt": "2026-06-27 01:06",
   "version": "2.1",
   "kpi": [
     {
       "label": "总播放",
-      "value": "5.50M",
+      "value": "4.20M",
       "sub": "40条爆款",
       "chg": ""
     },
@@ -22,8 +22,8 @@
     },
     {
       "label": "总点赞",
-      "value": "364.2K",
-      "sub": "均 9.1K",
+      "value": "291.1K",
+      "sub": "均 7.3K",
       "chg": ""
     }
   ],
@@ -60,13 +60,13 @@
       "06/27"
     ],
     "values": [
-      8616,
       8465,
       5711,
       5711,
       5711,
       5495,
-      5495
+      5495,
+      4199
     ]
   },
   "pie": {
@@ -79,8 +79,8 @@
     ],
     "values": [
       37.5,
-      25.0,
-      20.0,
+      22.5,
+      22.5,
       12.5,
       5.0
     ]
@@ -88,12 +88,10 @@
   "geo": {
     "labels": [
       "US/CA",
-      "LATAM",
       "ME/Africa"
     ],
     "values": [
-      95.0,
-      2.5,
+      97.5,
       2.5
     ]
   },
@@ -107,16 +105,16 @@
       "Comedy/Skit"
     ],
     "er": [
-      10.13,
-      7.77,
+      10.39,
+      7.58,
       7.27,
       11.79,
       8.21,
       7.92
     ],
     "avg_plays": [
-      224899,
-      148832,
+      161657,
+      132836,
       20475,
       21131,
       11484,
@@ -125,12 +123,6 @@
   },
   "scatter": {
     "data": [
-      {
-        "fans": 0,
-        "views": 1300000,
-        "title": "Esta pulsera me costó solo 1 dolar hacer",
-        "url": ""
-      },
       {
         "fans": 0,
         "views": 1100000,
@@ -214,6 +206,12 @@
         "views": 40500,
         "title": "THIS IS ONE OF MY FAV LOOKS!!! What do y",
         "url": ""
+      },
+      {
+        "fans": 0,
+        "views": 31400,
+        "title": "every piece is perfect !! @miomijewelryj",
+        "url": ""
       }
     ]
   },
@@ -234,21 +232,6 @@
   "details": [
     {
       "rank": 1,
-      "title": "Esta pulsera me costó solo 1 dolar hacerlo 😱💰 pero adivinas en cuanto lo vendo? ",
-      "fans": 0,
-      "views": 1300000,
-      "likes": 73300,
-      "url": "https://www.tiktok.com/@bisuteria.designs/video/7653149939077369108",
-      "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oY9hcr9QBIA1N13mATiBuTInqAfi1JAEitwSCG~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=bVU6p73VCRU4O%2FnONoPS3mIHK38%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-      "tags": [],
-      "region": "LATAM",
-      "product_type": "Bracelet",
-      "content_format": "Other",
-      "engagement_rate": "5.8%",
-      "buzz_score": 100
-    },
-    {
-      "rank": 2,
       "title": "ALL the jewelry that I take off DAILY #jewelrytiktok #getunreadywithme #jewelry ",
       "fans": 0,
       "views": 1100000,
@@ -263,7 +246,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 3,
+      "rank": 2,
       "title": "Simple truth: jewelry makes me happy. #permanentjewelryphoenix #JewelryTok #phoe",
       "fans": 0,
       "views": 657600,
@@ -278,7 +261,7 @@
       "buzz_score": 55.7
     },
     {
-      "rank": 4,
+      "rank": 3,
       "title": "OMG! Look at these rings 😭#jewelry #viral #diamond #ring #fyp ",
       "fans": 0,
       "views": 540000,
@@ -293,7 +276,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 5,
+      "rank": 4,
       "title": "Link on my bio😍✨❤️#ella18jewelry #fashion #beautiful #jewelry #jewelrybusiness #",
       "fans": 0,
       "views": 325000,
@@ -308,7 +291,7 @@
       "buzz_score": 76.4
     },
     {
-      "rank": 6,
+      "rank": 5,
       "title": "How I’d mix and match all these earrings! #earrings #grwm #uniquejewelry #fashio",
       "fans": 0,
       "views": 264200,
@@ -323,7 +306,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 7,
+      "rank": 6,
       "title": "holiday shopping therapy 🧿✨ #shopping #bracelet ",
       "fans": 0,
       "views": 212100,
@@ -338,7 +321,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 8,
+      "rank": 7,
       "title": "Slim, flat Cartier bracelet that sits smoothly on the wrist, detailed with fine ",
       "fans": 0,
       "views": 209000,
@@ -353,7 +336,7 @@
       "buzz_score": 92.7
     },
     {
-      "rank": 9,
+      "rank": 8,
       "title": "The most unique chain in the diamond district#jewelry #diamond #gold #lifeisbuta",
       "fans": 0,
       "views": 201900,
@@ -368,7 +351,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 10,
+      "rank": 9,
       "title": "You loved the 14k breakdown, so today we are mapping out the exact rules for 18 ",
       "fans": 0,
       "views": 70300,
@@ -383,7 +366,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 11,
+      "rank": 10,
       "title": "#redbracelets #gönntfy #fouryou #⭐️ ",
       "fans": 0,
       "views": 68100,
@@ -398,7 +381,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 12,
+      "rank": 11,
       "title": "probably my smallest cartier haul yet #cartier #luxury #luxuryjewelry #jewelry #",
       "fans": 0,
       "views": 61900,
@@ -413,7 +396,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 13,
+      "rank": 12,
       "title": "I wish someone would’ve made a beaded necklace tutorial like this when I first s",
       "fans": 0,
       "views": 58200,
@@ -428,7 +411,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 14,
+      "rank": 13,
       "title": "Replying to @Meredith sorry it’s long!!! So many good jewelry brands!!! @marlaaa",
       "fans": 0,
       "views": 47900,
@@ -443,7 +426,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 15,
+      "rank": 14,
       "title": "THIS IS ONE OF MY FAV LOOKS!!! What do you think? 🤭#mysteryjewlerygirl #jewelryt",
       "fans": 0,
       "views": 40500,
@@ -458,7 +441,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 16,
+      "rank": 15,
       "title": "every piece is perfect !! @miomijewelryjar #mermaid #y2k #fyp #mysteryjewelryjar",
       "fans": 0,
       "views": 31400,
@@ -473,7 +456,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 17,
+      "rank": 16,
       "title": "shop online Link in bio free shipping🌍#accessories #jewelry #bellejewelryshop ",
       "fans": 0,
       "views": 30100,
@@ -488,7 +471,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 18,
+      "rank": 17,
       "title": "I went to the pool  #jewelrystack #jewelrytiktok #jewelrytok #sula #jewelryinspo",
       "fans": 0,
       "views": 23000,
@@ -503,7 +486,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 19,
+      "rank": 18,
       "title": "STAY STACKED #staystacked #jewelrytour #jewelryoftheday #necklace #bracelet ",
       "fans": 0,
       "views": 22500,
@@ -518,7 +501,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 20,
+      "rank": 19,
       "title": "#leenasjewelry #21kgold #goldbracelet #goldjewelry #gold ",
       "fans": 0,
       "views": 21600,
@@ -533,7 +516,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 21,
+      "rank": 20,
       "title": "THIS MYSTERY JEWELRY JAR IS SO CUTE!!!!!!!! 😍 #mysteryjewlerygirl #jewelrytiktok",
       "fans": 0,
       "views": 21100,
@@ -548,7 +531,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 22,
+      "rank": 21,
       "title": "the cutest summer jewelry pieces from @EvryJewels!💖 (use code LAYLA090) #evryjew",
       "fans": 0,
       "views": 19000,
@@ -563,7 +546,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 23,
+      "rank": 22,
       "title": "jewelry every day stack as a gold girlie with a little bit of mixed metals! All ",
       "fans": 0,
       "views": 18000,
@@ -578,7 +561,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 24,
+      "rank": 23,
       "title": "@EvryJewels coastal collection is everythingggg🌺⛵️✨✨ SYDNEY570 to saveee!!! #evr",
       "fans": 0,
       "views": 17600,
@@ -593,7 +576,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 25,
+      "rank": 24,
       "title": "The perfect intro to designer fine jewelry picks! #finejewelry #jewelrytiktok #d",
       "fans": 0,
       "views": 15700,
@@ -608,7 +591,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 26,
+      "rank": 25,
       "title": "#obsessions #crystals #jewelry #whimsy #jewelryinspo ",
       "fans": 0,
       "views": 14600,
@@ -623,7 +606,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 27,
+      "rank": 26,
       "title": "ShopMy in bio for the jewelry 🔗✨ #amazonjewelry #affordablejewelry #jewelryinspo",
       "fans": 0,
       "views": 9999,
@@ -638,7 +621,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 28,
+      "rank": 27,
       "title": "The price on this 18k gold plated coin necklace is so good rn✨ @HSN, Inc #coinne",
       "fans": 0,
       "views": 9966,
@@ -653,7 +636,7 @@
       "buzz_score": 49.7
     },
     {
-      "rank": 29,
+      "rank": 28,
       "title": "Yall loving my tutorials so here’s a beginner friendly Bracelet tutorial ✨ Would",
       "fans": 0,
       "views": 9712,
@@ -668,7 +651,7 @@
       "buzz_score": 100
     },
     {
-      "rank": 30,
+      "rank": 29,
       "title": "Ahh they’re all so pretty 😩✨ #jewelry #jewelryhaul #haul #luxuryjewelry ",
       "fans": 0,
       "views": 9653,
@@ -681,12 +664,27 @@
       "content_format": "Review/Unboxing",
       "engagement_rate": "6.6%",
       "buzz_score": 100
+    },
+    {
+      "rank": 30,
+      "title": "Link in my bio🥰#jewelry #ring #handmadejewelry #wedding #handmadegifts ",
+      "fans": 0,
+      "views": 8368,
+      "likes": 232,
+      "url": "https://www.tiktok.com/@xymqjewelry/video/7653631935490706702",
+      "cover": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oU3eRUvIjINAckmfr0EBuDDU3iwFEHflCAIMKb~tplv-tiktokx-origin.image?dr=9636&x-expires=1782529200&x-signature=BtzKcjJhVLK4V0pR5%2BE7s23JF34%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+      "tags": [],
+      "region": "US/CA",
+      "product_type": "Ring",
+      "content_format": "Storytime/Emotional",
+      "engagement_rate": "3.2%",
+      "buzz_score": 71.9
     }
   ],
   "insights": [
     {
       "type": "insight",
-      "text": "🌍 最热市场: US/CA 占 95%"
+      "text": "🌍 最热市场: US/CA 占 98%"
     },
     {
       "type": "insight",
@@ -698,7 +696,7 @@
     },
     {
       "type": "metric",
-      "text": "📊 均播放 137.4K | 互动率 9.2% | 40条视频"
+      "text": "📊 均播放 105.0K | 互动率 9.2% | 40条视频"
     }
   ]
 }
